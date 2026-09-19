@@ -37,6 +37,7 @@ export default function CvPreviewDialog({
   const [pageWidth, setPageWidth] = useState(0);
   const [viewerHeight, setViewerHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<ResizeObserver | null>(null);
   const viewerRef = useRef<HTMLDivElement>(null);
   const requestedRef = useRef(1);
   const readyRef = useRef<Set<number>>(new Set([1]));
@@ -60,27 +61,33 @@ export default function CvPreviewDialog({
     [onOpenChange],
   );
 
-  // Measure dialog width to size the PDF responsively.
-  useEffect(() => {
+  // Measure the dialog content width. A callback ref is used so we start
+  // measuring exactly when the Radix portal mounts the container — a plain
+  // effect would run before that DOM node exists.
+  const updateWidth = useCallback(() => {
     const element = containerRef.current;
     if (!element) return;
+    const width = element.getBoundingClientRect().width;
+    if (width > 0) setPageWidth(Math.min(width, 720));
+  }, []);
 
-    const updateWidth = () => {
-      const width = element.getBoundingClientRect().width;
-      if (width > 0) setPageWidth(Math.min(width, 720));
-    };
+  const containerCallback = useCallback(
+    (node: HTMLDivElement | null) => {
+      containerRef.current = node;
+      observerRef.current?.disconnect();
+      observerRef.current = null;
+      if (node) {
+        updateWidth();
+        requestAnimationFrame(updateWidth);
+        observerRef.current = new ResizeObserver(updateWidth);
+        observerRef.current.observe(node);
+      }
+    },
+    [updateWidth],
+  );
 
-    // Measure immediately as well as through the observer. Radix may finish
-    // positioning the dialog after the first ResizeObserver notification.
-    updateWidth();
-    const frame = requestAnimationFrame(updateWidth);
-    const observer = new ResizeObserver(updateWidth);
-    observer.observe(element);
-    return () => {
-      cancelAnimationFrame(frame);
-      observer.disconnect();
-    };
-  }, [open]);
+  useEffect(() => () => observerRef.current?.disconnect(), []);
+
 
   // Keep the viewer's height matching the currently visible page so the
   // absolutely-positioned pages reserve the right space.
@@ -131,8 +138,9 @@ export default function CvPreviewDialog({
             </Button>
           </div>
         ) : (
-          <div ref={containerRef} className="flex w-full min-w-0 flex-col items-center gap-4">
+          <div ref={containerCallback} className="flex w-full min-w-0 flex-col items-center gap-4">
             <Document
+              className="w-full"
               file={CV_URL}
               onLoadSuccess={onDocumentLoadSuccess}
               onLoadError={() => setFailed(true)}
