@@ -42,7 +42,7 @@ export function SkillsSection() {
           const MainIcon = mainIcons[index] ?? Code2;
           return (
             <motion.div
-              key={cat.category}
+              key={index}
               variants={item}
               className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
             >

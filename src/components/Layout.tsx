@@ -19,10 +19,20 @@ export function Layout({ children }: LayoutProps) {
       <Sidebar />
 
       <main className="lg:pl-72">
-        <div className="mx-auto max-w-3xl px-6 pb-20 pt-24 sm:px-8 lg:px-12 lg:pt-16">
+        <div className="mx-auto max-w-3xl px-6 pb-20 pt-16 sm:px-8 lg:px-12 lg:pt-16">
           {children}
         </div>
       </main>
+
+      {/* Soft fade at the top/bottom edges of the scrollable content. */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-x-0 top-[60px] z-30 h-16 bg-gradient-to-b from-background via-background/80 to-transparent lg:left-72 lg:top-0"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-30 h-16 bg-gradient-to-t from-background via-background/80 to-transparent lg:left-72"
+      />
     </div>
   );
 }

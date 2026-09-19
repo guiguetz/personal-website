@@ -33,7 +33,7 @@ export function ImpactSection() {
           const gradientId = `spark-${index}`;
           return (
             <motion.div
-              key={metric.label}
+              key={index}
               variants={item}
               className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
             >

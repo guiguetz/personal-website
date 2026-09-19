@@ -35,7 +35,7 @@ export function AboutSection() {
           const Icon = pillarIcons[index] ?? Code2;
           return (
             <motion.div
-              key={pillar.title}
+              key={index}
               variants={item}
               className="panel panel-interactive group flex items-start gap-4 rounded-2xl p-4"
             >

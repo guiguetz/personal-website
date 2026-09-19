@@ -58,7 +58,7 @@ export function CaseStudySection() {
             const visual = stepVisuals[index] ?? stepVisuals[0];
             const Icon = visual.icon;
             return (
-              <motion.div key={step.label} variants={item}>
+              <motion.div key={index} variants={item}>
                 <div className="mb-3 flex items-center gap-2">
                   <Icon className={`h-4 w-4 shrink-0 ${visual.color}`} />
                   <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">

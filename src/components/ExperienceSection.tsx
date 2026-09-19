@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building2, ChevronDown, MapPin } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 import { useStagger } from '@/hooks/useStagger';
 import { useI18n } from '@/i18n/I18nContext';
+import { supabase } from '@/lib/supabase';
 
 const companies = [
   {
@@ -40,8 +41,18 @@ const companies = [
 ];
 
 export function ExperienceSection() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [showExtra, setShowExtra] = useState(false);
+  const [remoteItems, setRemoteItems] = useState<typeof t.experience.items | null>(null);
+
+  useEffect(() => {
+    if (!supabase) return;
+    supabase.from('portfolio_experience').select('company,year,current,position,period,location,description,tags')
+      .eq('locale', locale).order('sort_order')
+      .then(({ data }) => { if (data?.length) setRemoteItems(data as typeof t.experience.items); });
+  }, [locale, t.experience.items]);
+
+  const experienceItems = remoteItems ?? t.experience.items;
   const { container, item, viewport } = useStagger(0.1, 18);
 
   return (
@@ -63,11 +74,12 @@ export function ExperienceSection() {
           viewport={viewport}
           className="space-y-6"
         >
-          {t.experience.items.map((exp, index) => {
-            const meta = companies[index] ?? companies[0];
+          {experienceItems.map((exp, index) => {
+            const fallback = companies[index] ?? companies[0];
+            const meta = { ...fallback, ...exp };
             return (
               <motion.div
-                key={`${meta.company}-${exp.period}`}
+                key={index}
                 variants={item}
                 className="group relative grid gap-3 sm:grid-cols-[4.5rem_1fr] sm:gap-6"
               >

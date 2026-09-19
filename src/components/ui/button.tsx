@@ -40,7 +40,9 @@ const Button = React.forwardRef<
   HTMLButtonElement | HTMLElement,
   ButtonProps
 >(({ className, variant, size, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? "span" : "button";
+  // Slot applies the button styles directly to the child (for example, an <a>),
+  // preserving the flex layout on mobile and avoiding invalid nested interactive elements.
+  const Comp = asChild ? Slot : "button";
   return (
     <Comp
       className={cn(buttonVariants({ variant, size, className }))}

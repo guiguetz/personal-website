@@ -4,6 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* reCAPTCHA v3 is loaded only when the contact form is used. Keep its badge
+   hidden elsewhere without removing Google's attribution during interaction. */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateX(-120%) !important;
+  transition: opacity 300ms ease, transform 300ms ease, visibility 300ms ease !important;
+}
+body.recaptcha-visible .grecaptcha-badge,
+body.recaptcha-exiting .grecaptcha-badge {
+  visibility: visible !important;
+}
+body.recaptcha-visible .grecaptcha-badge {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  z-index: 60 !important;
+}
+body.recaptcha-exiting .grecaptcha-badge {
+  /* Keep it visible during the transition; hiding it immediately cancels the fade. */
+  opacity: 0 !important;
+  transform: translateX(120%) !important;
+}
+
 @layer base {
   :root {
     --background: 222 47% 5%;
@@ -243,6 +266,14 @@
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* During a locale switch the real text is hidden (visibility keeps
+   layout intact) so the swap happens invisibly between fade out and
+   fade in. Only leaf text elements are affected, never borders/panels. */
+.locale-hidden
+  :is(p, span, h1, h2, h3, h4, h5, h6, a, li, label, strong, em, small, figcaption, code, dt, dd, blockquote, td, th):not(:has(*)):not([aria-hidden="true"]) {
+  visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
