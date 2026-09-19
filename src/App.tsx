@@ -3,6 +3,7 @@ import { I18nProvider } from "@/i18n/I18nContext";
 import { Layout } from "@/components/Layout";
 import { LazyMount } from "@/components/LazyMount";
 import { HeroSection } from "@/components/HeroSection";
+import { Analytics } from "@vercel/analytics/react";
 
 // Seções abaixo da dobra são carregadas sob demanda (code-splitting),
 // reduzindo o bundle crítico da primeira renderização.
@@ -28,32 +29,35 @@ const Footer = lazy(() => import("@/components/Footer").then((m) => ({ default: 
 
 const App = () => (
   <I18nProvider>
-    <Layout>
-      <HeroSection />
-      <Suspense fallback={null}>
-        <LazyMount>
-          <AboutSection />
-        </LazyMount>
-        <LazyMount>
-          <ImpactSection />
-        </LazyMount>
-        <LazyMount>
-          <ExperienceSection />
-        </LazyMount>
-        <LazyMount>
-          <SkillsSection />
-        </LazyMount>
-        <LazyMount>
-          <CaseStudySection />
-        </LazyMount>
-        <LazyMount>
-          <ContactSection />
-        </LazyMount>
-        <LazyMount>
-          <Footer />
-        </LazyMount>
-      </Suspense>
-    </Layout>
+    <>
+      <Layout>
+        <HeroSection />
+        <Suspense fallback={null}>
+          <LazyMount>
+            <AboutSection />
+          </LazyMount>
+          <LazyMount>
+            <ImpactSection />
+          </LazyMount>
+          <LazyMount>
+            <ExperienceSection />
+          </LazyMount>
+          <LazyMount>
+            <SkillsSection />
+          </LazyMount>
+          <LazyMount>
+            <CaseStudySection />
+          </LazyMount>
+          <LazyMount>
+            <ContactSection />
+          </LazyMount>
+          <LazyMount>
+            <Footer />
+          </LazyMount>
+        </Suspense>
+      </Layout>
+      <Analytics />
+    </>
   </I18nProvider>
 );
 
