@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Sparkles, AlertCircle, Lightbulb, TrendingUp, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from './SectionHeading';
+import { useStagger } from '@/hooks/useStagger';
 
 const steps = [
   {
@@ -27,6 +28,8 @@ const steps = [
 const stack = ['React Native', 'TypeScript', 'MCP (Figma)', 'Claude API', 'Redux', 'Native Modules'];
 
 export function CaseStudySection() {
+  const { container, item, viewport } = useStagger(0.12, 16);
+
   return (
     <section id="case-study" className="mb-20">
       <SectionHeading
@@ -38,11 +41,10 @@ export function CaseStudySection() {
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8"
       >
-        {/* Decorative glow */}
         <div
           aria-hidden
           className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/15 blur-3xl"
@@ -52,8 +54,8 @@ export function CaseStudySection() {
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-fuchsia-500 text-white shadow-lg shadow-primary/25">
             <Sparkles className="h-5 w-5" />
           </span>
-          <div>
-            <h3 className="text-lg font-bold sm:text-xl">
+          <div className="min-w-0">
+            <h3 className="text-lg font-bold leading-snug sm:text-xl">
               Plataforma de geração dinâmica de interfaces
             </h3>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -62,19 +64,19 @@ export function CaseStudySection() {
           </div>
         </div>
 
-        <div className="relative mt-8 grid gap-6 sm:grid-cols-3">
-          {steps.map((step, index) => {
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          className="relative mt-8 grid gap-6 sm:grid-cols-3"
+        >
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
-              <motion.div
-                key={step.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
+              <motion.div key={step.label} variants={item}>
                 <div className="mb-3 flex items-center gap-2">
-                  <Icon className={`h-4 w-4 ${step.color}`} />
+                  <Icon className={`h-4 w-4 shrink-0 ${step.color}`} />
                   <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     {step.label}
                   </h4>
@@ -83,7 +85,7 @@ export function CaseStudySection() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Stack */}
         <div className="relative mt-8 flex flex-wrap gap-2 border-t border-border pt-6">
@@ -98,7 +100,7 @@ export function CaseStudySection() {
         </div>
 
         <div className="relative mt-6">
-          <Button variant="outline" className="group gap-2">
+          <Button variant="outline" className="group w-full gap-2 sm:w-auto">
             Ver detalhes do case
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>

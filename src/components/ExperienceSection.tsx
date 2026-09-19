@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building2, ChevronDown, MapPin } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
+import { useStagger } from '@/hooks/useStagger';
 
 const experiences = [
   {
@@ -69,6 +70,7 @@ const experiences = [
 
 export function ExperienceSection() {
   const [showExtra, setShowExtra] = useState(false);
+  const { container, item, viewport } = useStagger(0.1, 18);
 
   return (
     <section id="experience" className="mb-20">
@@ -80,16 +82,19 @@ export function ExperienceSection() {
 
       <div className="relative">
         {/* Vertical line */}
-                <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-primary/60 via-border to-transparent sm:left-[4.5rem] sm:-translate-x-1/2" />
+        <div className="absolute bottom-2 left-[7px] top-2 w-px bg-gradient-to-b from-primary/60 via-border to-transparent sm:left-[4.5rem] sm:-translate-x-1/2" />
 
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+          className="space-y-6"
+        >
+          {experiences.map((exp) => (
             <motion.div
               key={`${exp.company}-${exp.period}`}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
+              variants={item}
               className="group relative grid gap-3 sm:grid-cols-[4.5rem_1fr] sm:gap-6"
             >
               {/* Year column */}
@@ -115,16 +120,16 @@ export function ExperienceSection() {
               <div className="card-hover ml-7 rounded-2xl border border-border bg-card p-5 sm:ml-0">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h3 className="flex items-center gap-2 text-base font-semibold">
-                    <Building2 className="h-4 w-4 text-primary" />
+                    <Building2 className="h-4 w-4 shrink-0 text-primary" />
                     {exp.company}
                   </h3>
                   <span className="font-mono text-xs text-muted-foreground">{exp.period}</span>
                 </div>
 
-                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-primary">
-                  <span className="font-medium">{exp.position}</span>
+                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                  <span className="font-medium text-primary">{exp.position}</span>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <MapPin className="h-3 w-3" />
+                    <MapPin className="h-3 w-3 shrink-0" />
                     {exp.location}
                   </span>
                 </div>
@@ -146,7 +151,7 @@ export function ExperienceSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Additional experience */}
         <motion.div
@@ -158,14 +163,15 @@ export function ExperienceSection() {
         >
           <button
             onClick={() => setShowExtra((v) => !v)}
+            aria-expanded={showExtra}
             className="flex w-full items-center gap-2 rounded-xl border border-border bg-card px-4 py-3 text-left text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
           >
             <ChevronDown
-              className={`h-4 w-4 transition-transform ${showExtra ? 'rotate-180' : ''}`}
+              className={`h-4 w-4 shrink-0 transition-transform ${showExtra ? 'rotate-180' : ''}`}
             />
             Experiência adicional (2014 — 2018)
           </button>
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {showExtra && (
               <motion.p
                 initial={{ opacity: 0, height: 0 }}

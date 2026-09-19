@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { TrendingUp, Users, UserCog, Timer } from 'lucide-react';
 import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 import { SectionHeading } from './SectionHeading';
+import { useStagger } from '@/hooks/useStagger';
 
 const metrics = [
   {
@@ -39,6 +40,8 @@ const metrics = [
 ];
 
 export function ImpactSection() {
+  const { container, item, viewport } = useStagger(0.09, 20);
+
   return (
     <section id="impact" className="mb-20">
       <SectionHeading
@@ -47,31 +50,30 @@ export function ImpactSection() {
         description="Resultados mensuráveis dos produtos que desenvolvi e liderei."
       />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+        className="grid gap-4 sm:grid-cols-2"
+      >
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
           const gradientId = `spark-${index}`;
           return (
             <motion.div
               key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
+              variants={item}
               className="card-hover group relative overflow-hidden rounded-2xl border border-border bg-card p-5"
             >
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                    <Icon className="h-3.5 w-3.5" style={{ color: metric.color }} />
-                    {metric.label}
-                  </div>
-                  <p className="mt-2 text-2xl font-bold tracking-tight sm:text-[1.75rem]">
-                    {metric.value}
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">{metric.note}</p>
-                </div>
+              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                <Icon className="h-3.5 w-3.5 shrink-0" style={{ color: metric.color }} />
+                <span className="truncate">{metric.label}</span>
               </div>
+              <p className="mt-2 text-2xl font-bold tracking-tight sm:text-[1.75rem]">
+                {metric.value}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">{metric.note}</p>
 
               <div className="mt-4 h-14 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -96,7 +98,7 @@ export function ImpactSection() {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 }
