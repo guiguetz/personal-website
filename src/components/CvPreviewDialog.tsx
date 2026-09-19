@@ -34,7 +34,7 @@ export default function CvPreviewDialog({
   const [visible, setVisible] = useState(1); // page whose canvas is actually shown
   const [mountedPages, setMountedPages] = useState<number[]>([1]);
   const [failed, setFailed] = useState(false);
-  const [pageWidth, setPageWidth] = useState(600);
+  const [pageWidth, setPageWidth] = useState(0);
   const [viewerHeight, setViewerHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<HTMLDivElement>(null);
@@ -121,7 +121,7 @@ export default function CvPreviewDialog({
             </Button>
           </div>
         ) : (
-          <div ref={containerRef} className="flex flex-col items-center gap-4">
+          <div ref={containerRef} className="flex w-full min-w-0 flex-col items-center gap-4">
             <Document
               file={CV_URL}
               onLoadSuccess={onDocumentLoadSuccess}
@@ -129,8 +129,8 @@ export default function CvPreviewDialog({
               loading={<p className="py-8 text-sm text-muted-foreground">{t.contact.resumeLoading}</p>}
               error={null}
             >
-              <div className="relative" style={{ minHeight: viewerHeight }}>
-                {mountedPages.map((n) => {
+              <div className="relative w-full max-w-full" style={{ minHeight: viewerHeight }}>
+                {pageWidth > 0 && mountedPages.map((n) => {
                   const active = n === visible && requested === n;
                   return (
                     <div
