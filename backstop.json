@@ -1,0 +1,47 @@
+{
+  "id": "portfolio",
+  "viewports": [
+    { "label": "phone", "width": 375, "height": 812 },
+    { "label": "tablet", "width": 768, "height": 1024 },
+    { "label": "desktop", "width": 1440, "height": 900 }
+  ],
+  "scenarios": [
+    {
+      "label": "home",
+      "url": "http://localhost:4173/",
+      "delay": 2500,
+      "hideSelectors": [".grecaptcha-badge"],
+      "misMatchThreshold": 0.1
+    },
+    {
+      "label": "contact",
+      "url": "http://localhost:4173/#contact",
+      "delay": 3000,
+      "hideSelectors": [".grecaptcha-badge"],
+      "misMatchThreshold": 0.1
+    },
+    {
+      "label": "experience",
+      "url": "http://localhost:4173/#experience",
+      "delay": 3000,
+      "hideSelectors": [".grecaptcha-badge"],
+      "misMatchThreshold": 0.1
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 2,
+  "asyncCompareLimit": 10,
+  "debug": false,
+  "debugWindow": false
+}

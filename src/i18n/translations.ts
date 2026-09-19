@@ -184,6 +184,13 @@ const pt = {
       github: 'GitHub',
     },
     download: 'Baixar currículo (PDF)',
+    viewResume: 'Ver currículo',
+    resumeError: 'Não foi possível exibir o PDF aqui. Use o botão abaixo para baixar.',
+    resumePage: (page: number, total: number) => `Página ${page} de ${total}`,
+    resumePrevious: 'Página anterior do currículo',
+    resumeNext: 'Próxima página do currículo',
+    resumeClose: 'Fechar preview do currículo',
+    resumeLoading: 'Carregando currículo…',
     formTitle: 'Envie uma mensagem',
     name: 'Nome',
     email: 'E-mail',
@@ -195,7 +202,7 @@ const pt = {
   },
   footer: {
     builtWith:
-      'Construído com React, TypeScript, Tailwind CSS e Framer Motion. Design inspirado em portfolios de alta performance.',
+      'Construído com React, TypeScript, Tailwind CSS e Framer Motion.',
     rights: 'Todos os direitos reservados.',
   },
 };
@@ -380,6 +387,13 @@ const en: Dictionary = {
       github: 'GitHub',
     },
     download: 'Download résumé (PDF)',
+    viewResume: 'View résumé',
+    resumeError: 'Could not display the PDF here. Use the button below to download it.',
+    resumePage: (page: number, total: number) => `Page ${page} of ${total}`,
+    resumePrevious: 'Previous résumé page',
+    resumeNext: 'Next résumé page',
+    resumeClose: 'Close résumé preview',
+    resumeLoading: 'Loading résumé…',
     formTitle: 'Send a message',
     name: 'Name',
     email: 'Email',
@@ -391,7 +405,7 @@ const en: Dictionary = {
   },
   footer: {
     builtWith:
-      'Built with React, TypeScript, Tailwind CSS and Framer Motion. Design inspired by high-performance portfolios.',
+      'Built with React, TypeScript, Tailwind CSS and Framer Motion.',
     rights: 'All rights reserved.',
   },
 };

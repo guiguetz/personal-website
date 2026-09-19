@@ -7,6 +7,9 @@ import { useStagger } from '@/hooks/useStagger';
 import { useI18n } from '@/i18n/I18nContext';
 import { FlagBR, FlagUS } from '@/components/FlagIcons';
 
+const AVATAR_URL =
+  'https://media.licdn.com/dms/image/v2/D4D03AQFgHKgSduxRNA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1667485617098?e=2147483647&v=beta&t=SBhM9G7pRNaBbgX3F64L3veMVa1w5sfcp8vQ_2MHO3U';
+
 const navItems = [
   { href: '#about', id: 'about' },
   { href: '#impact', id: 'impact' },
@@ -17,8 +20,8 @@ const navItems = [
 ] as const;
 
 const socialLinks = [
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/guiguetz', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/guilherme-aguiar-dev', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:guilhermebruno.aguiar@gmail.com', label: 'E-mail' },
   { icon: Phone, href: 'https://wa.me/5513992025755', label: 'WhatsApp' },
 ];
@@ -39,8 +42,12 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
           className="pr-8 lg:pr-0"
         >
           <div className="flex items-center gap-3">
-            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary via-indigo-500 to-fuchsia-500 text-lg font-bold text-white shadow-lg shadow-primary/25">
-              GA
+            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-indigo-500 to-fuchsia-500 text-lg font-bold text-white shadow-lg shadow-primary/25">
+              {AVATAR_URL ? (
+                <img src={AVATAR_URL} alt="Guilherme Aguiar" className="h-full w-full object-cover" />
+              ) : (
+                'GA'
+              )}
               <span className="absolute -bottom-0.5 -right-0.5 h-4 w-4 rounded-full border-[3px] border-card bg-emerald-400" />
             </div>
             <div className="min-w-0">
@@ -51,10 +58,13 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
 
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{t.sidebar.tagline}</p>
 
-          <div className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
+          <motion.div
+            layout
+            className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground"
+          >
             <MapPin className="h-3.5 w-3.5 shrink-0" />
-            {t.sidebar.location}
-          </div>
+            <span>{t.sidebar.location}</span>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -75,13 +85,14 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
                   }`}
                 >
                   <span
+                    aria-hidden
                     className={`h-px transition-all duration-300 ${
                       isActive
                         ? 'w-8 bg-primary'
                         : 'w-4 bg-border group-hover:w-6 group-hover:bg-muted-foreground'
                     }`}
                   />
-                  {t.nav[navItem.id]}
+                  <span>{t.nav[navItem.id]}</span>
                 </a>
               </motion.li>
             );
@@ -135,9 +146,11 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
           </div>
         </div>
 
-        <Button size="sm" className="w-full gap-2">
-          <Download className="h-4 w-4" />
-          {t.sidebar.download}
+        <Button asChild size="sm" className="w-full gap-2">
+          <a href="/guilherme-aguiar-cv.pdf" download="Guilherme-Aguiar-CV.pdf">
+            <Download className="h-4 w-4" />
+            {t.sidebar.download}
+          </a>
         </Button>
       </div>
     </div>
@@ -181,8 +194,12 @@ export function Sidebar() {
       {/* Mobile top bar */}
       <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-border/60 bg-background/80 px-4 py-3 backdrop-blur-xl sm:px-6 lg:hidden">
         <div className="flex min-w-0 items-center gap-2.5">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-fuchsia-500 text-xs font-bold text-white">
-            GA
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary to-fuchsia-500 text-xs font-bold text-white">
+            {AVATAR_URL ? (
+              <img src={AVATAR_URL} alt="Guilherme Aguiar" className="h-full w-full object-cover" />
+            ) : (
+              'GA'
+            )}
           </div>
           <span className="truncate text-sm font-semibold">Guilherme Aguiar</span>
         </div>
@@ -220,6 +237,7 @@ export function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              data-mobile-drawer="true"
               className="fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-xs flex-col border-r border-border bg-card lg:hidden"
             >
               <button
