@@ -30,21 +30,37 @@ export default function CvPreviewDialog({
 }) {
   const { t } = useI18n();
   const [numPages, setNumPages] = useState<number | null>(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [displayedPage, setDisplayedPage] = useState(1);
+  const [requested, setRequested] = useState(1); // target page the user asked for
+  const [visible, setVisible] = useState(1); // page whose canvas is actually shown
+  const [mountedPages, setMountedPages] = useState<number[]>([1]);
   const [failed, setFailed] = useState(false);
   const [pageWidth, setPageWidth] = useState(600);
+  const [viewerHeight, setViewerHeight] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const viewerRef = useRef<HTMLDivElement>(null);
+  const requestedRef = useRef(1);
+  const readyRef = useRef<Set<number>>(new Set([1]));
 
-  const handleOpen = useCallback((next: boolean) => {
-    onOpenChange(next);
-    if (next) {
-      setPageNumber(1);
-      setDisplayedPage(1);
-      setFailed(false);
-    }
-  }, [onOpenChange]);
+  const mount = useCallback((n: number) => {
+    setMountedPages((prev) => (prev.includes(n) ? prev : [...prev, n]));
+  }, []);
 
+  const handleOpen = useCallback(
+    (next: boolean) => {
+      onOpenChange(next);
+      if (next) {
+        setRequested(1);
+        requestedRef.current = 1;
+        setVisible(1);
+        setMountedPages([1]);
+        readyRef.current = new Set([1]);
+        setFailed(false);
+      }
+    },
+    [onOpenChange],
+  );
+
+  // Measure dialog width to size the PDF responsively.
   useEffect(() => {
     const element = containerRef.current;
     if (!element) return;
@@ -56,8 +72,36 @@ export default function CvPreviewDialog({
     return () => observer.disconnect();
   }, [open]);
 
+  // Keep the viewer's height matching the currently visible page so the
+  // absolutely-positioned pages reserve the right space.
+  useEffect(() => {
+    const element = viewerRef.current;
+    if (!element) return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry.contentRect.height > 0) setViewerHeight(entry.contentRect.height);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [visible, mountedPages]);
+
   function onDocumentLoadSuccess({ numPages: total }: { numPages: number }) {
     setNumPages(total);
+    // Preload the next page right away so the first navigation is instant.
+    if (total > 1) mount(2);
+  }
+
+  function onPageRenderSuccess(n: number) {
+    const isNew = !readyRef.current.has(n);
+    readyRef.current.add(n);
+    if (isNew && requestedRef.current === n) setVisible(n);
+  }
+
+  function goTo(n: number) {
+    setRequested(n);
+    requestedRef.current = n;
+    mount(n);
+    // If this page already rendered before, showing it is an instant CSS swap.
+    if (readyRef.current.has(n)) setVisible(n);
   }
 
   return (
@@ -85,46 +129,50 @@ export default function CvPreviewDialog({
               loading={<p className="py-8 text-sm text-muted-foreground">{t.contact.resumeLoading}</p>}
               error={null}
             >
-              <div className="relative">
-                <Page
-                  pageNumber={displayedPage}
-                  width={pageWidth}
-                  renderTextLayer
-                  renderAnnotationLayer
-                  loading={<div className="h-[70vh] w-full animate-pulse rounded-md bg-muted" />}
-                />
-                {pageNumber !== displayedPage && (
-                  <div className="absolute inset-0 opacity-0" aria-hidden="true">
-                    <Page
-                      pageNumber={pageNumber}
-                      width={pageWidth}
-                      renderTextLayer={false}
-                      renderAnnotationLayer={false}
-                      onRenderSuccess={() => setDisplayedPage(pageNumber)}
-                    />
-                  </div>
-                )}
+              <div className="relative" style={{ minHeight: viewerHeight }}>
+                {mountedPages.map((n) => {
+                  const active = n === visible && requested === n;
+                  return (
+                    <div
+                      key={n}
+                      ref={active ? viewerRef : undefined}
+                      aria-hidden={!active}
+                      className={`absolute left-0 top-0 transition-none ${
+                        active ? '' : 'pointer-events-none opacity-0'
+                      }`}
+                    >
+                      <Page
+                        pageNumber={n}
+                        width={pageWidth}
+                        renderTextLayer
+                        renderAnnotationLayer
+                        onRenderSuccess={() => onPageRenderSuccess(n)}
+                        loading={<div className="h-[70vh] w-full animate-pulse rounded-md bg-muted" />}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </Document>
-            {numPages && numPages > 1 && (
+            {numPages !== null && numPages > 1 && (
               <div className="flex items-center gap-3">
                 <Button
                   variant="outline"
                   size="icon"
-                  disabled={pageNumber <= 1}
-                  onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
+                  disabled={requested <= 1}
+                  onClick={() => goTo(requested - 1)}
                   aria-label={t.contact.resumePrevious}
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
                 <span className="text-sm text-muted-foreground" aria-live="polite">
-                  {t.contact.resumePage(pageNumber, numPages)}
+                  {t.contact.resumePage(requested, numPages)}
                 </span>
                 <Button
                   variant="outline"
                   size="icon"
-                  disabled={pageNumber >= numPages}
-                  onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
+                  disabled={requested >= numPages}
+                  onClick={() => goTo(requested + 1)}
                   aria-label={t.contact.resumeNext}
                 >
                   <ChevronRight className="h-4 w-4" />
