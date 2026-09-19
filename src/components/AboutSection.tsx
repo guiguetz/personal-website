@@ -14,7 +14,7 @@ export function AboutSection() {
         transition={{ duration: 0.6 }}
         className="space-y-8"
       >
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+        <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
           Sou desenvolvedor front-end sênior especializado em React, React Native, TypeScript e arquitetura de aplicações escaláveis. Minha trajetória inclui liderança de equipes técnicas, migração de sistemas legados para tecnologias modernas e criação de produtos que impactam milhões de usuários.
         </p>
 
@@ -63,6 +63,41 @@ export function AboutSection() {
               <div>
                 <h3 className="font-semibold">DevOps & Ferramentas</h3>
                 <p className="text-sm text-muted-foreground">Git, Docker, Azure DevOps, Vite, Nx, TurboRepo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Languages moved here */}
+        <div className="mt-8 pt-6 border-t border-border">
+          <h3 className="font-semibold text-lg mb-4">Idiomas</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-card border border-border rounded-xl p-4">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary text-sm font-medium">
+                  BR
+                </span>
+                <div>
+                  <h4 className="font-medium">Português</h4>
+                  <p className="text-sm text-muted-foreground">Nativo</p>
+                </div>
+              </div>
+              <div className="h-1.5 w-full bg-muted-foreground/5 rounded-full">
+                <div className="h-full bg-primary rounded-full" style={{ width: '100%' }} />
+              </div>
+            </div>
+            <div className="bg-card border border-border rounded-xl p-4">
+              <div className="flex items-center gap-3 mb-2">
+                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary text-sm font-medium">
+                  EN
+                </span>
+                <div>
+                  <h4 className="font-medium">Inglês</h4>
+                  <p className="text-sm text-muted-foreground">Fluente (C2)</p>
+                </div>
+              </div>
+              <div className="h-1.5 w-full bg-muted-foreground/5 rounded-full">
+                <div className="h-full bg-primary rounded-full" style={{ width: '85%' }} />
               </div>
             </div>
           </div>

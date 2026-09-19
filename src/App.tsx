@@ -10,7 +10,6 @@ import { ImpactSection } from "@/components/ImpactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { CaseStudySection } from "@/components/CaseStudySection";
-import { LanguagesSection } from "@/components/LanguagesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { DebugPaletteSwitcher } from "@/components/DebugPaletteSwitcher";
@@ -30,7 +29,6 @@ const App = () => (
           <ExperienceSection />
           <SkillsSection />
           <CaseStudySection />
-          <LanguagesSection />
           <ContactSection />
           <Footer />
         </Layout>
