@@ -17,69 +17,18 @@ import {
 } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 import { useStagger } from '@/hooks/useStagger';
+import { useI18n } from '@/i18n/I18nContext';
 
-const categories = [
-  {
-    category: 'Frontend',
-    categoryIcon: Code2,
-    main: 'React',
-    mainIcon: Atom,
-    items: ['React Native', 'Next.js', 'TypeScript', 'JavaScript', 'Angular', 'HTML5', 'CSS3'],
-  },
-  {
-    category: 'Gerenciamento de Estado',
-    categoryIcon: Layers,
-    main: 'Redux',
-    mainIcon: Braces,
-    items: ['Redux Saga', 'Redux Thunk', 'Context API'],
-  },
-  {
-    category: 'UI & Design Systems',
-    categoryIcon: Palette,
-    main: 'Tailwind CSS',
-    mainIcon: Wind,
-    items: ['Styled Components', 'Framer Motion', 'Material UI', 'Design Systems', 'Figma'],
-  },
-  {
-    category: 'Testes',
-    categoryIcon: TestTube2,
-    main: 'Jest',
-    mainIcon: FlaskConical,
-    items: ['React Testing Library', 'Cypress'],
-  },
-  {
-    category: 'Backend & Dados',
-    categoryIcon: Server,
-    main: 'Node.js',
-    mainIcon: Database,
-    items: ['GraphQL', 'Firebase', 'MongoDB'],
-  },
-  {
-    category: 'DevOps & Ferramentas',
-    categoryIcon: Terminal,
-    main: 'Git',
-    mainIcon: GitBranch,
-    items: ['Azure DevOps', 'Docker', 'Linux/Unix', 'Vite', 'Lerna', 'Nx', 'TurboRepo'],
-  },
-  {
-    category: 'Liderança',
-    categoryIcon: Users,
-    main: 'Mentoria Técnica',
-    mainIcon: Crown,
-    items: ['Arquitetura Front-end', 'Code Review', 'Agile/Scrum'],
-  },
-];
+const categoryIcons = [Code2, Layers, Palette, TestTube2, Server, Terminal, Users];
+const mainIcons = [Atom, Braces, Wind, FlaskConical, Database, GitBranch, Crown];
 
 export function SkillsSection() {
+  const { t } = useI18n();
   const { container, item, viewport } = useStagger(0.08, 18);
 
   return (
     <section id="skills" className="mb-20">
-      <SectionHeading
-        number="04"
-        title="Competências técnicas"
-        description="Tecnologias que domino, agrupadas por área de atuação."
-      />
+      <SectionHeading number="04" title={t.skills.title} description={t.skills.description} />
 
       <motion.div
         variants={container}
@@ -88,9 +37,9 @@ export function SkillsSection() {
         viewport={viewport}
         className="grid gap-4 sm:grid-cols-2"
       >
-        {categories.map((cat) => {
-          const CategoryIcon = cat.categoryIcon;
-          const MainIcon = cat.mainIcon;
+        {t.skills.categories.map((cat, index) => {
+          const CategoryIcon = categoryIcons[index] ?? Code2;
+          const MainIcon = mainIcons[index] ?? Code2;
           return (
             <motion.div
               key={cat.category}
@@ -118,7 +67,7 @@ export function SkillsSection() {
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold leading-tight">{cat.main}</p>
                   <p className="font-mono text-[10px] uppercase tracking-wider text-primary/80">
-                    Principal
+                    {t.skills.primaryLabel}
                   </p>
                 </div>
               </div>

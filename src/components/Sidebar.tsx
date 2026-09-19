@@ -4,15 +4,17 @@ import { Github, Linkedin, Mail, Phone, MapPin, Download, Menu, X, Sun, Moon } f
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/hooks/useTheme';
 import { useStagger } from '@/hooks/useStagger';
+import { useI18n } from '@/i18n/I18nContext';
+import { FlagBR, FlagUS } from '@/components/FlagIcons';
 
 const navItems = [
-  { name: 'Sobre', href: '#about', id: 'about' },
-  { name: 'Impacto', href: '#impact', id: 'impact' },
-  { name: 'Experiência', href: '#experience', id: 'experience' },
-  { name: 'Competências', href: '#skills', id: 'skills' },
-  { name: 'Projetos', href: '#case-study', id: 'case-study' },
-  { name: 'Contato', href: '#contact', id: 'contact' },
-];
+  { href: '#about', id: 'about' },
+  { href: '#impact', id: 'impact' },
+  { href: '#experience', id: 'experience' },
+  { href: '#skills', id: 'skills' },
+  { href: '#case-study', id: 'projects' },
+  { href: '#contact', id: 'contact' },
+] as const;
 
 const socialLinks = [
   { icon: Github, href: '#', label: 'GitHub' },
@@ -24,6 +26,7 @@ const socialLinks = [
 function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate?: () => void }) {
   const { isDark, toggleTheme } = useTheme();
   const { container, item } = useStagger(0.06, 12);
+  const { t, locale, toggleLocale } = useI18n();
 
   return (
     <div className="flex h-full flex-col">
@@ -42,29 +45,22 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
             </div>
             <div className="min-w-0">
               <h1 className="truncate text-base font-bold tracking-tight">Guilherme Aguiar</h1>
-              <p className="truncate text-xs font-medium text-primary">Front-end / Mobile Sênior</p>
+              <p className="truncate text-xs font-medium text-primary">{t.sidebar.role}</p>
             </div>
           </div>
 
-          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Construo produtos financeiros e logísticos usados por milhões de pessoas.
-          </p>
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{t.sidebar.tagline}</p>
 
           <div className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
             <MapPin className="h-3.5 w-3.5 shrink-0" />
-            São Vicente, SP · Remoto
+            {t.sidebar.location}
           </div>
         </motion.div>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3">
-        <motion.ul
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="space-y-0.5"
-        >
+        <motion.ul variants={container} initial="hidden" animate="show" className="space-y-0.5">
           {navItems.map((navItem) => {
             const isActive = activeId === navItem.id;
             return (
@@ -85,7 +81,7 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
                         : 'w-4 bg-border group-hover:w-6 group-hover:bg-muted-foreground'
                     }`}
                   />
-                  {navItem.name}
+                  {t.nav[navItem.id]}
                 </a>
               </motion.li>
             );
@@ -95,32 +91,53 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
 
       {/* Footer actions */}
       <div className="shrink-0 space-y-4 border-t border-border px-6 py-6">
-        <div className="flex items-center gap-2">
-          {socialLinks.map((social) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            );
-          })}
-          <button
-            onClick={toggleTheme}
-            aria-label="Alternar tema"
-            className="ml-auto flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
-          >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+                >
+                  <Icon className="h-3.5 w-3.5" />
+                </a>
+              );
+            })}
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1.5">
+            <button
+              onClick={toggleLocale}
+              aria-label={t.a11y.switchLanguage}
+              title={t.a11y.switchLanguage}
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-card transition-all hover:-translate-y-0.5 hover:border-primary/40"
+            >
+              <span className="h-3.5 w-5 overflow-hidden rounded-[3px] ring-1 ring-border">
+                {locale === 'pt' ? (
+                  <FlagBR className="h-full w-full" />
+                ) : (
+                  <FlagUS className="h-full w-full" />
+                )}
+              </span>
+            </button>
+
+            <button
+              onClick={toggleTheme}
+              aria-label={t.a11y.toggleTheme}
+              title={t.a11y.toggleTheme}
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+            >
+              {isDark ? <Sun className="h-3.5 w-3.5" /> : <Moon className="h-3.5 w-3.5" />}
+            </button>
+          </div>
         </div>
 
         <Button size="sm" className="w-full gap-2">
           <Download className="h-4 w-4" />
-          Baixar currículo
+          {t.sidebar.download}
         </Button>
       </div>
     </div>
@@ -130,6 +147,7 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
 export function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeId, setActiveId] = useState('about');
+  const { t } = useI18n();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -141,7 +159,8 @@ export function Sidebar() {
       { rootMargin: '-45% 0px -50% 0px' },
     );
 
-    navItems.forEach(({ id }) => {
+    // Note: the "projects" nav item points to the #case-study section.
+    ['about', 'impact', 'experience', 'skills', 'case-study', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -169,7 +188,7 @@ export function Sidebar() {
         </div>
         <button
           onClick={() => setMobileOpen(true)}
-          aria-label="Abrir menu"
+          aria-label={t.a11y.openMenu}
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-border bg-card"
         >
           <Menu className="h-4 w-4" />
@@ -201,7 +220,7 @@ export function Sidebar() {
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                aria-label="Fechar menu"
+                aria-label={t.a11y.closeMenu}
                 className="absolute right-4 top-6 z-10 flex h-8 w-8 items-center justify-center rounded-xl border border-border bg-background"
               >
                 <X className="h-4 w-4" />

@@ -3,39 +3,26 @@ import { Sparkles, AlertCircle, Lightbulb, TrendingUp, ArrowRight } from 'lucide
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from './SectionHeading';
 import { useStagger } from '@/hooks/useStagger';
+import { useI18n } from '@/i18n/I18nContext';
 
-const steps = [
-  {
-    icon: AlertCircle,
-    label: 'Problema',
-    color: 'text-amber-400',
-    text: 'Atualizações de UI exigiam publicação nas lojas, levando até 6 dias para chegar ao usuário — um gargalo para correções críticas, testes A/B e personalização em tempo real.',
-  },
-  {
-    icon: Lightbulb,
-    label: 'Solução',
-    color: 'text-sky-400',
-    text: 'Uma plataforma que usa o protocolo MCP (Model Context Protocol) do Figma para extrair design tokens e componentes, combinado com APIs da Anthropic (Claude) para gerar variações de UI aderentes aos guard rails da marca.',
-  },
-  {
-    icon: TrendingUp,
-    label: 'Resultado',
-    color: 'text-emerald-400',
-    text: 'Interfaces renderizadas em tempo real no app via bridge nativa, sem publicação na loja — reduzindo o rollout de dias para minutos em um produto com 900 mil+ usuários.',
-  },
+const stepVisuals = [
+  { icon: AlertCircle, color: 'text-amber-400' },
+  { icon: Lightbulb, color: 'text-sky-400' },
+  { icon: TrendingUp, color: 'text-emerald-400' },
 ];
 
 const stack = ['React Native', 'TypeScript', 'MCP (Figma)', 'Claude API', 'Redux', 'Native Modules'];
 
 export function CaseStudySection() {
+  const { t } = useI18n();
   const { container, item, viewport } = useStagger(0.12, 16);
 
   return (
     <section id="case-study" className="mb-20">
       <SectionHeading
         number="05"
-        title="Destaque: IA Generativa"
-        description="O projeto mais desafiador da minha carreira — unindo design, IA e engenharia de plataforma."
+        title={t.caseStudy.title}
+        description={t.caseStudy.description}
       />
 
       <motion.div
@@ -55,12 +42,8 @@ export function CaseStudySection() {
             <Sparkles className="h-5 w-5" />
           </span>
           <div className="min-w-0">
-            <h3 className="text-lg font-bold leading-snug sm:text-xl">
-              Plataforma de geração dinâmica de interfaces
-            </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Reduzindo o rollout de dias para minutos com atualização em tempo real
-            </p>
+            <h3 className="text-lg font-bold leading-snug sm:text-xl">{t.caseStudy.headline}</h3>
+            <p className="mt-1 text-sm text-muted-foreground">{t.caseStudy.subtitle}</p>
           </div>
         </div>
 
@@ -71,12 +54,13 @@ export function CaseStudySection() {
           viewport={viewport}
           className="relative mt-8 grid gap-6 sm:grid-cols-3"
         >
-          {steps.map((step) => {
-            const Icon = step.icon;
+          {t.caseStudy.steps.map((step, index) => {
+            const visual = stepVisuals[index] ?? stepVisuals[0];
+            const Icon = visual.icon;
             return (
               <motion.div key={step.label} variants={item}>
                 <div className="mb-3 flex items-center gap-2">
-                  <Icon className={`h-4 w-4 shrink-0 ${step.color}`} />
+                  <Icon className={`h-4 w-4 shrink-0 ${visual.color}`} />
                   <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     {step.label}
                   </h4>
@@ -101,7 +85,7 @@ export function CaseStudySection() {
 
         <div className="relative mt-6">
           <Button variant="outline" className="group w-full gap-2 sm:w-auto">
-            Ver detalhes do case
+            {t.caseStudy.cta}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>

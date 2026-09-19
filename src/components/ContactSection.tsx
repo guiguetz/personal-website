@@ -3,34 +3,22 @@ import { Mail, Phone, Linkedin, Github, MapPin, ArrowRight, Download } from 'luc
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from './SectionHeading';
 import { useStagger } from '@/hooks/useStagger';
+import { useI18n } from '@/i18n/I18nContext';
 
-const channels = [
-  {
-    icon: Mail,
-    label: 'E-mail',
-    value: 'guilhermebruno.aguiar@gmail.com',
-    href: 'mailto:guilhermebruno.aguiar@gmail.com',
-  },
-  {
-    icon: Phone,
-    label: 'Telefone / WhatsApp',
-    value: '+55 (13) 99202-5755',
-    href: 'https://wa.me/5513992025755',
-  },
-  { icon: Linkedin, label: 'LinkedIn', value: '[SEU_LINK_AQUI]', href: '#' },
-  { icon: Github, label: 'GitHub', value: '[SEU_LINK_AQUI]', href: '#' },
-];
+const channelMeta = [
+  { key: 'email', icon: Mail, value: 'guilhermebruno.aguiar@gmail.com', href: 'mailto:guilhermebruno.aguiar@gmail.com' },
+  { key: 'phone', icon: Phone, value: '+55 (13) 99202-5755', href: 'https://wa.me/5513992025755' },
+  { key: 'linkedin', icon: Linkedin, value: '[SEU_LINK_AQUI]', href: '#' },
+  { key: 'github', icon: Github, value: '[SEU_LINK_AQUI]', href: '#' },
+] as const;
 
 export function ContactSection() {
+  const { t } = useI18n();
   const { container, item, viewport } = useStagger(0.07, 16);
 
   return (
     <section id="contact" className="mb-20">
-      <SectionHeading
-        number="06"
-        title="Contato"
-        description="Aberto a oportunidades como Front-end / Mobile Sênior ou Tech Lead. Vamos conversar?"
-      />
+      <SectionHeading number="06" title={t.contact.title} description={t.contact.description} />
 
       <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
         {/* Channels */}
@@ -46,14 +34,14 @@ export function ContactSection() {
             className="flex items-center gap-2 text-xs text-muted-foreground"
           >
             <MapPin className="h-3.5 w-3.5 shrink-0" />
-            São Vicente, SP · Disponível para trabalho remoto
+            {t.contact.locationLine}
           </motion.div>
 
-          {channels.map((channel) => {
+          {channelMeta.map((channel) => {
             const Icon = channel.icon;
             return (
               <motion.a
-                key={channel.label}
+                key={channel.key}
                 variants={item}
                 href={channel.href}
                 className="card-hover group flex items-center gap-4 rounded-2xl border border-border bg-card p-4"
@@ -63,7 +51,7 @@ export function ContactSection() {
                 </span>
                 <div className="min-w-0">
                   <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                    {channel.label}
+                    {t.contact.channels[channel.key]}
                   </p>
                   <p className="truncate text-sm font-medium">{channel.value}</p>
                 </div>
@@ -75,7 +63,7 @@ export function ContactSection() {
           <motion.div variants={item}>
             <Button size="lg" className="w-full gap-2 shadow-lg shadow-primary/20">
               <Download className="h-4 w-4" />
-              Baixar currículo (PDF)
+              {t.contact.download}
             </Button>
           </motion.div>
         </motion.div>
@@ -88,48 +76,48 @@ export function ContactSection() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="space-y-4 rounded-2xl border border-border bg-card p-5"
         >
-          <h3 className="text-sm font-semibold">Envie uma mensagem</h3>
+          <h3 className="text-sm font-semibold">{t.contact.formTitle}</h3>
           <div>
             <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-muted-foreground">
-              Nome
+              {t.contact.name}
             </label>
             <input
               id="name"
               name="name"
               type="text"
               required
-              placeholder="Seu nome"
+              placeholder={t.contact.namePlaceholder}
               className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
             />
           </div>
           <div>
             <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-muted-foreground">
-              E-mail
+              {t.contact.email}
             </label>
             <input
               id="email"
               name="email"
               type="email"
               required
-              placeholder="seu@email.com"
+              placeholder={t.contact.emailPlaceholder}
               className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
             />
           </div>
           <div>
             <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-muted-foreground">
-              Mensagem
+              {t.contact.message}
             </label>
             <textarea
               id="message"
               name="message"
               required
               rows={4}
-              placeholder="Como posso ajudar?"
+              placeholder={t.contact.messagePlaceholder}
               className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
             />
           </div>
           <Button type="submit" className="w-full">
-            Enviar mensagem
+            {t.contact.submit}
           </Button>
         </motion.form>
       </div>

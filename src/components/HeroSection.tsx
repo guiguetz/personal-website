@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useI18n } from '@/i18n/I18nContext';
 
 const stack = [
   'React',
@@ -11,24 +12,16 @@ const stack = [
   'Redux',
   'Tailwind CSS',
   'Jest',
-  'IA Generativa',
   'MCP',
   'GraphQL',
   'Figma',
 ];
 
-const highlights = [
-  { value: 'R$ 1,57 bi+', label: 'originados' },
-  { value: '900 mil+', label: 'usuários' },
-  { value: '6 devs', label: 'liderados' },
-];
-
 export function HeroSection() {
+  const { t } = useI18n();
+
   return (
-    <section
-      id="hero"
-      className="relative flex flex-col justify-center py-10 lg:min-h-[calc(100vh-4rem)] lg:py-12"
-    >
+    <section id="hero" className="relative flex flex-col justify-center py-10 lg:min-h-[calc(100vh-4rem)] lg:py-12">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,13 +33,13 @@ export function HeroSection() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
           </span>
-          Disponível para oportunidades
+          {t.hero.availability}
         </div>
 
         <h1 className="text-[2rem] font-extrabold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.4rem]">
-          Construo produtos digitais
+          {t.hero.titleLine1}
           <br />
-          <span className="text-gradient">usados por milhões</span>
+          <span className="text-gradient">{t.hero.titleLine2}</span>
         </h1>
 
         <motion.p
@@ -55,9 +48,7 @@ export function HeroSection() {
           transition={{ delay: 0.15, duration: 0.6 }}
           className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Desenvolvedor Front-end / Mobile Sênior com mais de 10 anos de experiência. Combino
-          React, React Native e IA generativa aplicada a UI para transformar rollout de dias em
-          minutos.
+          {t.hero.paragraph}
         </motion.p>
 
         <motion.div
@@ -68,36 +59,36 @@ export function HeroSection() {
         >
           <Button size="lg" className="w-full gap-2 shadow-lg shadow-primary/20 sm:w-auto">
             <Download className="h-4 w-4" />
-            Baixar currículo
+            {t.hero.download}
           </Button>
           <a
             href="#contact"
             className="group inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border border-input px-8 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground sm:w-auto"
           >
-            Fale comigo
+            {t.hero.contact}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
         </motion.div>
 
         <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45, duration: 0.6 }}
-                  className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
-                >
-                  {highlights.map((highlight, index) => (
-                    <div key={highlight.label} className="flex items-center gap-x-4">
-                      {index > 0 && <span className="hidden h-4 w-px bg-border sm:block" />}
-                      <span className="inline-flex items-center gap-1.5">
-                        <Sparkles className="h-3.5 w-3.5 text-primary" />
-                        <span>
-                          <strong className="font-semibold text-foreground">{highlight.value}</strong>{' '}
-                          {highlight.label}
-                        </span>
-                      </span>
-                    </div>
-                  ))}
-                </motion.div>
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.6 }}
+          className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
+        >
+          {t.hero.highlights.map((highlight, index) => (
+            <div key={highlight.label} className="flex items-center gap-x-4">
+              {index > 0 && <span className="hidden h-4 w-px bg-border sm:block" />}
+              <span className="inline-flex items-center gap-1.5">
+                <Sparkles className="h-3.5 w-3.5 text-primary" />
+                <span>
+                  <strong className="font-semibold text-foreground">{highlight.value}</strong>{' '}
+                  {highlight.label}
+                </span>
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
 
       {/* Stack marquee */}
