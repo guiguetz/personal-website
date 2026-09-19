@@ -44,35 +44,13 @@ export function Projects() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 overflow-hidden hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-fade-in-up delay-[{project.id * 100}ms]"
+              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 overflow-hidden hover-tilt animate-fade-in-up delay-[{project.id * 100}ms]"
               style={{ animationDelay: `${project.id * 100}ms` }}
-              onMouseEnter={(e) => {
-                const card = e.currentTarget as HTMLElement;
-                card.style.transform = 'translateY(-4px) rotateX(5deg) rotateY(5deg)';
-                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-                
-                const img = e.currentTarget.querySelector('img') as HTMLImageElement | null;
-                if (img) {
-                  img.style.transform = 'scale(1.05)';
-                  img.style.transition = 'transform 0.5s ease';
-                }
-              }}
-              onMouseLeave={(e) => {
-                const card = e.currentTarget as HTMLElement;
-                card.style.transform = 'translateY(0px) rotateX(0deg) rotateY(0deg)';
-                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-                
-                const img = e.currentTarget.querySelector('img') as HTMLImageElement | null;
-                if (img) {
-                  img.style.transform = 'scale(1)';
-                  img.style.transition = 'transform 0.5s ease';
-                }
-              }}
             >
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-full h-48 object-cover rounded-lg mb-4 hover-tilt-img"
               />
               <h3 className="text-xl font-semibold text-white mb-2">{project.name}</h3>
               <p className="text-gray-300 mb-4 line-clamp-3">{project.description}</p>

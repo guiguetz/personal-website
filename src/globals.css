@@ -104,6 +104,7 @@
 
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
   }
 }
 
@@ -233,4 +234,43 @@
 }
 .delay-500 {
   animation-delay: 500ms;
+}
+
+/* Custom utilities for enhanced effects */
+.hover-tilt {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-tilt:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.hover-tilt-img {
+  transition: transform 0.5s ease;
+}
+
+.hover-tilt:hover .hover-tilt-img {
+  transform: scale(1.05);
+}
+
+.navbar-scroll {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-scroll.hidden {
+  transform: translateY(-100%);
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
