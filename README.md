@@ -12,7 +12,7 @@ Portfólio pessoal de **Guilherme Aguiar** — Desenvolvedor Front-end / Mobile 
 - **Internacionalização (pt-BR / en)** com troca de idioma em runtime, persistência em `localStorage` e transição animada de texto.
 - **Tema claro/escuro** persistente.
 - **Formulário de contato** com validação anti-spam via **Google reCAPTCHA v3** e persistência no **Supabase**.
-- **Preview do currículo (PDF)** sob demanda, com download (`react-pdf`, carregado de forma lazy).
+- **Currículo em PDF**: download direto e abertura em nova aba (`public/guilherme-aguiar-cv.pdf`). Um preview embutido com `react-pdf` está planejado em `docs/PLAN-REACT-PDF.md`, ainda não implementado.
 - **Performance**: SSG/prerender, code-splitting por seção, `LazyMount` (montagem só ao entrar na viewport) e orçamento de bundle.
 - **SEO**: meta tags, Open Graph, Twitter Card, `hreflang`, `sitemap.xml` e `robots.txt`.
 - **Analytics**: Vercel Analytics + Speed Insights.
@@ -125,7 +125,8 @@ O projeto é publicado na **Vercel**. O `vercel.json` define cache imutável par
 
 Planos de implementação e decisões técnicas ficam em [`docs/`](./docs):
 
-- [`PLAN-REACT-PDF.md`](./docs/PLAN-REACT-PDF.md) — preview de currículo
+- [`README.md`](./docs/README.md) — índice da documentação técnica do projeto
+- [`PLAN-REACT-PDF.md`](./docs/PLAN-REACT-PDF.md) — plano (não implementado) de preview de currículo
 - [`PLAN-BACKSTOP.md`](./docs/PLAN-BACKSTOP.md) — regressão visual
 - [`PLAN-SIZE-LIMIT.md`](./docs/PLAN-SIZE-LIMIT.md) — orçamento de bundle
 - [`CASE-STUDY-PLAN.md`](./docs/CASE-STUDY-PLAN.md) — tela de case study
