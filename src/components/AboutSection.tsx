@@ -36,14 +36,8 @@ const pillars = [
   },
 ];
 
-const languages = [
-  { code: 'PT', name: 'Português', level: 'Nativo', value: 100 },
-  { code: 'EN', name: 'Inglês', level: 'Fluente · C2', value: 85 },
-];
-
 export function AboutSection() {
   const pillarsStagger = useStagger(0.07, 16);
-  const languagesStagger = useStagger(0.12, 12);
 
   return (
     <section id="about" className="mb-20">
@@ -87,53 +81,7 @@ export function AboutSection() {
             </div>
           </motion.div>
         ))}
-      </motion.div>
-
-      {/* Languages */}
-      <div className="mt-10">
-        <h3 className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-          Idiomas
-        </h3>
-        <motion.div
-          variants={languagesStagger.container}
-          initial="hidden"
-          whileInView="show"
-          viewport={languagesStagger.viewport}
-          className="grid gap-3 sm:grid-cols-2"
-        >
-          {languages.map((lang) => (
-            <motion.div
-              key={lang.code}
-              variants={languagesStagger.item}
-              className="rounded-2xl border border-border bg-card p-4"
-            >
-              <div className="mb-3 flex items-center justify-between gap-3">
-                <div className="flex min-w-0 items-center gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 font-mono text-xs font-semibold text-primary">
-                    {lang.code}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold">{lang.name}</p>
-                    <p className="truncate text-xs text-muted-foreground">{lang.level}</p>
-                  </div>
-                </div>
-                <span className="shrink-0 font-mono text-xs text-muted-foreground">
-                  {lang.value}%
-                </span>
-              </div>
-              <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${lang.value}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, ease: 'easeOut' }}
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-fuchsia-500"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+              </motion.div>
+            </section>
+          );
+        }
