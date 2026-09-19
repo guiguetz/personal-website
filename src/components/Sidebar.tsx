@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin, Mail, Phone, MapPin, Download, Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/hooks/useTheme';
-import { useStagger } from '@/hooks/useStagger';
 import { useI18n } from '@/i18n/I18nContext';
 import { FlagBR, FlagUS } from '@/components/FlagIcons';
 
@@ -28,19 +26,13 @@ const socialLinks = [
 
 function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate?: () => void }) {
   const { isDark, toggleTheme } = useTheme();
-  const { container, item } = useStagger(0.06, 12);
   const { t, locale, toggleLocale } = useI18n();
 
   return (
     <div className="flex h-full flex-col">
       {/* Identity */}
       <div className="px-6 pb-6 pt-8">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          className="pr-8 lg:pr-0"
-        >
+        <div className="animate-fade-in-up pr-8 lg:pr-0">
           <div className="flex items-center gap-3">
             <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-indigo-500 to-fuchsia-500 text-lg font-bold text-white shadow-lg shadow-primary/25">
               {AVATAR_URL ? (
@@ -58,23 +50,20 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
 
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{t.sidebar.tagline}</p>
 
-          <motion.div
-            layout
-            className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground"
-          >
+          <div className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
             <MapPin className="h-3.5 w-3.5 shrink-0" />
             <span>{t.sidebar.location}</span>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3">
-        <motion.ul variants={container} initial="hidden" animate="show" className="space-y-0.5">
+        <ul className="space-y-0.5">
           {navItems.map((navItem) => {
             const isActive = activeId === navItem.id;
             return (
-              <motion.li key={navItem.id} variants={item}>
+              <li key={navItem.id}>
                 <a
                   href={navItem.href}
                   onClick={onNavigate}
@@ -94,10 +83,10 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
                   />
                   <span>{t.nav[navItem.id]}</span>
                 </a>
-              </motion.li>
+              </li>
             );
           })}
-        </motion.ul>
+        </ul>
       </nav>
 
       {/* Footer actions */}
@@ -222,24 +211,20 @@ export function Sidebar() {
             </aside>
 
       {/* Mobile drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm lg:hidden"
-            />
-            <motion.aside
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              data-mobile-drawer="true"
-              className="fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-xs flex-col border-r border-border bg-card lg:hidden"
-            >
+      {/* Mobile drawer — animado com CSS transitions (sem framer-motion) */}
+      <>
+        <div
+          onClick={() => setMobileOpen(false)}
+          aria-hidden={!mobileOpen}
+          inert={!mobileOpen}
+          className={`fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${mobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+        />
+        <aside
+          data-mobile-drawer="true"
+          aria-hidden={!mobileOpen}
+          inert={!mobileOpen}
+          className={`fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-xs flex-col border-r border-border bg-card transition-transform duration-300 ease-out lg:hidden ${mobileOpen ? 'translate-x-0' : 'pointer-events-none -translate-x-full'}`}
+        >
               <button
                 onClick={() => setMobileOpen(false)}
                 aria-label={t.a11y.closeMenu}
@@ -248,10 +233,8 @@ export function Sidebar() {
                 <X className="h-4 w-4" />
               </button>
               <SidebarContent activeId={activeId} onNavigate={() => setMobileOpen(false)} />
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+        </aside>
+      </>
     </>
   );
 }

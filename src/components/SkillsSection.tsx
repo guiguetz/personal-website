@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import {
   Code2,
   Atom,
@@ -16,7 +15,7 @@ import {
   Crown,
 } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
-import { useStagger } from '@/hooks/useStagger';
+import { useReveal } from '@/hooks/useReveal';
 import { useI18n } from '@/i18n/I18nContext';
 
 const categoryIcons = [Code2, Layers, Palette, TestTube2, Server, Terminal, Users];
@@ -24,26 +23,22 @@ const mainIcons = [Atom, Braces, Wind, FlaskConical, Database, GitBranch, Crown]
 
 export function SkillsSection() {
   const { t } = useI18n();
-  const { container, item, viewport } = useStagger(0.08, 18);
+  const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
     <section id="skills" className="mb-20">
       <SectionHeading number="04" title={t.skills.title} description={t.skills.description} />
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewport}
-        className="grid gap-4 sm:grid-cols-2"
+      <div
+        ref={ref}
+        className={`reveal-children grid gap-4 sm:grid-cols-2 ${shown ? 'reveal-shown' : ''}`}
       >
         {t.skills.categories.map((cat, index) => {
           const CategoryIcon = categoryIcons[index] ?? Code2;
           const MainIcon = mainIcons[index] ?? Code2;
           return (
-            <motion.div
+            <div
               key={index}
-              variants={item}
               className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
             >
               <div
@@ -83,10 +78,10 @@ export function SkillsSection() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
     </section>
   );
 }

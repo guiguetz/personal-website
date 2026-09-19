@@ -1,42 +1,35 @@
-import { motion } from 'framer-motion';
 import { Code2, Layers, Users, Smartphone, Server, Wrench } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
-import { useStagger } from '@/hooks/useStagger';
+import { useReveal } from '@/hooks/useReveal';
 import { useI18n } from '@/i18n/I18nContext';
 
 const pillarIcons = [Code2, Layers, Users, Smartphone, Server, Wrench];
 
 export function AboutSection() {
   const { t } = useI18n();
-  const { container, item, viewport } = useStagger(0.07, 16);
+  const { ref: gridRef, shown: gridShown } = useReveal<HTMLDivElement>();
+  const { ref: pRef, shown: pShown } = useReveal<HTMLParagraphElement>(0.6);
 
   return (
     <section id="about" className="mb-20">
       <SectionHeading number="01" title={t.about.title} description={t.about.description} />
 
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.6 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-2xl text-base leading-relaxed text-muted-foreground"
+      <p
+        ref={pRef}
+        className={`reveal-self max-w-2xl text-base leading-relaxed text-muted-foreground ${pShown ? 'reveal-shown' : ''}`}
       >
         {t.about.paragraph}
-      </motion.p>
+      </p>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewport}
-        className="mt-8 grid gap-3 sm:grid-cols-2"
+      <div
+        ref={gridRef}
+        className={`reveal-children mt-8 grid gap-3 sm:grid-cols-2 ${gridShown ? 'reveal-shown' : ''}`}
       >
         {t.about.pillars.map((pillar, index) => {
           const Icon = pillarIcons[index] ?? Code2;
           return (
-            <motion.div
+            <div
               key={index}
-              variants={item}
               className="panel panel-interactive group flex items-start gap-4 rounded-2xl p-4"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
@@ -46,10 +39,10 @@ export function AboutSection() {
                 <h3 className="text-sm font-semibold">{pillar.title}</h3>
                 <p className="mt-0.5 text-sm text-muted-foreground">{pillar.detail}</p>
               </div>
-            </motion.div>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
     </section>
   );
 }

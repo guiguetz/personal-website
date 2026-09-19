@@ -186,7 +186,14 @@ function readInitialLocale(): Locale {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(readInitialLocale);
+  // Sempre inicia com 'pt' (igual ao SSR) para evitar mismatch de hidratação;
+  // o locale salvo é aplicado logo após o mount.
+  const [locale, setLocaleState] = useState<Locale>('pt');
+
+  useEffect(() => {
+    const saved = readInitialLocale();
+    if (saved !== 'pt') setLocaleState(saved);
+  }, []);
 
   const setLocale = useCallback((next: Locale) => {
     playLocaleTextTransition();

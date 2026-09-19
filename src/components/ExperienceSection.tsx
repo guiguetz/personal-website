@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Building2, ChevronDown, MapPin } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
-import { useStagger } from '@/hooks/useStagger';
+import { useReveal } from '@/hooks/useReveal';
 import { useI18n } from '@/i18n/I18nContext';
 import { supabase } from '@/lib/supabase';
 
@@ -53,7 +52,7 @@ export function ExperienceSection() {
   }, [locale, t.experience.items]);
 
   const experienceItems = remoteItems ?? t.experience.items;
-  const { container, item, viewport } = useStagger(0.1, 18);
+  const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
     <section id="experience" className="mb-20">
@@ -67,20 +66,16 @@ export function ExperienceSection() {
         {/* Vertical line */}
         <div className="absolute bottom-2 left-[7px] top-2 w-px bg-gradient-to-b from-primary/60 via-border to-transparent sm:left-[4.5rem] sm:-translate-x-1/2" />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewport}
-          className="space-y-6"
+        <div
+          ref={ref}
+          className={`reveal-children space-y-6 ${shown ? 'reveal-shown' : ''}`}
         >
           {experienceItems.map((exp, index) => {
             const fallback = companies[index] ?? companies[0];
             const meta = { ...fallback, ...exp };
             return (
-              <motion.div
+              <div
                 key={index}
-                variants={item}
                 className="group relative grid gap-3 sm:grid-cols-[4.5rem_1fr] sm:gap-6"
               >
                 {/* Year column */}
@@ -135,19 +130,13 @@ export function ExperienceSection() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Additional experience */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-6 sm:pl-[6rem]"
-        >
+        <div className="mt-6 sm:pl-[6rem]">
           <button
             onClick={() => setShowExtra((v) => !v)}
             aria-expanded={showExtra}
@@ -158,19 +147,14 @@ export function ExperienceSection() {
             />
             {t.experience.extraToggle}
           </button>
-          <AnimatePresence initial={false}>
-            {showExtra && (
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="overflow-hidden px-4 pt-3 text-sm text-muted-foreground"
-              >
+          <div className={`reveal-expand ${showExtra ? 'reveal-shown' : ''}`} aria-hidden={!showExtra}>
+            <div>
+              <p className="overflow-hidden px-4 pt-3 text-sm text-muted-foreground">
                 {t.experience.extraText}
-              </motion.p>
-            )}
-          </AnimatePresence>
-        </motion.div>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

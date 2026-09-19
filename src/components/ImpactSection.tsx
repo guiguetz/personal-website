@@ -1,8 +1,30 @@
-import { motion } from 'framer-motion';
 import { TrendingUp, Users, UserCog, Timer } from 'lucide-react';
-import { Area, AreaChart, ResponsiveContainer } from 'recharts';
+/**
+ * Sparkline em SVG puro — substitui o recharts (−376 kB no bundle).
+ */
+function Sparkline({ data, color, id }: { data: number[]; color: string; id: string }) {
+  const w = 100;
+  const h = 32;
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const range = max - min || 1;
+  const step = w / (data.length - 1);
+  const points = data.map((v, i) => `${(i * step).toFixed(2)},${(h - ((v - min) / range) * (h - 4) - 2).toFixed(2)}`);
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" className="h-full w-full" aria-hidden>
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity={0.35} />
+          <stop offset="100%" stopColor={color} stopOpacity={0} />
+        </linearGradient>
+      </defs>
+      <polygon points={`0,${h} ${points.join(' ')} ${w},${h}`} fill={`url(#${id})`} stroke="none" />
+      <polyline points={points.join(' ')} fill="none" stroke={color} strokeWidth={2} vectorEffect="non-scaling-stroke" />
+    </svg>
+  );
+}
 import { SectionHeading } from './SectionHeading';
-import { useStagger } from '@/hooks/useStagger';
+import { useReveal } from '@/hooks/useReveal';
 import { useI18n } from '@/i18n/I18nContext';
 
 const metricVisuals = [
@@ -14,27 +36,23 @@ const metricVisuals = [
 
 export function ImpactSection() {
   const { t } = useI18n();
-  const { container, item, viewport } = useStagger(0.09, 20);
+  const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
     <section id="impact" className="mb-20">
       <SectionHeading number="02" title={t.impact.title} description={t.impact.description} />
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewport}
-        className="grid gap-4 sm:grid-cols-2"
+      <div
+        ref={ref}
+        className={`reveal-children grid gap-4 sm:grid-cols-2 ${shown ? 'reveal-shown' : ''}`}
       >
         {t.impact.metrics.map((metric, index) => {
           const visual = metricVisuals[index] ?? metricVisuals[0];
           const Icon = visual.icon;
           const gradientId = `spark-${index}`;
           return (
-            <motion.div
+            <div
               key={index}
-              variants={item}
               className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
             >
               <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
@@ -47,29 +65,12 @@ export function ImpactSection() {
               <p className="mt-1 text-xs text-muted-foreground">{metric.note}</p>
 
               <div className="mt-4 h-14 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={visual.data.map((v, i) => ({ i, v }))}>
-                    <defs>
-                      <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={visual.color} stopOpacity={0.35} />
-                        <stop offset="100%" stopColor={visual.color} stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <Area
-                      type="monotone"
-                      dataKey="v"
-                      stroke={visual.color}
-                      strokeWidth={2}
-                      fill={`url(#${gradientId})`}
-                      isAnimationActive
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
+                <Sparkline data={visual.data} color={visual.color} id={gradientId} />
               </div>
-            </motion.div>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
     </section>
   );
 }

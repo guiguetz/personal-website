@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 interface SectionHeadingProps {
   number: string;
   title: string;
@@ -8,13 +6,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ number, title, description }: SectionHeadingProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.6 }}
-      transition={{ duration: 0.5 }}
-      className="mb-10"
-    >
+    <div className="mb-10">
       <div className="flex items-center gap-4">
         <span className="font-mono text-sm font-medium text-primary">{number}.</span>
         <h2 className="text-2xl font-bold tracking-tight sm:text-[1.75rem]">{title}</h2>
@@ -28,6 +20,6 @@ export function SectionHeading({ number, title, description }: SectionHeadingPro
           {description}
         </p>
       )}
-    </motion.div>
+    </div>
   );
 }

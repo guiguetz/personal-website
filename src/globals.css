@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -38,8 +37,8 @@ body.recaptcha-exiting .grecaptcha-badge {
     --popover: 222 40% 8%;
     --popover-foreground: 213 31% 91%;
 
-    --primary: 239 84% 67%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 239 92% 75%;
+    --primary-foreground: 239 35% 14%;
 
     --secondary: 217 33% 14%;
     --secondary-foreground: 213 31% 91%;
@@ -266,6 +265,62 @@ body.recaptcha-exiting .grecaptcha-badge {
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* Reveal on scroll (substitui framer-motion whileInView) */
+.reveal-self {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal-shown.reveal-self,
+.reveal-self.reveal-shown {
+  opacity: 1;
+  transform: none;
+}
+.reveal-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+}
+.reveal-children.reveal-shown > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-children.reveal-shown > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-children.reveal-shown > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-children.reveal-shown > *:nth-child(3) { transition-delay: 0.19s; }
+.reveal-children.reveal-shown > *:nth-child(4) { transition-delay: 0.26s; }
+.reveal-children.reveal-shown > *:nth-child(5) { transition-delay: 0.33s; }
+.reveal-children.reveal-shown > *:nth-child(6) { transition-delay: 0.4s; }
+.reveal-children.reveal-shown > *:nth-child(7) { transition-delay: 0.47s; }
+.reveal-children.reveal-shown > *:nth-child(8) { transition-delay: 0.54s; }
+.reveal-children.reveal-shown > *:nth-child(9) { transition-delay: 0.61s; }
+.reveal-children.reveal-shown > *:nth-child(n + 10) { transition-delay: 0.68s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-self,
+  .reveal-children > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Expansão de texto (substitui AnimatePresence height auto) */
+.reveal-expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.4s ease-out, opacity 0.4s ease-out;
+}
+.reveal-expand.reveal-shown {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.reveal-expand > * {
+  overflow: hidden;
+  min-height: 0;
 }
 
 /* During a locale switch the real text is hidden (visibility keeps

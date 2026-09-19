@@ -1,9 +1,8 @@
-import { FormEvent, lazy, Suspense, useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { Mail, Phone, Linkedin, Github, MapPin, ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from './SectionHeading';
-import { useStagger } from '@/hooks/useStagger';
+import { useReveal } from '@/hooks/useReveal';
 import { useI18n } from '@/i18n/I18nContext';
 declare global {
   interface Window { grecaptcha?: { ready: (callback: () => void) => void; execute: (siteKey: string, options: { action: string }) => Promise<string> } }
@@ -11,7 +10,6 @@ declare global {
 
 const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
-const CvPreviewDialog = lazy(() => import('@/components/CvPreviewDialog'));
 
 function loadRecaptcha(): Promise<void> {
   if (window.grecaptcha?.execute) return Promise.resolve();
@@ -48,11 +46,11 @@ const channelMeta = [
 
 export function ContactSection() {
   const { t } = useI18n();
-  const { container, item, viewport } = useStagger(0.07, 16);
+  const { ref: channelsRef, shown: channelsShown } = useReveal<HTMLDivElement>();
+  const { ref: formRef, shown: formShown } = useReveal<HTMLFormElement>();
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [captchaVisible, setCaptchaVisible] = useState(false);
-  const [cvOpen, setCvOpen] = useState(false);
   const contactRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -99,27 +97,20 @@ export function ContactSection() {
 
       <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
         {/* Channels */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewport}
-          className="space-y-3"
+        <div
+          ref={channelsRef}
+          className={`reveal-children space-y-3 ${channelsShown ? 'reveal-shown' : ''}`}
         >
-          <motion.div
-            variants={item}
-            className="flex items-center gap-2 text-xs text-muted-foreground"
-          >
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <MapPin className="h-3.5 w-3.5 shrink-0" />
             <span>{t.contact.locationLine}</span>
-          </motion.div>
+          </div>
 
           {channelMeta.map((channel) => {
             const Icon = channel.icon;
             return (
-              <motion.a
+              <a
                 key={channel.key}
-                variants={item}
                 href={channel.href}
                 className="panel panel-interactive group flex items-center gap-4 rounded-2xl p-4"
               >
@@ -135,38 +126,31 @@ export function ContactSection() {
                   )}
                 </div>
                 <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
-              </motion.a>
+              </a>
             );
           })}
 
-          <motion.div variants={item} className="flex w-full flex-col gap-2 sm:flex-row">
+          <div className="flex w-full flex-col gap-2 sm:flex-row">
             <Button asChild size="lg" className="w-full gap-2 shadow-lg shadow-primary/20">
               <a href="/guilherme-aguiar-cv.pdf" download="Guilherme-Aguiar-CV.pdf">
                 <Download className="h-4 w-4" />
                 {t.contact.download}
               </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full"
-              onClick={() => setCvOpen(true)}
-            >
-              {t.contact.viewResume}
+            <Button asChild size="lg" variant="outline" className="w-full">
+              <a href="/guilherme-aguiar-cv.pdf" target="_blank" rel="noopener noreferrer">
+                {t.contact.viewResume}
+              </a>
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Form */}
-        <motion.form
+        <form
+          ref={formRef}
           onSubmit={handleSubmit}
           onFocus={() => setCaptchaVisible(true)}
-          layout
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewport}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="panel space-y-4 rounded-2xl p-5"
+          className={`reveal-self panel space-y-4 rounded-2xl p-5 ${formShown ? 'reveal-shown' : ''}`}
         >
           <h3 className="text-sm font-semibold">{t.contact.formTitle}</h3>
           <div>
@@ -213,13 +197,8 @@ export function ContactSection() {
           </Button>
           {status === 'success' && <p role="status" className="text-sm text-emerald-400">Mensagem enviada com sucesso.</p>}
           {status === 'error' && <p role="alert" className="text-sm text-destructive">Não foi possível enviar. Configure o Supabase ou tente por e-mail.</p>}
-        </motion.form>
+        </form>
       </div>
-      {cvOpen && (
-        <Suspense fallback={null}>
-          <CvPreviewDialog open={cvOpen} onOpenChange={setCvOpen} />
-        </Suspense>
-      )}
     </section>
   );
 }
