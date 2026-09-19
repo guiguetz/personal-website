@@ -4,6 +4,7 @@ import { Layout } from "@/components/Layout";
 import { LazyMount } from "@/components/LazyMount";
 import { HeroSection } from "@/components/HeroSection";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Seções abaixo da dobra são carregadas sob demanda (code-splitting),
 // reduzindo o bundle crítico da primeira renderização.
@@ -57,6 +58,7 @@ const App = () => (
         </Suspense>
       </Layout>
       <Analytics />
+      <SpeedInsights />
     </>
   </I18nProvider>
 );
