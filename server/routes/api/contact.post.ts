@@ -40,8 +40,11 @@ export default defineHandler(async (event) => {
       body: { name, email, message },
     });
     return { success: true, result };
-  } catch (error: any) {
-    console.error('[contact] Supabase insert failed:', error?.data ?? error?.message ?? error);
+  } catch (error: unknown) {
+    const errorData =
+      typeof error === 'object' && error !== null && 'data' in error ? error.data : undefined;
+    const errorMessage = error instanceof Error ? error.message : undefined;
+    console.error('[contact] Supabase insert failed:', errorData ?? errorMessage ?? error);
     throw createError({ statusCode: 502, statusMessage: 'Não foi possível salvar a mensagem no Supabase' });
   }
 });
