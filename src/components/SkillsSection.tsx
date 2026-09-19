@@ -1,179 +1,137 @@
 import { motion } from 'framer-motion';
+import {
+  Code2,
+  Atom,
+  Layers,
+  Braces,
+  Palette,
+  Wind,
+  TestTube2,
+  FlaskConical,
+  Server,
+  Database,
+  Terminal,
+  GitBranch,
+  Users,
+  Crown,
+} from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
+
+const categories = [
+  {
+    category: 'Frontend',
+    categoryIcon: Code2,
+    main: 'React',
+    mainIcon: Atom,
+    items: ['React Native', 'Next.js', 'TypeScript', 'JavaScript', 'Angular', 'HTML5', 'CSS3'],
+  },
+  {
+    category: 'Gerenciamento de Estado',
+    categoryIcon: Layers,
+    main: 'Redux',
+    mainIcon: Braces,
+    items: ['Redux Saga', 'Redux Thunk', 'Context API'],
+  },
+  {
+    category: 'UI & Design Systems',
+    categoryIcon: Palette,
+    main: 'Tailwind CSS',
+    mainIcon: Wind,
+    items: ['Styled Components', 'Framer Motion', 'Material UI', 'Design Systems', 'Figma'],
+  },
+  {
+    category: 'Testes',
+    categoryIcon: TestTube2,
+    main: 'Jest',
+    mainIcon: FlaskConical,
+    items: ['React Testing Library', 'Cypress'],
+  },
+  {
+    category: 'Backend & Dados',
+    categoryIcon: Server,
+    main: 'Node.js',
+    mainIcon: Database,
+    items: ['GraphQL', 'Firebase', 'MongoDB'],
+  },
+  {
+    category: 'DevOps & Ferramentas',
+    categoryIcon: Terminal,
+    main: 'Git',
+    mainIcon: GitBranch,
+    items: ['Azure DevOps', 'Docker', 'Linux/Unix', 'Vite', 'Lerna', 'Nx', 'TurboRepo'],
+  },
+  {
+    category: 'Liderança',
+    categoryIcon: Users,
+    main: 'Mentoria Técnica',
+    mainIcon: Crown,
+    items: ['Arquitetura Front-end', 'Code Review', 'Agile/Scrum'],
+  },
+];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="mb-16">
-      <SectionHeading number="04" title="Competências técnicas" description="Habilidades organizadas por categoria, com foco nas tecnologias mais relevantes para o papel." />
-      
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6 }}
-        className="space-y-8"
-      >
-        {/* Frontend */}
-        <motion.div
-          key="frontend"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              Frontend
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                React
-              </span>
-              <span className="text-sm text-muted-foreground">React Native • Next.js • TypeScript • JavaScript • Angular</span>
-            </div>
-          </div>
-        </motion.div>
+    <section id="skills" className="mb-20">
+      <SectionHeading
+        number="04"
+        title="Competências técnicas"
+        description="Tecnologias que domino, agrupadas por área de atuação."
+      />
 
-        {/* State Management */}
-        <motion.div
-          key="state"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              Gerenciamento de Estado
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                Redux
-              </span>
-              <span className="text-sm text-muted-foreground">Redux Saga • Redux Thunk • Context API</span>
-            </div>
-          </div>
-        </motion.div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        {categories.map((cat, index) => {
+          const CategoryIcon = cat.categoryIcon;
+          const MainIcon = cat.mainIcon;
+          return (
+            <motion.div
+              key={cat.category}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="card-hover group relative overflow-hidden rounded-2xl border border-border bg-card p-5"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
+              />
 
-        {/* UI & Design */}
-        <motion.div
-          key="ui"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              UI & Design Systems
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                Tailwind CSS
-              </span>
-              <span className="text-sm text-muted-foreground">Styled Components • Framer Motion • Material UI • Design Systems • Figma</span>
-            </div>
-          </div>
-        </motion.div>
+              {/* Category header */}
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-secondary text-muted-foreground transition-colors group-hover:bg-primary/15 group-hover:text-primary">
+                  <CategoryIcon className="h-4 w-4" />
+                </span>
+                <h3 className="text-sm font-semibold">{cat.category}</h3>
+              </div>
 
-        {/* Testing */}
-        <motion.div
-          key="testing"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              Testes
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                Jest
-              </span>
-              <span className="text-sm text-muted-foreground">React Testing Library • Cypress</span>
-            </div>
-          </div>
-        </motion.div>
+              {/* Main highlight */}
+              <div className="mt-4 flex items-center gap-3 rounded-xl border border-primary/25 bg-primary/10 px-3 py-2.5">
+                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm shadow-primary/30">
+                  <MainIcon className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold leading-tight">{cat.main}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-primary/80">
+                    Principal
+                  </p>
+                </div>
+              </div>
 
-        {/* Backend & Data */}
-        <motion.div
-          key="backend"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              Backend & Dados
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                Node.js
-              </span>
-              <span className="text-sm text-muted-foreground">GraphQL • Firebase • MongoDB</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* DevOps & Tools */}
-        <motion.div
-          key="devops"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              DevOps & Ferramentas
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                Git
-              </span>
-              <span className="text-sm text-muted-foreground">Azure DevOps • Docker • Linux/Unix • Vite • Lerna • Nx • TurboRepo</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Leadership */}
-        <motion.div
-          key="leadership"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.7, duration: 0.5 }}
-          className="bg-card border border-border rounded-xl p-6"
-        >
-          <h3 className="font-semibold text-lg mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary">
-              </span>
-              Liderança
-          </h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 flex items-center justify-center rounded-full bg-primary text-primary text-xs font-medium">
-                Mentoria Técnica
-              </span>
-              <span className="text-sm text-muted-foreground">Arquitetura Front-end • Code Review • Agile/Scrum</span>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+              {/* Secondary items */}
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {cat.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-lg border border-border bg-secondary px-2.5 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
     </section>
   );
 }

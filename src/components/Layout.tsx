@@ -1,32 +1,27 @@
 import { ReactNode } from 'react';
-import { useTheme } from '@/hooks/useTheme';
 import { Sidebar } from './Sidebar';
-import { ThemeToggle } from './ThemeToggle';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export function Layout({ children }: LayoutProps) {
-  const { isDark } = useTheme();
-
   return (
-    <div className={`min-h-screen ${isDark ? 'dark' : 'light'}`}>
-      <div className="flex">
-        {/* Sidebar - fixed on large screens */}
-        <Sidebar />
-        
-        {/* Main content - scrollable */}
-        <main className="flex-1 lg:ml-64 overflow-y-auto min-h-screen">
-          {/* Theme toggle */}
-          <ThemeToggle />
-          
-          {/* Content sections */}
-          <div className="p-6 lg:p-12 max-w-4xl mx-auto">
-            {children}
-          </div>
-        </main>
+    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Ambient background glows */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 right-[-15%] h-[520px] w-[520px] rounded-full bg-primary/10 blur-[130px]" />
+        <div className="absolute top-1/3 left-[-15%] h-[420px] w-[420px] rounded-full bg-fuchsia-500/10 blur-[130px]" />
+        <div className="absolute bottom-0 left-1/3 h-[360px] w-[360px] rounded-full bg-sky-500/5 blur-[130px]" />
       </div>
+
+      <Sidebar />
+
+      <main className="lg:pl-72">
+        <div className="mx-auto max-w-3xl px-6 pb-20 pt-24 sm:px-8 lg:px-12 lg:pt-16">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }

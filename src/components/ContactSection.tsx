@@ -1,128 +1,122 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Github, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, MapPin, ArrowRight, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SectionHeading } from './SectionHeading';
 
+const channels = [
+  {
+    icon: Mail,
+    label: 'E-mail',
+    value: 'guilhermebruno.aguiar@gmail.com',
+    href: 'mailto:guilhermebruno.aguiar@gmail.com',
+  },
+  {
+    icon: Phone,
+    label: 'Telefone / WhatsApp',
+    value: '+55 (13) 99202-5755',
+    href: 'https://wa.me/5513992025755',
+  },
+  { icon: Linkedin, label: 'LinkedIn', value: '[SEU_LINK_AQUI]', href: '#' },
+  { icon: Github, label: 'GitHub', value: '[SEU_LINK_AQUI]', href: '#' },
+];
+
 export function ContactSection() {
   return (
-    <section id="contact" className="mb-16">
-      <SectionHeading number="07" title="Contato" description="Aberto a oportunidades como Front-end/Mobile Sênior ou Tech Lead." />
-      
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6 }}
-        className="grid md:grid-cols-2 gap-8"
-      >
-        {/* Contact form */}
-        <motion.div
-          key="form"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
-          className="space-y-6"
-        >
-          <form className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-2">
-                Nome
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Seu nome"
-                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-transparent text-foreground placeholder-muted-foreground/50"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
-                E-mail
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="seu@email.com"
-                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-transparent text-foreground placeholder-muted-foreground/50"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
-                Mensagem
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="Como posso ajudar?"
-                className="w-full px-4 py-3 bg-card border border-border rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-transparent text-foreground placeholder-muted-foreground/50"
-                required
-              />
-            </div>
-            <Button type="submit" size="lg" className="w-full">
-              Enviar mensagem
-            </Button>
-          </form>
-        </motion.div>
+    <section id="contact" className="mb-20">
+      <SectionHeading
+        number="06"
+        title="Contato"
+        description="Aberto a oportunidades como Front-end / Mobile Sênior ou Tech Lead. Vamos conversar?"
+      />
 
-        {/* Contact info */}
-        <motion.div
-          key="info"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="space-y-6"
-        >
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Localização</h3>
-                <p className="text-muted-foreground">São Vicente, SP</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">E-mail</h3>
-                <p className="text-muted-foreground"><a href="mailto:guilhermebruno.aguiar@gmail.com" className="text-primary hover:underline">guilhermebruno.aguiar@gmail.com</a></p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Telefone/WhatsApp</h3>
-                <p className="text-muted-foreground"><a href="https://wa.me/5513992025755" className="text-primary hover:underline">+55 (13) 99202-5755</a></p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Linkedin className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">LinkedIn</h3>
-                <p className="text-muted-foreground"><a href="#" className="text-primary hover:underline">[SEU_LINK_AQUI]</a></p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Github className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">GitHub</h3>
-                <p className="text-muted-foreground"><a href="#" className="text-primary hover:underline">[SEU_LINK_AQUI]</a></p>
-              </div>
-            </div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+        className="grid gap-8 lg:grid-cols-[1fr_0.9fr]"
+      >
+        {/* Channels */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <MapPin className="h-3.5 w-3.5" />
+            São Vicente, SP · Disponível para trabalho remoto
           </div>
-          
-          <div className="mt-6 pt-4 border-t border-border">
-            <Button size="lg" className="w-full group">
-              <Mail className="w-4 h-4 mr-2" />
-              Enviar e-mail diretamente
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+
+          {channels.map((channel) => {
+            const Icon = channel.icon;
+            return (
+              <a
+                key={channel.label}
+                href={channel.href}
+                className="card-hover group flex items-center gap-4 rounded-2xl border border-border bg-card p-4"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    {channel.label}
+                  </p>
+                  <p className="truncate text-sm font-medium">{channel.value}</p>
+                </div>
+                <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+              </a>
+            );
+          })}
+
+          <Button size="lg" className="w-full gap-2 shadow-lg shadow-primary/20">
+            <Download className="h-4 w-4" />
+            Baixar currículo (PDF)
+          </Button>
+        </div>
+
+        {/* Form */}
+        <form className="space-y-4 rounded-2xl border border-border bg-card p-5">
+          <h3 className="text-sm font-semibold">Envie uma mensagem</h3>
+          <div>
+            <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+              Nome
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              placeholder="Seu nome"
+              className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+            />
           </div>
-        </motion.div>
+          <div>
+            <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+              E-mail
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="seu@email.com"
+              className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-muted-foreground">
+              Mensagem
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows={4}
+              placeholder="Como posso ajudar?"
+              className="w-full resize-none rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-primary/60 focus:ring-2 focus:ring-primary/20"
+            />
+          </div>
+          <Button type="submit" className="w-full">
+            Enviar mensagem
+          </Button>
+        </form>
       </motion.div>
     </section>
   );

@@ -1,106 +1,127 @@
 import { motion } from 'framer-motion';
-import { Code, Terminal, Box, Type, Server, GitBranch, Github } from 'lucide-react';
+import { Code2, Layers, Users, Smartphone, Server, Wrench } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
+
+const pillars = [
+  {
+    icon: Code2,
+    title: 'Especialista em Front-end',
+    detail: 'React, React Native, Next.js, TypeScript',
+  },
+  {
+    icon: Layers,
+    title: 'Arquitetura escalável',
+    detail: 'Design Systems, performance, micro-frontends',
+  },
+  {
+    icon: Users,
+    title: 'Liderança técnica',
+    detail: 'Mentoria, code review, Agile/Scrum',
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile & cross-platform',
+    detail: 'React Native, Expo, Redux, Jest, RTL',
+  },
+  {
+    icon: Server,
+    title: 'Backend & dados',
+    detail: 'Node.js, GraphQL, Firebase, MongoDB',
+  },
+  {
+    icon: Wrench,
+    title: 'DevOps & ferramentas',
+    detail: 'Git, Docker, Azure DevOps, Vite, Nx',
+  },
+];
+
+const languages = [
+  { code: 'PT', name: 'Português', level: 'Nativo', value: 100 },
+  { code: 'EN', name: 'Inglês', level: 'Fluente · C2', value: 85 },
+];
 
 export function AboutSection() {
   return (
-    <section id="about" className="mb-16">
-      <SectionHeading number="01" title="Sobre mim" description="Mais de 10 anos construindo produtos digitais de alto impacto para setores financeiro, logístico e de saúde." />
-      
+    <section id="about" className="mb-20">
+      <SectionHeading
+        number="01"
+        title="Sobre mim"
+        description="Mais de 10 anos construindo produtos digitais de alto impacto para os setores financeiro, logístico e de saúde."
+      />
+
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.6 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-2xl text-base leading-relaxed text-muted-foreground"
+      >
+        Minha trajetória inclui liderança de equipes técnicas, migração de sistemas legados
+        para stacks modernas e a criação de produtos que impactam milhões de usuários — sempre
+        com foco em performance, acessibilidade e resultados de negócio.
+      </motion.p>
+
+      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        {pillars.map((pillar, index) => (
+          <motion.div
+            key={pillar.title}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            className="card-hover group flex items-start gap-4 rounded-2xl border border-border bg-card p-4"
+          >
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+              <pillar.icon className="h-5 w-5" />
+            </span>
+            <div className="min-w-0">
+              <h3 className="text-sm font-semibold">{pillar.title}</h3>
+              <p className="mt-0.5 text-sm text-muted-foreground">{pillar.detail}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Languages */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.6 }}
-        className="space-y-8"
+        transition={{ duration: 0.5 }}
+        className="mt-8"
       >
-        <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
-          Sou desenvolvedor front-end sênior especializado em React, React Native, TypeScript e arquitetura de aplicações escaláveis. Minha trajetória inclui liderança de equipes técnicas, migração de sistemas legados para tecnologias modernas e criação de produtos que impactam milhões de usuários.
-        </p>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Code className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Especialista em Front-end</h3>
-                <p className="text-sm text-muted-foreground">React, React Native, Next.js, TypeScript, JavaScript</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Terminal className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Arquitetura Escalável</h3>
-                <p className="text-sm text-muted-foreground">Design Systems, Micro-frontends, Performance Optimization</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Box className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Liderança Técnica</h3>
-                <p className="text-sm text-muted-foreground">Mentoria, Code Review, Agile/Scrum, Arquitetura</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Type className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Mobile & Cross-platform</h3>
-                <p className="text-sm text-muted-foreground">React Native, Expo, Redux, Jest, RTL</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <Server className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">Backend & Dados</h3>
-                <p className="text-sm text-muted-foreground">Node.js, GraphQL, Firebase, MongoDB</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <GitBranch className="w-5 h-5 text-primary" />
-              <div>
-                <h3 className="font-semibold">DevOps & Ferramentas</h3>
-                <p className="text-sm text-muted-foreground">Git, Docker, Azure DevOps, Vite, Nx, TurboRepo</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Languages moved here */}
-        <div className="mt-8 pt-6 border-t border-border">
-          <h3 className="font-semibold text-lg mb-4">Idiomas</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-card border border-border rounded-xl p-4">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary text-sm font-medium">
-                  BR
-                </span>
-                <div>
-                  <h4 className="font-medium">Português</h4>
-                  <p className="text-sm text-muted-foreground">Nativo</p>
+        <h3 className="mb-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          Idiomas
+        </h3>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {languages.map((lang) => (
+            <div
+              key={lang.code}
+              className="rounded-2xl border border-border bg-card p-4"
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 font-mono text-xs font-semibold text-primary">
+                    {lang.code}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold">{lang.name}</p>
+                    <p className="text-xs text-muted-foreground">{lang.level}</p>
+                  </div>
                 </div>
+                <span className="font-mono text-xs text-muted-foreground">{lang.value}%</span>
               </div>
-              <div className="h-1.5 w-full bg-muted-foreground/5 rounded-full">
-                <div className="h-full bg-primary rounded-full" style={{ width: '100%' }} />
-              </div>
-            </div>
-            <div className="bg-card border border-border rounded-xl p-4">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary/20 text-primary text-sm font-medium">
-                  EN
-                </span>
-                <div>
-                  <h4 className="font-medium">Inglês</h4>
-                  <p className="text-sm text-muted-foreground">Fluente (C2)</p>
-                </div>
-              </div>
-              <div className="h-1.5 w-full bg-muted-foreground/5 rounded-full">
-                <div className="h-full bg-primary rounded-full" style={{ width: '85%' }} />
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${lang.value}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: 'easeOut' }}
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-fuchsia-500"
+                />
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </motion.div>
     </section>
