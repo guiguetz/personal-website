@@ -39,8 +39,30 @@ export function Testimonials() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-gray-800/50 p-6 rounded-lg border border-gray-700 hover:-translate-y-1 transition-all duration-300 animate-fade-in-up delay-[{testimonial.id * 100}ms]"
+              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-fade-in-up delay-[{testimonial.id * 100}ms]"
               style={{ animationDelay: `${testimonial.id * 100}ms` }}
+              onMouseEnter={(e) => {
+                const card = e.currentTarget as HTMLElement;
+                card.style.transform = 'translateY(-4px) rotateX(5deg) rotateY(5deg)';
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                
+                const avatar = e.currentTarget.querySelector('img') as HTMLImageElement | null;
+                if (avatar) {
+                  avatar.style.transform = 'scale(1.1) rotate(5deg)';
+                  avatar.style.transition = 'transform 0.3s ease';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const card = e.currentTarget as HTMLElement;
+                card.style.transform = 'translateY(0px) rotateX(0deg) rotateY(0deg)';
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                
+                const avatar = e.currentTarget.querySelector('img') as HTMLImageElement | null;
+                if (avatar) {
+                  avatar.style.transform = 'scale(1) rotate(0deg)';
+                  avatar.style.transition = 'transform 0.3s ease';
+                }
+              }}
             >
               <div className="flex items-start space-x-4">
                 <img

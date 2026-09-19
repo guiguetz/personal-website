@@ -44,8 +44,30 @@ export function Projects() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 overflow-hidden hover:-translate-y-1 transition-all duration-300 animate-fade-in-up delay-[{project.id * 100}ms]"
+              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 overflow-hidden hover:-translate-y-2 hover:shadow-xl transition-all duration-500 animate-fade-in-up delay-[{project.id * 100}ms]"
               style={{ animationDelay: `${project.id * 100}ms` }}
+              onMouseEnter={(e) => {
+                const card = e.currentTarget as HTMLElement;
+                card.style.transform = 'translateY(-4px) rotateX(5deg) rotateY(5deg)';
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                
+                const img = e.currentTarget.querySelector('img') as HTMLImageElement | null;
+                if (img) {
+                  img.style.transform = 'scale(1.05)';
+                  img.style.transition = 'transform 0.5s ease';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const card = e.currentTarget as HTMLElement;
+                card.style.transform = 'translateY(0px) rotateX(0deg) rotateY(0deg)';
+                card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                
+                const img = e.currentTarget.querySelector('img') as HTMLImageElement | null;
+                if (img) {
+                  img.style.transform = 'scale(1)';
+                  img.style.transition = 'transform 0.5s ease';
+                }
+              }}
             >
               <img
                 src={project.image}
@@ -58,15 +80,15 @@ export function Projects() {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium"
+                    className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium hover:bg-primary/20 transition-all duration-300"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
-              <a href={project.link} className="inline-flex items-center text-primary font-medium hover:underline">
+              <a href={project.link} className="inline-flex items-center text-primary font-medium hover:underline hover:-translate-x-1 transition-all duration-300">
                 Ver projeto
-                <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-2 h-4 w-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>

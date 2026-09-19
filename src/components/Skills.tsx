@@ -22,11 +22,25 @@ export function Skills() {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 flex flex-col items-center space-y-4 animate-fade-in-up delay-[{index * 100}ms]"
+              className="relative bg-gray-800/50 p-6 rounded-lg border border-gray-700 flex flex-col items-center space-y-4 animate-fade-in-up delay-[{index * 100}ms] hover:-translate-y-2 transition-all duration-500"
               style={{ animationDelay: `${index * 100}ms` }}
+              onMouseEnter={(e) => {
+                const icon = e.currentTarget.querySelector('.skill-icon') as SVGSVGElement | null;
+                if (icon) {
+                  icon.style.transform = 'scale(1.2) rotate(10deg)';
+                  icon.style.transition = 'transform 0.3s ease';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const icon = e.currentTarget.querySelector('.skill-icon') as SVGSVGElement | null;
+                if (icon) {
+                  icon.style.transform = 'scale(1) rotate(0deg)';
+                  icon.style.transition = 'transform 0.3s ease';
+                }
+              }}
             >
-              <div className="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
-                <skill.icon className="h-5 w-5" />
+              <div className="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+                <skill.icon className="skill-icon h-6 w-6 transition-transform duration-300" />
               </div>
               <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
               <div className="w-full bg-gray-700/50 rounded-full h-2.5">

@@ -45,16 +45,16 @@ export function Experience() {
           Experiência Profissional
         </h2>
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute inset-0 w-0.5 bg-primary/20"></div>
+          {/* Timeline line with animated gradient */}
+          <div className="absolute inset-0 w-0.5 bg-gradient-to-t from-primary/20 via-primary/40 to-primary/20 animate-[gradientShift_3s_ease_infinite]"></div>
           {experiences.map((exp, index) => (
             <div
               key={exp.id}
               className="relative px-4 py-8 animate-fade-in-up delay-[{index * 200}ms]"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              {/* Content wrapper */}
-              <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
+              {/* Content wrapper with hover lift */}
+              <div className="bg-gray-800/50 border border-gray-700 rounded-lg p-6 hover:-translate-y-1 hover:shadow-xl transition-all duration-500">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-lg font-semibold text-white">{exp.company}</h3>
                   <span className="text-sm text-gray-400">{exp.period}</span>
@@ -64,13 +64,17 @@ export function Experience() {
                 {exp.achievements && (
                   <ul className="list-disc list-inside text-gray-300 space-y-1">
                     {exp.achievements.map((ach, achIndex) => (
-                      <li key={achIndex}>{ach}</li>
+                      <li key={achIndex} className="animate-fade-in-up delay-[{achIndex * 100}ms]">
+                        {ach}
+                      </li>
                     ))}
                   </ul>
                 )}
               </div>
-              {/* Dot */}
-              <div className="absolute left-0 -top-2.5 w-5 h-5 bg-primary rounded-full border-2 border-gray-900"></div>
+              {/* Animated dot */}
+              <div className="absolute left-0 -top-2.5 w-6 h-6 bg-primary rounded-full border-2 border-gray-900 animate-pulse delay-[{index * 200}ms]">
+                <div className="absolute inset-0 bg-primary/20 rounded-full animate-pulse"></div>
+              </div>
             </div>
           ))}
         </div>

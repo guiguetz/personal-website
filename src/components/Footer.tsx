@@ -14,7 +14,6 @@ export function Footer() {
           <a href="#skills" className="hover:text-primary transition-colors">Habilidades</a>
           <a href="#projects" className="hover:text-primary transition-colors">Projetos</a>
           <a href="#experience" className="hover:text-primary transition-colors">Experiência</a>
-          <a href="#testimonials" className="hover:text-primary transition-colors">Depoimentos</a>
           <a href="#contact" className="hover:text-primary transition-colors">Contato</a>
         </div>
         <div className="flex justify-center space-x-4">

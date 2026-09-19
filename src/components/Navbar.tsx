@@ -14,7 +14,6 @@ export function Navbar() {
           <Link to="#skills" className="hover:text-primary transition-colors">Habilidades</Link>
           <Link to="#projects" className="hover:text-primary transition-colors">Projetos</Link>
           <Link to="#experience" className="hover:text-primary transition-colors">Experiência</Link>
-          <Link to="#testimonials" className="hover:text-primary transition-colors">Depoimentos</Link>
           <Link to="#contact" className="hover:text-primary transition-colors">Contato</Link>
         </div>
         <div className="flex items-center space-x-3">
