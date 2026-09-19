@@ -64,12 +64,22 @@ export default function CvPreviewDialog({
   useEffect(() => {
     const element = containerRef.current;
     if (!element) return;
-    const observer = new ResizeObserver(([entry]) => {
-      const width = entry.contentRect.width;
+
+    const updateWidth = () => {
+      const width = element.getBoundingClientRect().width;
       if (width > 0) setPageWidth(Math.min(width, 720));
-    });
+    };
+
+    // Measure immediately as well as through the observer. Radix may finish
+    // positioning the dialog after the first ResizeObserver notification.
+    updateWidth();
+    const frame = requestAnimationFrame(updateWidth);
+    const observer = new ResizeObserver(updateWidth);
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
   }, [open]);
 
   // Keep the viewer's height matching the currently visible page so the
