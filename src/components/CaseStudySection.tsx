@@ -30,7 +30,7 @@ export function CaseStudySection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8"
+        className="panel relative overflow-hidden rounded-3xl p-6 sm:p-8"
       >
         <div
           aria-hidden

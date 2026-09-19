@@ -196,9 +196,13 @@ export function Sidebar() {
       </header>
 
       {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 border-r border-border bg-card/40 backdrop-blur-xl lg:block">
-        <SidebarContent activeId={activeId} />
-      </aside>
+      <aside className="fixed inset-y-0 left-0 z-40 hidden w-72 bg-card/40 backdrop-blur-xl lg:block">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-border to-transparent"
+              />
+              <SidebarContent activeId={activeId} />
+            </aside>
 
       {/* Mobile drawer */}
       <AnimatePresence>

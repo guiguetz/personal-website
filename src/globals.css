@@ -30,8 +30,8 @@
     --destructive: 0 63% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
     --ring: 239 84% 67%;
 
     --radius: 0.75rem;
@@ -112,6 +112,73 @@
   }
 }
 
+@layer components {
+  /**
+   * Hairline "Tailwind-style" border: a 1px ring drawn with a gradient mask so
+   * it reads brighter at the top and fades further down, instead of a flat
+   * border. `::before` is a primary-coloured twin that fades in on hover.
+   */
+  .panel {
+    position: relative;
+    border-radius: 1rem;
+    background-color: hsl(var(--card));
+  }
+
+  .panel::after,
+  .panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Base hairline */
+  .panel::after {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--border) / 0.95) 0%,
+      hsl(var(--border) / 0.35) 35%,
+      hsl(var(--border) / 0.5) 100%
+    );
+  }
+
+  /* Hover glow ring */
+  .panel::before {
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary) / 0.9) 0%,
+      hsl(var(--primary) / 0.2) 40%,
+      hsl(var(--primary) / 0.35) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .panel-interactive {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .panel-interactive:hover {
+    @apply -translate-y-0.5 shadow-lg shadow-primary/5;
+  }
+
+  .panel-interactive:hover::before {
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   .font-mono {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
@@ -126,10 +193,14 @@
     backdrop-filter: blur(12px);
   }
 
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5;
-  }
-}
+  /* Fine grid, like the Tailwind homepage background */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 3.5rem 3.5rem;
+      }
+    }
 
 /* Animations */
 @keyframes fade-in-up {

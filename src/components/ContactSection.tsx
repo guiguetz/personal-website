@@ -44,7 +44,7 @@ export function ContactSection() {
                 key={channel.key}
                 variants={item}
                 href={channel.href}
-                className="card-hover group flex items-center gap-4 rounded-2xl border border-border bg-card p-4"
+                className="panel panel-interactive group flex items-center gap-4 rounded-2xl p-4"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                   <Icon className="h-4 w-4" />
@@ -74,7 +74,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewport}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="space-y-4 rounded-2xl border border-border bg-card p-5"
+          className="panel space-y-4 rounded-2xl p-5"
         >
           <h3 className="text-sm font-semibold">{t.contact.formTitle}</h3>
           <div>

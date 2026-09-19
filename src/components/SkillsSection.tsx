@@ -44,7 +44,7 @@ export function SkillsSection() {
             <motion.div
               key={cat.category}
               variants={item}
-              className="card-hover group relative overflow-hidden rounded-2xl border border-border bg-card p-5"
+              className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
             >
               <div
                 aria-hidden

@@ -35,7 +35,7 @@ export function ImpactSection() {
             <motion.div
               key={metric.label}
               variants={item}
-              className="card-hover group relative overflow-hidden rounded-2xl border border-border bg-card p-5"
+              className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
             >
               <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 <Icon className="h-3.5 w-3.5 shrink-0" style={{ color: visual.color }} />

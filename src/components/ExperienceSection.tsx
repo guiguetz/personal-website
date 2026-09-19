@@ -91,7 +91,7 @@ export function ExperienceSection() {
                 </span>
 
                 {/* Card */}
-                <div className="card-hover ml-7 rounded-2xl border border-border bg-card p-5 sm:ml-0">
+                <div className="panel panel-interactive ml-7 rounded-2xl p-5 sm:ml-0">
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <h3 className="flex items-center gap-2 text-base font-semibold">
                       <Building2 className="h-4 w-4 shrink-0 text-primary" />

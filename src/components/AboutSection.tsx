@@ -37,7 +37,7 @@ export function AboutSection() {
             <motion.div
               key={pillar.title}
               variants={item}
-              className="card-hover group flex items-start gap-4 rounded-2xl border border-border bg-card p-4"
+              className="panel panel-interactive group flex items-start gap-4 rounded-2xl p-4"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                 <Icon className="h-5 w-5" />
