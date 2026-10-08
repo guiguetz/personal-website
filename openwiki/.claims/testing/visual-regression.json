@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:3527ba54aeea71809da656357c67b0ad6be7c52d339aa0aa9a6e813dd7a0ff0e",
+  "claims": [
+    {
+      "id": "claim_487e4089912348399667938a33457e80",
+      "statement": "Três viewports: phone (375x812), tablet (768x1024) e desktop (1440x900)",
+      "evidence": [
+        {
+          "resource": "repo://backstop.json#L2-L7",
+          "version": "repo-lines-v1:sha256:618e79f0a8d37b37a5c6d12df9e18da693e6f58510cd0107d9e0a1c1c281083b:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzdlN2M5YTA3YjFkYzZhZDcxZTNhYWRkYzFmYmEwNDczNTEwNWNlNjUxNTcxMzY5N2VkMjExZjRjMjZjNTFmYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTY0ZDhjMDczNDI5ODkzMTAxNTc2ZDg4ZDk5MTI3ZTg5ZDY4OTFkM2IxN2U4OWRmMDJlYzlhZTcwNzA1ZDhiZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjEsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTZmYjA4ZmRhMWFjYjk1N2I2MTE2YmQzNzgxMWExZmU0MWEwMTYxMWMwNjMxZWRiZjc4NmQ2ODg5YTI3YTU1YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzI3ODc5N2YyOTBhMjhkNDhjYTUzOTUzNmI0ODVhZjQwNzNiYTY0Y2ViYzQ5ZDM1N2IwMGY2ZDkwMmU3ODRlZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_66a900179d7b45d393c1783c700e8df4",
+      "statement": "Três cenários: home (/), contact (/#contact) e experience (/#experience), todos com misMatchThreshold de 0.1 e .grecaptcha-badge oculto",
+      "evidence": [
+        {
+          "resource": "repo://backstop.json#L8-L28",
+          "version": "repo-lines-v1:sha256:c740a9e53617d2c178f6d6c1d86976f1cdec5418d784928a35cdb45336ae7c63:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0YTMzNmI3YTg0NDI2YzkzMzg4YjA3ZDNkNjlkNDNlODIzZmQ5NWVjM2MzNGU2MDJiYmM2ODZhMWY1Y2Y1ZjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ4NmEzM2JjZTZhNWQ3OWUxZWQyYTdhMTM2YWZiODAxMDAxZjRhNzE4MmUxMDA1N2JjMzIwYTBhMTBiZmVjYzUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQwNjFjYmIzZWM2OTI4N2EzOTEzNmU4YjFlMzhkNGIwOGQzMDgyM2Q3ZGE4YTgzNDkyOGFhZTVjOWVjY2E3ZTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFlMjllNDhjYTQ1ZmZlZjk2MTU1NTY2ODlhNzk3OWFlMjliMTZiM2I3OGU4Yzk3NTc4NGNjYTcxN2UyNGZlODUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_edf270f923d0493b8db5991a87d98a78",
+      "statement": "Cenário 'home' tem delay de 2500ms para aguardar animações CSS de reveal e carregamento de fontes",
+      "evidence": [
+        {
+          "resource": "repo://backstop.json#L10-L11",
+          "version": "repo-lines-v1:sha256:b37f58f2b435ac4ffdae6127409019b408e73a4df89d4a263126d65115a06302:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZmUwYTM4NmRmM2QzMzYzMzQ0YmNlOGQ4Y2U5YjM2MzI0OGNmODNkYjdmODc1MDlkYzE5MDA3ZWIwMDg1ZTNhYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2MyMDI0MzRlYmRhYWNjYzYwM2NhODZhYjNlNDZhYTliZDkzMjMzYTM5ZDI5MTM5NThiZmJmM2NjOGEzODdkNCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjJhMTNhNjFmZGVmYjVhODcwZGMxMzg2Njk4MDEzN2IzMjFiOGU2OTI4NTZhYWUwOTNmMTUwZDAyODBjNDg4MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2MwODg2MjBhMTBiNDg2YjlkNjZlZWEyZTBiMjk0ZWVkZTgwNjVlMWJkMzA0NDIyZTY2ZWY0NzhlMTk2OGExNSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f95bbc54adb343e3bbfedea03e75a852",
+      "statement": "Engine puppeteer com --no-sandbox, asyncCaptureLimit 2, asyncCompareLimit 10, report via browser",
+      "evidence": [
+        {
+          "resource": "repo://backstop.json#L30-L40",
+          "version": "repo-lines-v1:sha256:ac0d38ffcff13c8cab770ae2365a697fea0a24f283c96bc8e77cf429938327ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2NGQ4YzA3MzQyOTg5MzEwMTU3NmQ4OGQ5OTEyN2U4OWQ2ODkxZDNiMTdlODlkZjAyZWM5YWU3MDcwNWQ4YmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkYTgxZWU5NzMzNjkyNjllNWNhNmE5MjRlMmIyYzZhNTI3OGI5MzRjNmM3M2E3ODQ5MzYwYWE0OTUyNjkwNGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJjYTRhODM1NTY5OGU4OTYwNDk1ZjNhYzBlZTE1MDdkY2I0NTkzZmQ4YTBhOTU5YWZjM2YxOTg0NTNmNzQ0N2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlhZDJjNDA3YmM5MjllMTBkZmU1OGRiYjc2OTVkODc1ODJjNWQ0N2ZjMTE0NDA1ZmNiY2Y3ZDNjMzU1N2I1NjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8b6968f611514ae6ba4bb6aa1fc5f49d",
+      "statement": "Scripts test:visual e test:visual:ref usam concurrently + wait-on para subir preview na porta 4173 antes de executar backstop",
+      "evidence": [
+        {
+          "resource": "repo://package.json#L13-L15",
+          "version": "repo-lines-v1:sha256:bf0fa1830eb2f41997f68d0f9d57fe7d12ee537a2084f5faf3a341a28be54269:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmRiNTJhNTIwODE2NDNjNzljM2VjZTAwZWVhNDNjMGIwODYzMWQ3NDdmMjQ4ZmJiNjc4NGNhM2Q0OGJiMmRjYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2VhY2IxZDNlYjBiYTE5YTkxMzMzNGVlMzQyMWY5M2MzNmE5MzEwZDIwOTlkMThhOGM5MDdmYjJhYmViNDZlOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTFlZDQxZTM5M2IyMWZjMjhjOTAxYzhkYzQ1ZDRjOTc2YTZhNDUxMzQ3ODI5Y2U0ZDRmNTM0NDZmZjI2ZDM1OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzY5NzVjOWJjZDQ0NDNiZTYxMzZmOWRhMjdhM2RjNWU5M2I1MmQ1OWVmNTMyZWExZGIwODk1NDg0NTZiY2FkMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_298c03e27388434b82e180bbf236f7c1",
+      "statement": "Plan Backstop documenta estratégia de regressão visual: captura de referência após mudanças, comparação em CI, aprovação via backstop approve",
+      "evidence": [
+        {
+          "resource": "repo://docs/PLAN-BACKSTOP.md#L1-L10",
+          "version": "repo-lines-v1:sha256:76a433ba8e8f2c52b89cd3ca3fa3d3bfa2f95cf8956c52ddd2b59d815fc625a0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFjNGVkNjhhYWQ1NmNlNTYzZDUzZTExYzllOWQ0ZTQ5NmI2N2YzZTk4OGU1Nzg1Yzc0NzI5OTk1ODMyMzYxNGYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxMTIzOWM4NzRlNDVmZTE2NjE3NDg5YjIzYzdmYmU5NTIzMWYwOTYyYzI2OGJlYzYyNWEwMzM4NjhlNGFjNmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQyOWZiMGIyOTM4MjhjNTRiZGRjZTMyOTc4NmNiNGY1MDFjM2Y0NzdmZTZmMDIyYTNiMTAyZmJhZGE3OTUxYmIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

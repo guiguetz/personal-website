@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:0163b36d194f3b38965bb2b15f695c278d0045e62b7fd984dcb86f14f6d296c4",
+  "claims": [
+    {
+      "id": "claim_8c52c71cb3f649539291d6a4f6f9f7e5",
+      "statement": "vercel.json configura cache imutável (max-age=31536000) para /assets/ e rewrite SPA que redireciona qualquer rota desconhecida para /index.html",
+      "evidence": [
+        {
+          "resource": "repo://vercel.json#L1-L17",
+          "version": "repo-lines-v1:sha256:1300cad2bd6e0a3d4aaefcbab7079395efa1938891123db65eb5ffe6c8ce2782:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2ZmIwOGZkYTFhY2I5NTdiNjExNmJkMzc4MTFhMWZlNDFhMDE2MTFjMDYzMWVkYmY3ODZkNjg4OWEyN2E1NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxMGIzNmFhNzRhNTliY2Y0YTg4MTg1ODM3ZjY1OGFmYWYzNjQ2ZWZmMmJiMTZjMzkyOGQwZTkzMzVlOTQ1ZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5d19f1caa61141058f6b900bc56981c7",
+      "statement": "O index.html contém meta tags de SEO: título, descrição, canonical URL e hreflang (pt-BR, en, x-default) no head",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L1-L15",
+          "version": "repo-lines-v1:sha256:a6e87d411994f951e682ba52dc65f62b2140cd0cc695975d9575ba9c742f602d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMzNWZjYTg1NzRmMDYwZWVhMjRlYmNkYWU2Yjc4ZjMyNDE0ZjVkZTAzZGExMDg0ZmQwZTczZDcxMDc2OGUzYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkZTdiYjU0OTUzMTI5NDEzNjE4YjViNGNmMTI4YjQxMWY4ZDg4YjhhMzMyZDU1OTkxZmEyODA3NmU5OTYwMGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRlYzRiODczY2I1YTI1ODk3MTIzYmE5YzE0MDQ2MTM5ZjcxZWY2YWU3MDM5YzYwZTA0YzM1MzYzNDFlNzg3ZWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0482e7be494a42e0b22c5a5a3fcf020b",
+      "statement": "sitemap.xml tem uma única URL (https://guilherme.digital/) com changefreq monthly e prioridade 1.0",
+      "evidence": [
+        {
+          "resource": "repo://public/sitemap.xml#L1-L3",
+          "version": "repo-lines-v1:sha256:c320563b95c65aef1fb29c661ea7300a42939facbfa656b2c8018b45f2160271:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGViNjQxZGNjZjEwNjBjZjgyODMxNzc4YWIwNGIyNzBiOTdiMjQ3ODBkMDg5NWQ1YjAwZDRlYjIxN2ZjOGExZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTk1NDg2NThmMWQ1NWExYjBkYzFiM2IwNTIxZDI0N2Q5ZTgxNDUyNWQ4OGFmNTJkYWE3MDliMjNlMWU3NTk1ZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZDZmYWMxMjBkM2E3NWJhOTZjOWZjZGZjNjg2ZWIxY2ZmNDkwMTQ0NzNmMGM1NTQ1MTZiNzg4N2JmYjdhOGQ5MCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_10804637c0de4424864c26b877c5a4f3",
+      "statement": "Analytics e SpeedInsights da Vercel são renderizados no nível raiz do App, fora do Layout",
+      "evidence": [
+        {
+          "resource": "repo://src/App.tsx#L38-L41",
+          "version": "repo-lines-v1:sha256:5bce22cdb1337939315be4b222c7384d26891a704f3a707f94214b2b82786411:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNmVkOTU3NjNlMWJlMDU4NWQ5ZTg4ZGM5Y2NlZTI3ZTk0ZWI2Yjg2NjllMTZkNTVlYWZiMGFmNDc2NWExZjkwNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTlkNTEyYWYzYzU4YmY2MzBkNjUxN2NiZTg2ZGVkY2VkZmMxMmEzOTgyNjY0OGY0ZjY0MDkxNzQxNGRhMjQyYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2FlMThhYzI0OTc4MjdiMTE1M2IwMDJjNTQ1YzlkZmZiYmM4ZWIxZjk0YmU0MmQ3MTRlODE2YTNjOTQ3ZWQzYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTFlZjU5NTY4YWY0Y2EyNDM1ZDRlMWIwYjgxMTMyZjJjNzE4MDViN2MxOWUwZjE5YzRjZmViZjljZDNlNDk1MiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

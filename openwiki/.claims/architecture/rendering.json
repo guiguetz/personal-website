@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:c50ad5cf9e4f1bd7bb5ff89a3add3807cc14ac01a0ef53adea61db67979e1816",
+  "claims": [
+    {
+      "id": "claim_c5dbc144a25a45a6aac3ba65013ae5de",
+      "statement": "O prerender usa rolldown para empacotar src/entry-server.tsx em .prerender/entry-server.js com inlineDynamicImports:true, externalizando CSS e react-pdf",
+      "evidence": [
+        {
+          "resource": "repo://scripts/prerender.mjs#L14-L24",
+          "version": "repo-lines-v1:sha256:ac13a6fe1fc6849983154ddb841ca2f595c5d5f2e55db19cdddbbec55783b811:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxYzdjOTE1MmMwMDY5YzJjYzI3ODk3YjhiNTAzMWU4YTNjZTY3Y2NlNzA1ZGU2NmU0MGE5MWE1ZWMyZGM1ZmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1YzgxYWY4NDBjMmQ2MjM1Y2FkMjUzNGM2MDM1ODkwMzVjMDZhY2FhOTA3MmRlNzc5MTVlMGUyMDY2OTUzZDkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJhNWY5NDA5YWJiZjg3ODgyMmNiODU5NmFjOTM5MjI3N2ZhMTM5NzQ1OGJkNjliNjk5MTViNzAyNDRlY2RjYTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk0NGI1NDVhOTY1MjkxNjcwNTcwYjY2MWQzNmRiZjk3ZTZmM2Q5OWNhYmM2ZGRkMzA5MDJkNTg1NDNjYWE2Y2YifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c4b23343a6984cadb594c9e8868d06bf",
+      "statement": "A renderização SSR usa renderToReadableStream do React 19 e produz o HTML completo da árvore, incluindo seções lazy (resolvidas no servidor)",
+      "evidence": [
+        {
+          "resource": "repo://scripts/prerender.mjs#L27-L30",
+          "version": "repo-lines-v1:sha256:17a4fc40522ff0508029ffd9432cc3246c14f6bdef5edff13fba4004f947fb3e:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzYzNmVkMjhmODEzODg3YjQxYmVlY2IyYzc0ODkxZjExMjM2NmEwY2NhYThhYTIxYTdkYTFiNzJkOGI2ZjlkYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWRmNmNhMTMyYzkwMGMwZWMyM2JkYmRjNGE1NGQxNjg1MTY1ZGQyMjc1YzJhZmU1MjIyZDg4N2FlMTljNWIxNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmM3NGQ3MGIwNmI0ZWZmYzA3MzE5YTQ5MDBkYTAzOTlhMWQzOWIyNDUzNjEzZWRjMmZhZjM3NDRlMTcwZGY4NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmQzZTc1ZWM0OTdlMjQ2ZTM2MWIxYjZiMzU2NDNjYmZhMTFlYWEwNzk4ZDc5ZjM1NWE1YTgwNzY0NWMxNmZkMSJ9"
+        },
+        {
+          "resource": "repo://src/entry-server.tsx#L1-L9",
+          "version": "repo-lines-v1:sha256:3599f9887c874c36fc2d9b9bca3a51a835973f9d1c9faabae0d85a43033d8309:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGQ3MWJhZjVkNTRkZDdmY2IyZDlhM2I1M2ZmYzQ2ZWRkZTZjMjY2NWYwMGZjM2UyYjIzYmRkZDUwNzg3OTE2ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTQ2ZmNkYjkzMTljNmFiNDUxOGY3MGQ5Mzc5NDg3NGJmMTAwYTczNWU3ZjA2MDdhMGI4YTFjNTViZDdmNjcwNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWRiZTgxZDk3NDRjNTczNWViMzhlNDUxZDdlNDIyMTkzNTAwM2VjZTM4NTA4ZTM3ZjRhZGVkNWQ2ZWM0MTNlNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5059f41099fd4cd5b691ed16a2b5a642",
+      "statement": "O script de prerender substitui o <script type=\"module\"> original por um loader diferido que injeta o bundle após window.load + 150ms, priorizando FCP/LCP do conteúdo SSG",
+      "evidence": [
+        {
+          "resource": "repo://scripts/prerender.mjs#L38-L55",
+          "version": "repo-lines-v1:sha256:86259e4a9934814eda38fd50465bea5ee68f6cde059e254657b50aad130134a1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI2NzkyZGM5ZjUyYmRjMWZjNTViNjg3ZjYwZjc2YjVjZWI0ZWZlZWJlYThkMzY0ZDQyMTYzNzhjM2VlZmY0OWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxZGYzN2EzODdkMjMzODYxZWUyMmVjODkwNTc4OGUzYTkxZGRhYzhiZDM5NWM1OTFjZWVkNmJjNTdkYjAwYWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIwNTdiODMxNTQ5N2FmMmQ0MTI2ZGYxN2YwMzZkMjMzNzY2MjhjODQ2NmExNTk4NzE5YjExYjE2YzhhZDI1MzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIwMGIxMWVhMmY5ZWIzNjZmNDUxNGJmODI4NDI4MzQ2ZDRhZmJhOWE2MzU1YTczNzQ1ZDE5MGI4N2QyOTRkMzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9619a88c0b8f4f09bd16b81799e99159",
+      "statement": "O cliente usa createRoot (não hydrateRoot) para montar o React sobre o HTML pré-renderizado, evitando mismatch de hidratação causado por diferenças de locale entre SSR e cliente",
+      "evidence": [
+        {
+          "resource": "repo://src/main.tsx#L1-L7",
+          "version": "repo-lines-v1:sha256:c6aeb4888ef6d507751d85c00a4a0d3668bff8829c0fb887c43868bf416c8271:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTkxYmY5YTNmNmRiYjQ0NmM3ZjYwOTljNTNiNGVhMTNlOTViOGE4ZDhkN2ZmNDI3NTFhN2JiMmUzOGQwZmM2MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2FkMTUzZjlmMGZhNjcwODBkMjZjNGQ2YWRhZWZmOTlmOTQ2ZGMwZmJmYTM2NDA5YTZiOTc4ZjIxMDdhZWVkNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_db79f55d69fc4657ac68bb232cd8b6dc",
+      "statement": "Todas as seções exceto HeroSection são carregadas via React.lazy, gerando chunks separados no build para reduzir o bundle crítico",
+      "evidence": [
+        {
+          "resource": "repo://src/App.tsx#L8-L22",
+          "version": "repo-lines-v1:sha256:0617e4e006a6c763cd58401180afc75720e2fcf9be5f7f9c775620b23f4ecac0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ5OTY3ZWMxZWQzODM2ZjhlYjE3YWZmMTcyYjViZmVmN2RlNjA0ODVhNDM5YzZjYTExYzU5MWUxNzU1NzM5YWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyZTAwMjJhZmNhZTA0NGQyMGEyZGUyOGIyNDkyMjQ3YWFjZmFiZmJiODRhNWQ4YmEwNzJmZjRmNjVjNjRlYzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVkYWRiZDExMWFhMGI5OWY4MzZiNjlhNjM3NDcyNDAyYzRhMTg4MWQwYmVkZTk5MDMxNTk1YmNmNmU1MDJiNzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8bd7d17f819a4d38bb156e2c069b03b2",
+      "statement": "LazyMont usa IntersectionObserver com rootMargin de 400px para montar filhos apenas quando a seção se aproxima do viewport; fallback para renderização imediata se IntersectionObserver não existir",
+      "evidence": [
+        {
+          "resource": "repo://src/components/LazyMount.tsx#L1-L32",
+          "version": "repo-lines-v1:sha256:dbce16381d2d35ec3afe6ac8618660cf90b856eecab216a801b2ab5eb9c11f29:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0MWIyNjE1YTQ1ZmVlZDc5MDc0NDRlMzA3YTIyYmRjYzRhZjIxZDQzNjJkNWMzMTgyMzAxMmE4ZmQ1MTc0MGYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxMGIzNmFhNzRhNTliY2Y0YTg4MTg1ODM3ZjY1OGFmYWYzNjQ2ZWZmMmJiMTZjMzkyOGQwZTkzMzVlOTQ1ZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bab6f03c7db041da9f442ce28286e8b2",
+      "statement": "Sparklines em ImpactSection usam SVG puro em vez de recharts, eliminando ~376kB do bundle",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ImpactSection.tsx",
+          "version": "repo-file-v1:sha256:d1ada03ca7cd1f597ff66164610bd384947fd3a072782675d83a9d530570ce5d"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

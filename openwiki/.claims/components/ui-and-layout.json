@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:907b66d028302877c363e9d445d66980c848f22efdfe5e252100297f784c1539",
+  "claims": [
+    {
+      "id": "claim_eccf848fea2a4516b24daddc10dedfd6",
+      "statement": "Layout envolve todas as seções com sidebar fixa (72px/288px no desktop), conteúdo centralizado em max-w-3xl, backdrop decorativo (grid + blobs de cor) e gradientes de fade nas bordas",
+      "evidence": [
+        {
+          "resource": "repo://src/components/Layout.tsx#L1-L37",
+          "version": "repo-lines-v1:sha256:9117bb6e6547ecee71389b3b7114b5260954119c101bf43193682de267910574:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzMWNiODk2YzE1NzYzNDhkOWZlOTMzMThkNjY0YTIwZDM4NDliZTZkODM4ZjZlYTUxZGExZjlhNTVhZTBjNWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1ZWYwMWJjMDhkYmMzYjYzZTRlNzVlYTNkMjZhNWI5NDE4OTE4NzdlMjdhZDg5MTMyOWM4NDExZDdkOGRjNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxMGIzNmFhNzRhNTliY2Y0YTg4MTg1ODM3ZjY1OGFmYWYzNjQ2ZWZmMmJiMTZjMzkyOGQwZTkzMzVlOTQ1ZDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e944f355225843b9a50d3e8afa53420a",
+      "statement": "A sidebar detecta a seção ativa via IntersectionObserver com rootMargin '-45% 0px -50% 0px', observando os IDs about, impact, experience, skills, case-study e contact",
+      "evidence": [
+        {
+          "resource": "repo://src/components/Sidebar.tsx#L150-L170",
+          "version": "repo-lines-v1:sha256:ccf60c102e9ff5d81cd7d4563cffb6a17a062d6c37d788c9bea6d4fd17862da4:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyYTdlNzNkMjhjYWE2YjhkMGY0YjgwOGNlYWUyNjI4OTM1MWViZGQ0YzI3ZDQ1ODE3ZGZhZmZlNTczYzM1ZGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ1YTM4OTYyNGE3NTkzMTI0NmM5MjE2MDk3YjBhMzc2MDNkYWE0ZDYzMzFlYjUzMzUzZTU5MmU5YTk0MTU5YWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhhYmI1YzJlM2Q3MjQ4ZGYwYjQ5NDUzMDNlMDdlZjEwYTc2NjI2ZjI0NzMwNDBmOGQyY2EyMjUyOTgyNDk5N2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU5NzhjYjE4ZTQ1YTA5MjJkZWYwMjM5NzQ4YjJmODZiZjQzZTJjY2YwMGI0Y2I4ODgyNjdkMTU4YTk5ODJmYWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6e44b278a48a4adf9fca3fa4abcf7792",
+      "statement": "No mobile, a sidebar vira um drawer lateral com overlay escuro e backdrop-blur, com scroll lock no body via document.body.style.overflow",
+      "evidence": [
+        {
+          "resource": "repo://src/components/Sidebar.tsx#L175-L230",
+          "version": "repo-lines-v1:sha256:b4db781eebf83edcc47154428510404c66c9109694f5ac28dbe35801c0d7c2a5:eyJzZWxlY3RlZExpbmVDb3VudCI6NTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE1NDZhYWIyY2JhNzQ3MTA0MDI4YjAyMDUzOTgyYTdiYjRiNDdjOGY1NDg5NGI3NmJkZDJmYTk2N2RjODU1ZGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBiNDBlZmE4YWNkZTU2YzljMWMyY2I0ZTQ0Y2NiMzIyNWYwZjg5ODdmZTY4N2Y4NzdjYjRmMzNkMDk1MWYyZWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQzYWMyNGJkOThmMzJkYjFmZTg2YTkwOWVjZWUwNjQ3M2UwNGYxNzRkMDgxMWY2YjIxMTQ3MGViYmM1NzFlNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhOGJkNzk3ZGU1MjYxYTgwMWU1YzExZGZlOWE1Y2I1NjI4N2UwZjU2ZGZiMjE0ODE3NDE2MTI5N2I0YzcxYjcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1e37df8c98f340a1966fe3a09794c6ed",
+      "statement": "FlagBR e FlagUS são bandeiras SVG inline usadas no seletor de idioma da sidebar, com role=img e aria-label para acessibilidade",
+      "evidence": [
+        {
+          "resource": "repo://src/components/FlagIcons.tsx#L1-L45",
+          "version": "repo-lines-v1:sha256:cfb8f8cbb94c6743f8a6eed6230227ce00f100d594e95cfe74b8b5c9c57d51ae:eyJzZWxlY3RlZExpbmVDb3VudCI6NDUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2NTVjNmRmMjhjMmFjZTQ1N2Q1MmZiZjNjMTA0ZDU3MGY4MjI0MDVkZjhjYTJhMjhjY2JmMTQ4Y2JiMTE3NDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1ZWYwMWJjMDhkYmMzYjYzZTRlNzVlYTNkMjZhNWI5NDE4OTE4NzdlMjdhZDg5MTMyOWM4NDExZDdkOGRjNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxMGIzNmFhNzRhNTliY2Y0YTg4MTg1ODM3ZjY1OGFmYWYzNjQ2ZWZmMmJiMTZjMzkyOGQwZTkzMzVlOTQ1ZDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4ff6b1fcbb5e46c4bd4e874a7ae6dec3",
+      "statement": "Componentes shadcn/ui (button, dialog, input, label, separator, sheet, skeleton, toggle) são gerados pelo CLI do shadcn e não devem ser editados diretamente",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ui/button.tsx",
+          "version": "repo-file-v1:sha256:e99cea037ad1d3165b0b7263a1212a61a18f1abe79fa7fd827390f322c0c0b3c"
+        },
+        {
+          "resource": "repo://src/components/ui/sheet.tsx",
+          "version": "repo-file-v1:sha256:a11720ac7cc2744bf04316f53459f43d6eefe52d45cc405d123d31c5e1c6cf45"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

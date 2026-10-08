@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:6f2d6c5113ebf377882cced660cc565118bf01407099f9dbfa88d2ef5ea4dd1c",
+  "claims": [
+    {
+      "id": "claim_ba3d2899b4b44546b407177066035ad2",
+      "statement": "defineHandler e useRuntimeConfig vêm de nitro; todos os helpers HTTP vêm de nitro/h3, NUNCA de h3 diretamente",
+      "evidence": [
+        {
+          "resource": "repo://AI_RULES.md#L35-L42",
+          "version": "repo-lines-v1:sha256:00985bf4f654d7226f264d9243c65c757df325d73110fdec08c2d7a1583d401b:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjQyYmJkZDI4NjE3MzZiNzEyZTNkYzA3YTJkZjFmMWU2YzllNzhmYzQ2NWM3MmQ5YmVmNTY3NjVjYzM4ZTc2ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDJkOTcxNjMwOWVlN2EyOTEzZGFjZjE1MThkZGM2Zjc2ZDdiOTE5NGFkYWE2ZTk2NDNjN2IyMGYxMzJhNzAxMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiODhiZWYwYTU0NmE3MjY1NzA0MTMxNjQ4NjgzZDNiNzJkMmI5ZTgyYWQ5ZTA1NTM2NTY5MTA4ZTA3ZTY5ZGY3OCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzQxODc5N2UxNjhiYjU5N2Y5NGE5YzdiN2QyYTFmMTU4YjU0MzMyMzdhOWUxYjcwNzFiZTJhNDIzOGU0YTU1MyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ddbcf8a092a14955b7424a8d078d1fb5",
+      "statement": "contact.post.ts define handler POST que recebe body com name, email, message e recaptchaToken",
+      "evidence": [
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L1-L5",
+          "version": "repo-lines-v1:sha256:e672d97cac9d0fab4eb692b1698818df9ebd9c20e0dfa8ab252af245390d8bcf:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTBlZTI5YjJjNDMwOWQzMDI4MTY5OGU1YWQ2NTFjNWY5ZDE3ODRlZTU0MzBjYTRiYTc2MTZiOGNiY2Q4YzcyOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNmQ3NjcxOTIwZGUyYWUwNjE4M2JhNzEyMDZiYzVjOGZiNDJkODQ2ZmNlOTY3ZjQwNzI0NDdhNzY4NDExZDJiMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjU1MzY1MTkyNjk3NTA4YWJmMDkxOWJiMjRkOGQwY2Y3YTRiODE2MmYzZmI5Zjk5MDQzMmQxNzE5NGQ3NGQ0YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d3fd159ec2e545f49dd1de9736e97b89",
+      "statement": "Verificação reCAPTCHA v3 com POST a google.com/recaptcha/api/siteverify, score mínimo 0.3 (dev) ou 0.5 (prod), action deve ser 'contact'",
+      "evidence": [
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L10-L20",
+          "version": "repo-lines-v1:sha256:5955ed3d0df9665da722a5db2d66040ad7ca14369c1d7780f315531f08ea4087:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM1M2E3OGNjNTA0MDNhMzhiY2YzMmI0NGQzNTMxMWI3MDA3ZjA2ZDA5NzE4N2FlYjQwZWEwZGUyZTBlZTA3MjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3NWM4OWZmYThkY2Y0NTRlMmQ0ZjM1OTM5YzYzMDBiZTVmODZkOGNlYmE1NGNiMzM0ZDJkY2Q3Yjc5OTJiZWEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_07f27dbbd6a1432480fa4f3391435121",
+      "statement": "Persistência no Supabase via POST a /rest/v1/contact_messages usando service role key (bypassa RLS) com fallback para anon key",
+      "evidence": [
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L25-L35",
+          "version": "repo-lines-v1:sha256:ec45dda0ce81c8693384846f2f97da930f7766fc65ca445f1a02b1ba9b710b8e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkM2QwMmZmMThmMmI1ZTQ1YTk3NTQxM2U2MmU4MzFlYzU0ZjY0Mzk0ZmViYTFiYTBmZTQyZTIyM2RiOGY2NGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM5NTVmNTU4ZGYzNDRkODNjYzIwZTZlODcxZWU4M2U2ZWZhMGI1N2Y3YmE4M2U5M2NkYTNkNzI3YjUxMTEyNGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY4NzhkMjIwYzczOTM4Y2MxOTgzZTMzZGE5MjU1NzU3OTlkY2VjMGU4ZjY5NzljNzM0ZDMxMjU1ZDY3ZmY3MDYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d8bb6adfff77473f83d8723964fd6695",
+      "statement": "hello.ts é rota GET de exemplo que retorna JSON com mensagem de boas-vindas",
+      "evidence": [
+        {
+          "resource": "repo://server/routes/api/hello.ts#L1-L5",
+          "version": "repo-lines-v1:sha256:41316ec0e50819539da8d46cb1569349afb7b7557ab7f56d05845d5c9092ccbf:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2ZkY2M0YmY1ZjhhMDRhMzk3YTVjYzY3OTA0YzVhYmU5MTA0MDI1ZDdmYmIyZDE2YzMzOTM3Njk5MTI0OGRkNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjk1NzZiNTRlMjU1ZTNjOTQ4ZWVhNWI1OTA0ZmEzOGI4MTY4MmZkZDNjYmQ5YWU4NDFmZjBlN2JkODBkMzk0YyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}
