@@ -193,10 +193,10 @@ export function ContactSection() {
             />
           </div>
           <Button type="submit" disabled={sending} className="w-full">
-            {sending ? 'Enviando...' : t.contact.submit}
+            {sending ? t.contact.sending : t.contact.submit}
           </Button>
-          {status === 'success' && <p role="status" className="text-sm text-emerald-400">Mensagem enviada com sucesso.</p>}
-          {status === 'error' && <p role="alert" className="text-sm text-destructive">Não foi possível enviar. Configure o Supabase ou tente por e-mail.</p>}
+          {status === 'success' && <p role="status" className="text-sm text-emerald-400">{t.contact.success}</p>}
+          {status === 'error' && <p role="alert" className="text-sm text-destructive">{t.contact.error}</p>}
         </form>
       </div>
     </section>

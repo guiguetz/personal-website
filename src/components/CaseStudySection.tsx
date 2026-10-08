@@ -76,13 +76,6 @@ export function CaseStudySection() {
             </span>
           ))}
         </div>
-
-        <div className="relative mt-6">
-          <Button variant="outline" className="group w-full gap-2 sm:w-auto">
-            {t.caseStudy.cta}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-        </div>
       </div>
     </section>
   );

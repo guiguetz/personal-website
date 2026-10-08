@@ -199,10 +199,13 @@ const pt = {
     emailPlaceholder: 'seu@email.com',
     messagePlaceholder: 'Como posso ajudar?',
     submit: 'Enviar mensagem',
+    sending: 'Enviando…',
+    success: 'Mensagem enviada com sucesso.',
+    error: 'Não foi possível enviar a mensagem. Tente novamente ou entre em contato por e-mail.',
   },
   footer: {
     builtWith:
-      'Construído com React, TypeScript, Tailwind CSS e Framer Motion.',
+      'Construído com React, TypeScript, Tailwind CSS e animações CSS.',
     rights: 'Todos os direitos reservados.',
   },
 };
@@ -402,10 +405,13 @@ const en: Dictionary = {
     emailPlaceholder: 'you@email.com',
     messagePlaceholder: 'How can I help?',
     submit: 'Send message',
+    sending: 'Sending…',
+    success: 'Message sent successfully.',
+    error: 'Could not send the message. Please try again or contact me via email.',
   },
   footer: {
     builtWith:
-      'Built with React, TypeScript, Tailwind CSS and Framer Motion.',
+      'Built with React, TypeScript, Tailwind CSS and CSS animations.',
     rights: 'All rights reserved.',
   },
 };

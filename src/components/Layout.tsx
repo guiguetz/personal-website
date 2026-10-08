@@ -8,6 +8,13 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Skip to content link for keyboard users */}
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[100] -translate-y-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+      >
+        Pular para o conteúdo
+      </a>
       {/* Grid + ambient glow backdrop */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-[0.4] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,black,transparent)]" />
@@ -18,7 +25,7 @@ export function Layout({ children }: LayoutProps) {
 
       <Sidebar />
 
-      <main className="lg:pl-72">
+      <main id="main-content" className="lg:pl-72">
         <div className="mx-auto max-w-3xl px-6 pb-20 pt-16 sm:px-8 lg:px-12 lg:pt-16">
           {children}
         </div>

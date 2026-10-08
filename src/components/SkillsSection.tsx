@@ -31,7 +31,7 @@ export function SkillsSection() {
 
       <div
         ref={ref}
-        className={`reveal-children grid gap-4 sm:grid-cols-2 ${shown ? 'reveal-shown' : ''}`}
+        className={`reveal-children grid gap-3 sm:grid-cols-2 ${shown ? 'reveal-shown' : ''}`}
       >
         {t.skills.categories.map((cat, index) => {
           const CategoryIcon = categoryIcons[index] ?? Code2;
@@ -39,40 +39,33 @@ export function SkillsSection() {
           return (
             <div
               key={index}
-              className="panel panel-interactive group relative overflow-hidden rounded-2xl p-5"
+              className="panel panel-interactive group relative overflow-hidden rounded-2xl p-4"
             >
               <div
                 aria-hidden
                 className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
               />
 
-              {/* Category header */}
+              {/* Category header with primary skill inline */}
               <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-secondary text-muted-foreground transition-colors group-hover:bg-primary/15 group-hover:text-primary">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors group-hover:bg-primary/15 group-hover:text-primary">
                   <CategoryIcon className="h-4 w-4" />
                 </span>
-                <h3 className="text-sm font-semibold">{cat.category}</h3>
-              </div>
-
-              {/* Main highlight */}
-              <div className="mt-4 flex items-center gap-3 rounded-xl border border-primary/25 bg-primary/10 px-3 py-2.5">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm shadow-primary/30">
-                  <MainIcon className="h-4 w-4" />
-                </span>
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold leading-tight">{cat.main}</p>
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-primary/80">
-                    {t.skills.primaryLabel}
+                  <h3 className="text-sm font-semibold">{cat.category}</h3>
+                  <p className="flex items-center gap-1.5 text-xs text-primary">
+                    <MainIcon className="h-3 w-3" />
+                    {cat.main}
                   </p>
                 </div>
               </div>
 
               {/* Secondary items */}
-              <div className="mt-4 flex flex-wrap gap-1.5">
+              <div className="mt-3 flex flex-wrap gap-1.5">
                 {cat.items.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-lg border border-border bg-secondary px-2.5 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                    className="rounded-md border border-border bg-secondary px-2 py-0.5 font-mono text-[11px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
                   >
                     {skill}
                   </span>
