@@ -11,7 +11,7 @@ export function Layout({ children }: LayoutProps) {
       {/* Skip to content link for keyboard users */}
       <a
         href="#main-content"
-        className="fixed left-4 top-4 z-[100] -translate-y-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        className="fixed left-4 top-2 z-[100] -translate-y-20 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground opacity-0 shadow-lg transition-all focus:translate-y-0 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
       >
         Pular para o conteúdo
       </a>
@@ -34,7 +34,7 @@ export function Layout({ children }: LayoutProps) {
       {/* Soft fade at the top/bottom edges of the scrollable content. */}
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-x-0 top-[60px] z-30 h-16 bg-gradient-to-b from-background via-background/80 to-transparent lg:left-72 lg:top-0"
+        className="pointer-events-none fixed inset-x-0 top-[60px] z-20 h-16 bg-gradient-to-b from-background via-background/80 to-transparent lg:left-72 lg:top-0"
       />
       <div
         aria-hidden

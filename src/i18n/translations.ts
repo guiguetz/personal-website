@@ -8,7 +8,7 @@ const pt = {
     closeMenu: 'Fechar menu',
   },
   sidebar: {
-    role: 'Front-end / Mobile Sênior',
+    role: 'Front-end / Mobile Sênior @ Trix Investimentos',
     tagline: 'Construo produtos financeiros e logísticos usados por milhões de pessoas.',
     location: 'São Vicente, SP · Remoto',
     download: 'Baixar currículo',
@@ -22,7 +22,7 @@ const pt = {
     contact: 'Contato',
   },
   hero: {
-    availability: 'Disponível para oportunidades',
+    availability: 'Na Trix Investimentos',
     titleLine1: 'Construo produtos digitais',
     titleLine2: 'usados por milhões',
     paragraph:
@@ -220,7 +220,7 @@ const en: Dictionary = {
     closeMenu: 'Close menu',
   },
   sidebar: {
-    role: 'Senior Front-end / Mobile Engineer',
+    role: 'Senior Front-end / Mobile Engineer @ Trix Investimentos',
     tagline: 'I build financial and logistics products used by millions of people.',
     location: 'São Vicente, SP · Remote',
     download: 'Download résumé',
@@ -234,7 +234,7 @@ const en: Dictionary = {
     contact: 'Contact',
   },
   hero: {
-    availability: 'Open to opportunities',
+    availability: 'At Trix Investimentos',
     titleLine1: 'I build digital products',
     titleLine2: 'used by millions',
     paragraph:
