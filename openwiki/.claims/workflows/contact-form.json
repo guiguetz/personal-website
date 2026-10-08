@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:ea8a858149000728223550203e98b5ef5ecc580caf883c6ea0b6af58cdbaba1e",
+  "claims": [
+    {
+      "id": "claim_e50158c89a1643988305414a91c305fb",
+      "statement": "IntersectionObserver na seção #contact com threshold 0.15 carrega reCAPTCHA lazy e controla badge visibility via classes recaptcha-visible/recaptcha-exiting no body",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ContactSection.tsx#L56-L68",
+          "version": "repo-lines-v1:sha256:072522ef8c4fae628df26007fabfd4850990f8a515c434893731d8fde090ab0a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5NjZmYmZhODg5OThkYTc0NjU2YzUwMTk0OTU2YzI1ZjA4NDk0NTc2NjBjMDA5ZmU2M2QxZTlmYTlkYzkzMWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlNjQ1ZDM1YmIyMmI4NWZlNzMzNzliNzI5MmU1YTFkMGVhYzVjZjczNTM2YjhiYzdlN2M0NDkxYzJmZWU4OGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjNjc5Y2E2NWNkM2ZhMGIzNDQ3M2UwYjQ5MTczY2Q5MDJkZDJlM2NkODI4M2JkZTg1Y2RkYTZmYjEzMDZiZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ2NGQyNjEzNzQwNDc2NGY1M2UxYWIzZGUwNjkzOGRiZjZkOWNhNmRkYjFmZGE2MTJhMTg0ZWMwMzk2NWFiMGIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_606bd3ffe8ca489bb905b982f633cac8",
+      "statement": "loadRecaptcha() injeta script assíncrono com data-recaptcha='true' no head, idempotente — verifica se já existe",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ContactSection.tsx#L22-L27",
+          "version": "repo-lines-v1:sha256:f89d49a353b0eea990e1867df268b9b28ba34cc2cd27792007d3d13602197cfa:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZThhNzNhMjgwNjllZDdkZmVjODk3OTgzOGQ1MWUxNmU3MzAzNzJmOWNjYjc0MmE1YjE5NjY3NTIyM2E2OWE4OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMjIzMDIyYjYyMmY2MDg2MDQzNWEwNzRhOTBjMmFkM2JkYzA5Zjk2YWMwODE0NGUzNDJiZjc2YWY3ZTRjNjM5YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmQwZjJkM2EzYWFkYTI3NTg2NDU3OGQwYTQzOTE1NjM4ZDU0M2ZlY2EyYzk0ODU4ZGI5NDEyMTFlODZjZWYyYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_9d515ef8739448aeba5ef771b21219c4",
+      "statement": "getRecaptchaToken() chama grecaptcha.ready() + execute(siteKey, { action: 'contact' }) e retorna Promise<string>",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ContactSection.tsx#L29-L35",
+          "version": "repo-lines-v1:sha256:71ba0dec4b312662e73e2e9cba6cb1ef85d4b5b4a5a4c8bd437cbb9a11fbd274:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDEyY2EzNDVjY2Y3NWJmOWMwODA2YmNlNjk1YmU4ZGU4MDhiNzk5ODQyNTFhN2E1NGQyMDJjZjYxMDFkZDQ1MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2JhNTY0OGMxYzUxNmIzYjI3ODNjMzc2MjcwMWY5ZjBjZjNhY2JhNGE3NGRhMTNiYTE0ZDg5MWRlYzZmNjA2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDc0ZGNlODJiMTg3NDYyYTdlNDM1ZWRhNTMxZmU5NzY2YTk5NzBjMmU5ODk3YjkzZWM4YzVkMjQ3NTI0ZGUzNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjc2MGE2MTBhNTYwM2NmNjQyMjY2ZTQ5ODcyOTE5NzIwMGQyZGQzMDJjNmYxNWRlOTBmZDFjYjlhYzU4ZjAxMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f89b7a6c5b9946f9b236efad69077bdb",
+      "statement": "handleSubmit: form FormData → fetch POST /api/contact com JSON {name, email, message, recaptchaToken}, setStatus('success') ou 'error', finally setSending(false)",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ContactSection.tsx#L70-L87",
+          "version": "repo-lines-v1:sha256:22456a435fdc2a09ebd1d97b597bd96d72ba960551e293eadd3600033c99fb6d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU3ZWFlN2MwMDFjZDFkZjc4NWZhMmNhMGY3Y2I4ZmExZGFjMWJlMjc3OWQzZDhkZWViMTVlN2Y1YWY5OWVmMTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU0Mjg5YTU2MWNiNzRhODgwOTYxYmI1NmQxMGMwMWY5OWZiYjRiZGZhMjhjYjM4M2U2MzZjOTlkNzQyODgxNzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU0YTg2YjdjOTJkNWMzNDk1ODE1M2Y3ZTY5YWIzZjNhZTUxMmNhNzRkYjNhMmUzYTQ1Mzk4ZTRhOWM0MmQ3YzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUyNDMxYTc1YWIxMGFhYzAyOWQ0NzlmZjU1ZGM0ZjFmNTM1NjAyNGRkNDA4NTMwNzFmMzNjNTFlZjdlODk3NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_03b5049afd6e4e87beb1dc64ec674976",
+      "statement": "Servidor verifica reCAPTCHA via POST a google siteverify, score mínimo 0.3 (dev) ou 0.5 (prod), action === 'contact'",
+      "evidence": [
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L10-L20",
+          "version": "repo-lines-v1:sha256:5955ed3d0df9665da722a5db2d66040ad7ca14369c1d7780f315531f08ea4087:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3ZTU3ODhkNWQ5ZDczZDI0YTgxZGJjMGE1YTc0YmZhODJjOWMzYjNhZjk5ZTUyYWY3OTZlOTBiNDY4YThhM2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM1M2E3OGNjNTA0MDNhMzhiY2YzMmI0NGQzNTMxMWI3MDA3ZjA2ZDA5NzE4N2FlYjQwZWEwZGUyZTBlZTA3MjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3NWM4OWZmYThkY2Y0NTRlMmQ0ZjM1OTM5YzYzMDBiZTVmODZkOGNlYmE1NGNiMzM0ZDJkY2Q3Yjc5OTJiZWEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_28b9bb1ae743488084b63ef1363cdb59",
+      "statement": "Persistência via POST a Supabase REST /rest/v1/contact_messages com service role key, fallback para anon key",
+      "evidence": [
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L25-L35",
+          "version": "repo-lines-v1:sha256:ec45dda0ce81c8693384846f2f97da930f7766fc65ca445f1a02b1ba9b710b8e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkM2QwMmZmMThmMmI1ZTQ1YTk3NTQxM2U2MmU4MzFlYzU0ZjY0Mzk0ZmViYTFiYTBmZTQyZTIyM2RiOGY2NGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM5NTVmNTU4ZGYzNDRkODNjYzIwZTZlODcxZWU4M2U2ZWZhMGI1N2Y3YmE4M2U5M2NkYTNkNzI3YjUxMTEyNGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY4NzhkMjIwYzczOTM4Y2MxOTgzZTMzZGE5MjU1NzU3OTlkY2VjMGU4ZjY5NzljNzM0ZDMxMjU1ZDY3ZmY3MDYifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

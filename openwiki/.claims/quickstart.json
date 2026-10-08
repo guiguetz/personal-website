@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:98713b279812911fd32e853ec04da404fbc40e22fb87f1283118aa83fb8bf9db",
+  "claims": [
+    {
+      "id": "claim_3a78c318a1ac47cf80052abfd346332a",
+      "statement": "Variáveis de ambiente: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, VITE_RECAPTCHA_SITE_KEY, RECAPTCHA_SECRET_KEY. Variáveis sem prefixo VITE_ são servidor-only",
+      "evidence": [
+        {
+          "resource": "repo://.env.example#L1-L9",
+          "version": "repo-lines-v1:sha256:3219f33d996ac41401f12b792ee91cc127b22c665ffc5ca8c8e29c2d013d2922:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGYxY2EwZDNhZTRjMGI3OGZmODkyYzY1NWFiOGY3ZWE5YTQzZjQwNjY1OWRjMWUwNGFkZjRiOThkZGVlYTJjNyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZmJjNTNmZDZlOTBkYjViMTZjNzczYzIwZmM1MWViMjMyYTU2M2VlNWVjYTk4YzQxOGI0NjFhZTFhMmZjYmNkYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWFmNDRhMTUyNmMxZmQ4MTFjM2IyNjNlOTA3OGE5ZjgyZGYzZjdiOWE4ZjY1M2E4YThhODljYzQ5NTZkYmJhYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_4811c3143bbb41508186b6fa6755c852",
+      "statement": "Pré-requisitos: Node.js 20+ (recomendado 22) e npm. Scripts: dev, build (vite + prerender), preview, lint, size, test:visual, test:visual:ref, test:visual:approve",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L51-L63",
+          "version": "repo-lines-v1:sha256:44bd821da5d744ebbfb9f3ea5f56f2bf2c066d08e068d7bedde6d79912ef2ee4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3YzA2YzU2MWQ1YzMyNzM0MzY4NTI2OGE0NmIzMzkxZjM5OThlZWU4OTBkMmJlNTFmMGQyMWNjNGE1M2FlNmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkxNzk4Y2QyYTgwOTI1YmNiNjhiNDg0MjI1NzRjOTA3YTczMGI2YzVlZjViNjU4M2ZiNGZhMmNhY2ZkMTRmNGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVhYjg4NWVlZDkzYTQ2Zjg5MGZhYzk5MmQ2NmRhZjg2YTQwZDBiMmJmOTcwYmFmNjVlZDdhNDQxODI1YTg0OTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFhMWFiOTJmNzU3ZDllM2ZiMjYxZDliNjY4MjcyNDc2OGJiYTIzZTgzYzEyNjA4NmQ2MGEwOTA4YzQ5ZTAxYjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_083e21fd21964ba780c8ed033ee3577c",
+      "statement": "Estrutura: public/ (assets estáticos), scripts/prerender.mjs (SSG), server/routes/api/ (Nitro), src/ (components, hooks, i18n, lib), supabase/ (schema+seeds), backstop.json (visual regression)",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L35-L48",
+          "version": "repo-lines-v1:sha256:25f036e93460a39db051d4f900c812287f81ba7e7c8f9c99b9f55761c23a12e0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3YzA2YzU2MWQ1YzMyNzM0MzY4NTI2OGE0NmIzMzkxZjM5OThlZWU4OTBkMmJlNTFmMGQyMWNjNGE1M2FlNmQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRlMWQ4MTIyZThmODk3MjQ5YjVhMTJhYWYyOWMwZWRiMDNhNWUyNzc1YjEzMGU1ZTY4NzA3Njk4NzFhZTQ0NGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjZDZkMDdiODg0Mjc2ZGE4NmE3MDU1ZGVlMDE1NjIxZWIyZDIwMGM3ZWVhMjk4ZGM4ZTAyMjg2MDQ1ZDU5MTkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA4YTE5ZGYyYmM1YmUxN2I1NzFlNTcwNjliNzdlYjhiZWI2Nzc5MTQ5MzM4ZmZkMGQ5OWYyYTg5ZTM3ZDk4ZDgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b2cd0ced0d9d48fb9a44cd135551b735",
+      "statement": "npm run build gera build Vite + executa scripts/prerender.mjs para SSG. Seções abaixo da dobra usam React.lazy + LazyMount para carregar na viewport",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L65-L75",
+          "version": "repo-lines-v1:sha256:1212311a5595913e2b5c9da861447be5bc06e5d4e94c6fe8f79a4fe545756739:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ZTQzNmQyYmFiZDYzOGFkZTg2NzkxZTE2MmU3ZGU1YTZiMWIzMTI4YzZhZTllZDkzNTA0ZmJmM2M1M2RjOTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM4MjdhNDk2M2IzNzgxMTkyZTZkZTAyMmZlM2UzZjQ2MDkyMzhjY2I2ZmUwMTdmNmM1MWY4NGE0MDBmNGZlNDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1YmE1MDc5OWUzZTk0OTBlN2E5YjA5MTY2MWQ5MzA5YWVmMzEzMDE4ZDYwMzMzZWFmMmIwMjI2Njg4YjlmNGEifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

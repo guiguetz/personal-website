@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:497d1fcbfe84e5100c7dbae3808518d8bf79c7a9d0bdb9108f25eef284687ac4",
+  "claims": [
+    {
+      "id": "claim_a2f8a99fc5044621ba3992f801f9112f",
+      "statement": "Tailwind CSS 3 com darkMode: ['class'], content inclui ./src/** e plugin tailwindcss-animate",
+      "evidence": [
+        {
+          "resource": "repo://tailwind.config.ts#L1-L15",
+          "version": "repo-lines-v1:sha256:36964304796feab06acf6f5951b6606c88675e0ac7c4d143f3a9209a7917efff:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4MDgzNTliMjgyYzFkODM1OWE1MjNmZGFkN2ExMTQ0N2MzZDJhMGVlNTI0MDkyYzAzYmEzNTcxMDI2ODk0ODIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyODY1MTZiMzZiMmI5Yzc5ZjQ1NjhhZGMyNjE2MjFmYmUwNzFiZTYzMmU4NTM0MzlhYmFkNzcyZjA1YmE4YWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI2OTJlYTUzMDU2OGM4OWVjOTRlNjJjNzI0Zjg2YTM0NWYyN2FmNTU4MDNkNTllNTdjM2MxNTQ5MmRlNmE1OTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1a1bdbca775d44c1ab8a6032ffaa4e85",
+      "statement": "Cores Tailwind mapeiam CSS custom properties HSL (--background, --foreground, --primary, --secondary, etc.) via hsl(var(--name))",
+      "evidence": [
+        {
+          "resource": "repo://tailwind.config.ts#L16-L30",
+          "version": "repo-lines-v1:sha256:317c0283402fa1b795fb10a55f444d3c5b499003b6eff9acd1076d23f74746a9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1MjFjNTY0ZjYxNmVhMmYxMTg5Zjg2ODcxZGQ3OGQwYmM1NDVkZTBkNDY5ZDg4ZWEyNzQ4ZDA5OTRkODc0MjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllMzI2NmNmOWVmYWJmNjA2Mjk4MGRlNjE4OGI2YWMzMzMwYjAyMTcyZGRlNzg5OTRhOWMzN2ZkZjlkYzhkMzQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY0ODVjYTk2MDk2ZTA5MzU5YTMwNGNjM2M1ZmFkZGI1NjUxNjZlOGJlNTk4YTU1ZTdmNGQ0ZDQxZmI4NTZjOTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY3MDA4OWJhOTVmNjI0OTcyNGUwMDkwZjIzODc3N2JhNzNjNDY0ZWE4YTU3MDU4OTE4ZmU3NjE0NTFiOWNhNGYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d5563613f7894fcd8d1e027740b014f3",
+      "statement": "Tema escuro (:root) define tokens como --background: 222 47% 5%, --primary: 239 92% 75%, --border: 217 33% 20% em HSL",
+      "evidence": [
+        {
+          "resource": "repo://src/globals.css#L31-L55",
+          "version": "repo-lines-v1:sha256:72c6e85648604506f64e4e741987b8a25c23b58ec10b5c04ca0118434c04b77e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjNjE4ZTJiZWE0MDU5ZWRhZGVjOTY2MjE2MWVjOGI1ODk2YWQ4MmYxNGY1Y2RjNjU0NzZiZTg4YTJkYzcyYWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEwYTAxMWI0NTg4ODg1NTE1NTc4M2U5YjIxYTFhNDE0MDY2NDM0YmM0NDRiZjRmMDhiZDFjMjEwMWE4ZmFjM2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiY2YzMWNiMzFiMzQ1MmJhMmMwYmY5MDA1Njg5NDYyN2I4ZjNjYTYxNjNlNzU3MDY5NTNjN2U2NTZjMjVjYjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVlYmZmMzM1MzcyY2U0MWQ3NjRkNTJmMTA1NzdiZGM4YzIyOGNlZjhjYzEzODlkM2RhZDRlNTI5OTk3N2M3YjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_987a8c76c83c4a0f9d4751bad35b1aa8",
+      "statement": "Badge reCAPTCHA oculto por padrão (visibility:hidden, opacity:0) e visível quando body tem classe recaptcha-visible ou recaptcha-exiting",
+      "evidence": [
+        {
+          "resource": "repo://src/globals.css#L1-L29",
+          "version": "repo-lines-v1:sha256:a051b39fc52343a273ab71f7062a33f0589965128044f86d86e51a1eb85e1e4a:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwNjE0MjY0NWJjMzdiMDI2ZWU2ZGVhNWI2NDA2MTVlYzY5ODI5YTE1NDY0YmU2YjU1MjMzNmQxNzU0YzVkZDciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImExMGVjNWQ1NWVkNWNkMWU4YjIyZjRmZWZmOTY3NDNmZGIzNzExZWI2NTBiNzFhZGFlMGU5NWJhYjU4YmQwYzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0e9b5f88e4b34e0284699113fb5a7e82",
+      "statement": "useTheme() gerencia tema escuro/claro com localStorage (chave 'theme'), padrão escuro, toggle via classe .light no documentElement",
+      "evidence": [
+        {
+          "resource": "repo://src/hooks/useTheme.ts#L1-L15",
+          "version": "repo-lines-v1:sha256:8e93197dcead65e3b8ae5ede93dd8070894837a60ea21a7b7d31b605040b2e8f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg4YmFjYTE1YThhYzQyOTZhOTY3OTI2NWM0N2M3MGYwMjg2OGM2MWM2MTUxYjA3ODZmZjY4MGZiODc0MjQwOGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhlMTA2MjUzMDRiMmFhZjAyNTQxMzZlMTVlYzE2Y2RjMTY1NzY0ZWE4ZGIwOGJmN2ZmNWM2NGJlODhkMjY3NTQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUxNmZiNzlmOTc2NDU2MjM4MDFlOTZjNjQwOGM4NmIzNGIzM2E0MTkzMjI5MmNmNTk3YmQwZTI0ZTQxMGE2NDUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

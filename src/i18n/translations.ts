@@ -8,7 +8,7 @@ const pt = {
     closeMenu: 'Fechar menu',
   },
   sidebar: {
-    role: 'Front-end / Mobile Sênior',
+    role: 'Front-end / Mobile Sênior @ Trix Investimentos',
     tagline: 'Construo produtos financeiros e logísticos usados por milhões de pessoas.',
     location: 'São Vicente, SP · Remoto',
     download: 'Baixar currículo',
@@ -22,7 +22,7 @@ const pt = {
     contact: 'Contato',
   },
   hero: {
-    availability: 'Disponível para oportunidades',
+    availability: 'Na Trix Investimentos',
     titleLine1: 'Construo produtos digitais',
     titleLine2: 'usados por milhões',
     paragraph:
@@ -199,10 +199,13 @@ const pt = {
     emailPlaceholder: 'seu@email.com',
     messagePlaceholder: 'Como posso ajudar?',
     submit: 'Enviar mensagem',
+    sending: 'Enviando…',
+    success: 'Mensagem enviada com sucesso.',
+    error: 'Não foi possível enviar a mensagem. Tente novamente ou entre em contato por e-mail.',
   },
   footer: {
     builtWith:
-      'Construído com React, TypeScript, Tailwind CSS e Framer Motion.',
+      'Construído com React, TypeScript, Tailwind CSS e animações CSS.',
     rights: 'Todos os direitos reservados.',
   },
 };
@@ -217,7 +220,7 @@ const en: Dictionary = {
     closeMenu: 'Close menu',
   },
   sidebar: {
-    role: 'Senior Front-end / Mobile Engineer',
+    role: 'Senior Front-end / Mobile Engineer @ Trix Investimentos',
     tagline: 'I build financial and logistics products used by millions of people.',
     location: 'São Vicente, SP · Remote',
     download: 'Download résumé',
@@ -231,7 +234,7 @@ const en: Dictionary = {
     contact: 'Contact',
   },
   hero: {
-    availability: 'Open to opportunities',
+    availability: 'At Trix Investimentos',
     titleLine1: 'I build digital products',
     titleLine2: 'used by millions',
     paragraph:
@@ -402,10 +405,13 @@ const en: Dictionary = {
     emailPlaceholder: 'you@email.com',
     messagePlaceholder: 'How can I help?',
     submit: 'Send message',
+    sending: 'Sending…',
+    success: 'Message sent successfully.',
+    error: 'Could not send the message. Please try again or contact me via email.',
   },
   footer: {
     builtWith:
-      'Built with React, TypeScript, Tailwind CSS and Framer Motion.',
+      'Built with React, TypeScript, Tailwind CSS and CSS animations.',
     rights: 'All rights reserved.',
   },
 };

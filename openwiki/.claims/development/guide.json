@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:6fa66e57a6f1c5a3418c04e14d1f97b18e28e1185fb556255233cd252e7b3193",
+  "claims": [
+    {
+      "id": "claim_78971ec3d7b74a31b163a1d6356330e3",
+      "statement": "Scripts disponíveis: dev (vite), build (vite build + prerender), lint (eslint), preview (vite preview), test:visual/test:visual:ref/test:visual:approve (backstopjs com concurrently + wait-on), size (vite build + size-limit)",
+      "evidence": [
+        {
+          "resource": "repo://package.json#L9-L15",
+          "version": "repo-lines-v1:sha256:cc3cf2c9629d121e967a910fc6d930e086e2de52c8ea104b1849abb4cc902170:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNThhOWM0YWYxNjk0MTIwMThjOThlMzMyMGVkODFkZTEyYjE5NTA4YmMzYTFiNzUzYWY3YjYwMDQ4YTM2N2YwMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2VhY2IxZDNlYjBiYTE5YTkxMzMzNGVlMzQyMWY5M2MzNmE5MzEwZDIwOTlkMThhOGM5MDdmYjJhYmViNDZlOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmYzZTBmZThjODM3ZjQzZjg4YzdmMGM3YTc0NDBjNjM5NmExZWYyMjlmMDc1YzcxODMzNjE1NDZhMjAwYTY1MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzY5NzVjOWJjZDQ0NDNiZTYxMzZmOWRhMjdhM2RjNWU5M2I1MmQ1OWVmNTMyZWExZGIwODk1NDg0NTZiY2FkMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_37a9aadc40814605aeea0310f39bdbc2",
+      "statement": "ESLint usa @eslint/js recommended + typescript-eslint recommended, plugins react-hooks e react-refresh, ignora dist/, e desabilita @typescript-eslint/no-unused-vars",
+      "evidence": [
+        {
+          "resource": "repo://eslint.config.js#L1-L25",
+          "version": "repo-lines-v1:sha256:53eb5fe57172e1e6e9d8c71a48473ec1d6c1291454ef05dedb8d974fa477f59a:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY0ZmUzMjU0ZjRjOTg2NzQwMGY0NGUyMDA1OTVlNTJkNjkxZDIwMDQ2OTQ0OWI5YTc4ZTk4YzI3MzJjZTIzZGYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg5NDE5MTE5Nzk5YTUwNDVmOWY5OTkxY2YxZjkxMGE0OGZjYmNlNDU4MmRlMDE3NmM4MzJhNjRhYmM3ZmYzNmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1MmNiZjc2MWM5ZDEyNDgyMjQ0MjQ1NjJlZWE1ZWRjYTg4MWUyNGE3YjYyMWM5MWY4MDViYWZjNGUxNzVkNTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ba92e4a89a2b4b19b349e08aa07eb9c2",
+      "statement": "Pré-requisitos: Node.js 20+ (recomendado 22) e npm (package-lock.json, não pnpm)",
+      "evidence": [
+        {
+          "resource": "repo://docs/DESENVOLVIMENTO.md#L7-L8",
+          "version": "repo-lines-v1:sha256:55b29b91556eaa80629024ddbdd891b1d9ee8ee2589bfec3ed0ce80a83e86919:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTEyNWEzOWQyMjM4ZjMyMjVmMWIwODVkN2QxNDEzYzk4NTNhY2ZmYjVkMjAwNWU3ZWEzN2M0MzYxYWYwZWY2ZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmYzMTliYmE2NjA4ZmQyZjEzYmJiMjZiOGI1N2Y5M2ZhZGY0NWFkZGI2NDcwMzU5OWYzNTA3ZTFkMjEzODI4YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTczZDY1Y2FjYmFhMDBkZTZlMzE1ZGE5MzYyOGNlMjg5MzRlZmMxZmI3MzZkMzQ4ZTEwYTAyN2JiNDQ2ZmFiYSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_62a2606ebfe84d659d5f1c73e7affc0e",
+      "statement": "Variáveis de ambiente: VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, VITE_RECAPTCHA_SITE_KEY, RECAPTCHA_SECRET_KEY",
+      "evidence": [
+        {
+          "resource": "repo://docs/DESENVOLVIMENTO.md#L27-L33",
+          "version": "repo-lines-v1:sha256:495e707bcdb7426eb3b8f3911eee28438085c93928365e4c7b2036ed9418eaf0:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDdhZjk0ZjNlYTUyYmZmMzczNWRlMDk0NTBhNTgzNWNkY2NhOTY0ZGY2YzMwMGE2ODcwMTQwZDY2ZGJmZjU4OCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTA2ODNjYThhYTYzMTI4NjllZjM5ZGU2N2QwM2E3NWMwOTcyYjJkYWZmNzBjMjBjN2Q5Yzk1Mjc2ZTMzZmU4MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2ZiMWQxZjMxNWNkMmUwNDU0YWY1ZTZhMDZlY2U3YTBlYzU5ZDRkMWE4ZWI5YzIyYmU1ZmJlOTg3NWJlOGUyOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_de88914f26854c6688cb03149b636cac",
+      "statement": "Fluxo de trabalho: criar/editar componentes em src/components com SectionHeading + useReveal, adicionar textos em pt e en em translations.ts, rodar lint e dev, seguir checklist de publicação",
+      "evidence": [
+        {
+          "resource": "repo://docs/DESENVOLVIMENTO.md#L39-L43",
+          "version": "repo-lines-v1:sha256:380cdbb5f7de4f635f693831e61bcc12a5191d55f9d20596a842caa824fda356:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzliNDk0OTAwYjkxYjE5OGU2MmY5NWFlMDlmOThhYTNmZGZkM2IyZjE2NWNlZWI2ZGNhNjZiNGQ0Y2ZjYzg0MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDE2ZGQ4MzY5ZTNiNWM4NzQzMTIwNDNlNmQyZTI1NTM2MzY0ZWMyOTg1YzBmMTI4NWQ0MTY3YWM3Y2E4YjFhMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmE5MmE2MDBmNDhiOGUwNGE5YjRjNzY0ZWNkZTE2YmY3MDMzZjYzYTJkMDdhMjVlNjhjYjg1MzQ3N2QyZGYxMSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOTkxMjI5MWQzMTcxYzc1NWMxMzI0NWRlZGRiYjI5NDA4YmU1MDk1MDc0OWY0YzI2OTMwYTJlMWY3ZGU3NzRlMyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b23282f03aac4b1897cd4fa9d9056733",
+      "statement": "Pitfalls: nitro() como último plugin em vite.config.ts, imports H3 de h3 (convenção atual do projeto), locale inicial em pt para SSR, src/App.css e made-with-dyad.tsx são legado, components.json aponta para index.css inexistente, framer-motion e recharts não usados",
+      "evidence": [
+        {
+          "resource": "repo://docs/DESENVOLVIMENTO.md#L55-L60",
+          "version": "repo-lines-v1:sha256:0c066fd05be46eff6f05bda9c430e525e0f8bdf5cefc4f527971d06c4594f05e:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMmVlM2VmMmM1NzYyZmEyZjI1ZTBiNmI3Y2MwZWY0OWViMTA1MzFjNzNhNjIxZTU1OTBmMzE0YzgxMTU4OGNhZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDM1MWJiNGM0MzViZjZiOGRlOGZkMDdkNjY3NWJjMThiNWY2NzM3NGI2MDdkOWFlMTYzNDZiMjk5ZjRmMjZlNSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjUyZTY4NWRmMjlhOGYzZTI2YjkxY2M3YTQwM2I0MDBmZjcwN2I5MzkwMWRkNDI2YWI2YTAyZTUwNGI0ZmZjYSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

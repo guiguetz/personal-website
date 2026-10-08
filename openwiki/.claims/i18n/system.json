@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:a4227fbdaa726d567f7f20162474b233b6bb37092505cc35d4ba6d1c37486833",
+  "claims": [
+    {
+      "id": "claim_bd73628745804b8aad7405cf46fcf75c",
+      "statement": "O I18nContext usa createContext + useContext + useCallback para prover locale, dicionário recursivo t() e setLocale/toggleLocale em qualquer componente via useI18n()",
+      "evidence": [
+        {
+          "resource": "repo://src/i18n/I18nContext.tsx#L1-L12",
+          "version": "repo-lines-v1:sha256:43fb33c46f67e575566cc26ff1a5ad41cbb1cc0914f7a677d24e91e195757123:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU4MjAwOTY0YTk3ODYzNTUyMmIyYWIwOTBjNjUwNjVkOGVmOGU4NWM0NzMwYmIyZWIwNDYwZDM0YzY3N2RkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5ZjQ0MzY5Y2Q5Mzg2ZjEzM2ZjMGE5MmYyY2Y5Nzg0NmY2NjcwODlmMWRjNTRjZDBmYTM1ZWRhZDRmZjhmMTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUyMjJmMWM3MDQ5MWNlMjE1YzE4MGU2ZWRiYTAyNmVkYzUzNGNlNDI1YzBiNTY0M2FhMDliMmQ3M2Q2OWY4MjYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7df26defe15e47c8a97b302af442e1eb",
+      "statement": "A chave de persistência do idioma no localStorage é 'locale', definida como constante STORAGE_KEY no módulo",
+      "evidence": [
+        {
+          "resource": "repo://src/i18n/I18nContext.tsx#L16-L16",
+          "version": "repo-lines-v1:sha256:f47b2fd578f98ed5016b89135d0d7edbd077606e4e16a539459ea6b7489ee60d:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjQ3YjJmZDU3OGY5OGVkNTAxNmI4OTEzNWQwZDdlZGJkMDc3NjA2ZTRlMTZhNTM5NDU5ZWE2Yjc0ODllZTYwZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjQ3YjJmZDU3OGY5OGVkNTAxNmI4OTEzNWQwZDdlZGJkMDc3NjA2ZTRlMTZhNTM5NDU5ZWE2Yjc0ODllZTYwZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTIyMmYxYzcwNDkxY2UyMTVjMTgwZTZlZGJhMDI2ZWRjNTM0Y2U0MjVjMGI1NjQzYWEwOWIyZDczZDY5ZjgyNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiM2E5OGY2NzY5NWQ4YmUxZGI5ZmEzMTYyNGExZjAzYmYwYzRhN2U4YmE1OGMxZTk0ZDA3ZTM1NGY0MmE1ZWMzZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_d822ecce8b7343cd8f25d006df09ffbf",
+      "statement": "O tipo Locale = 'pt' | 'en' define os dois idiomas suportados, cada um com seu dicionário de traduções exportado do módulo translations.ts",
+      "evidence": [
+        {
+          "resource": "repo://src/i18n/translations.ts#L1-L4",
+          "version": "repo-lines-v1:sha256:9a7c9d2a9b83bf6e8c150a1b2e57973960e5f30389633d4eeb3effab04ea0523:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzE4YzFjMGVhYTNlZmVlYmUwNDcwMDkyZTRjOTA1YTFjNTBkOGUzNTUyNTYyMTFjOGMzOWZlZDMxZjRiNWRjYyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYzI5MTY0YzJhYzgxMTExYTM3MjE2YmI4MWU2ZDYwYTA0N2NjMmRmYjhiMWUwYzQzY2Q0YjlmODQ5YTFjOGI1NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWM0OTljNDM1MmUxZTdmMTRhNzMyMWYyMDI1MDU5OTc2NjgyZmM3MzAyOWQ0NzlkNTIzMjJkNGJkYTlhNTYyNSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_3e1e76ad75b7421f8a4b5498abac5268",
+      "statement": "A animação 'locale-hidden' usa isLeafTextElement() que verifica se o elemento é texto puro sem filhos interativos nem atributo aria-hidden",
+      "evidence": [
+        {
+          "resource": "repo://src/i18n/I18nContext.tsx#L26-L35",
+          "version": "repo-lines-v1:sha256:eebbc99f5f5d82f7d9ba9765938b48201e32d601b178385274d57ab4126751e4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJmNTk1YTQxZGNjNjJlNmM1OTJkNDk3NDg3NDQ1MWRiMjU4ZWU0NjE5YmUzMWRlYjNkOTc2NmRmNTFjNWJhZGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVjYjkyMDc4ZTk3YzZlN2FjYzM1ZDExNTRlNTY1ZTQ3MWYxZGQyZGI0YTM1MDY3OWI5NzI3MjE4NzQ0ZTNiMTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk1OGE3MGRjMWUxNWI1MzA3ZDExOTA4ODBlNmE4MjNjYzc1MGY1ODViMWIxYmM4M2RhZWQ2ZmQ0ZTBlMTFmZjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d2f0a755549148e78853b9b4c02d2eec",
+      "statement": "Dicionário tipado com seções aninhadas (a11y, sidebar, nav, hero, ...) e chave pageTitles separada para títulos de página usados no hreflang",
+      "evidence": [
+        {
+          "resource": "repo://src/i18n/translations.ts#L6-L30",
+          "version": "repo-lines-v1:sha256:d3b90347ec98726d6dea987f5dc0be1b3ae95bf33275b71566e78231e56c5ad7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMyYWE1Y2JhOGFlOTc2YWRjZTUzMTMxMTliZTk5MjNmMDhkYTg4MzIzN2M2ZmRhMTcyMDcwMDU1NGNjZWFhYjQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdkOWIyMjJmYjZkMTg0MzIxYjA3ZDE2ODRjNDE3MmUyNTVjMTMxYzBjZTZiYmM4MjQ2MWYwZTEwYzNjNjQ2OWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM2MWFhY2QwZGE3MDYxYjVhYTRhYmE2OGZjNDVjMzZjYTE4YTNlMDgzZWIyYjNhMjdlYmE4N2JkZWQ5NDdiZmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxOGZhMThlNjFlN2U4M2MxNTk4ZTgzNmU0ODBlYmIzYTU2Y2QxMzVkMTQzYTkyOWU1MmZhMDJhMzcyNjM4MmMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_95c0845a251f4a8aa91d19c4b3a42541",
+      "statement": "FlagIcon seleciona bandeira por locale (Brasil para pt com verde/amarelo/azul, EUA para en com vermelho/branco/azul) via SVG viewBox de 640x480",
+      "evidence": [
+        {
+          "resource": "repo://src/components/FlagIcons.tsx#L6-L17",
+          "version": "repo-lines-v1:sha256:44c63fa9903d1031b33676c70fbb031adbe482b6d44b7768ee58651cf59c35c9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2NWM4YTA1OTk5NThiYjUwZTRhYzViZGZkMWJmYTIxZWViY2Q0ZDVkYTNiOWQ2MWM5MjkxMjc2YzUyZTI2ZGYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg4MGI1ZDAzZjhlZTg4ZmVlZTdlNDk5ODA3M2Q2YjViYTE0NGZmZGU1NjIxM2EwNDIyZmIxODNkY2QxZmQ4NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFmOGEzMTc4NzM0NjA1ZmU4ZGUyOWQ2YzI4MmYxNGY1YjZkYTU1MjcwMDBhZmYxZjkzY2I3NWQ4ZTVmNmUwZTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIyNGZjZTFkZjE3YzYyOTE0OGJlYjBhNzVhMWVjYThhZjRlMDJlYTRiMjZjZmIyOTg3OTlkMjU4ZjZjMDEzYjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_3263f74c4e1e4da798268f784ff2c627",
+      "statement": "index.html tem lang='pt-BR' por padrão, confirmando português como idioma inicial",
+      "evidence": [
+        {
+          "resource": "repo://index.html#L2-L2",
+          "version": "repo-lines-v1:sha256:54f2f4cb93a96c27c7b08e617e8610c803d5575942206c0a7c2e013c3aba1b84:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTRmMmY0Y2I5M2E5NmMyN2M3YjA4ZTYxN2U4NjEwYzgwM2Q1NTc1OTQyMjA2YzBhN2MyZTAxM2MzYWJhMWI4NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTRmMmY0Y2I5M2E5NmMyN2M3YjA4ZTYxN2U4NjEwYzgwM2Q1NTc1OTQyMjA2YzBhN2MyZTAxM2MzYWJhMWI4NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjEsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzM1ZmNhODU3NGYwNjBlZWEyNGViY2RhZTZiNzhmMzI0MTRmNWRlMDNkYTEwODRmZDBlNzNkNzEwNzY4ZTNhOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjE3OGY2YWIzZThkY2RiMmU3MGVlMmI5ZGIyMjRjZDczNDQ5NTdiYzM4ODYyZjU4MzkxN2RjZmQyZWE3YzI4MiJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

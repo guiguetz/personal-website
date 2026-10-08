@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:bd666bd38f7451c59773ebbafea9f5dc370b49d9b76a19c4101881bac20050e9",
+  "claims": [
+    {
+      "id": "claim_263464a4acb24702a16907c8e428dc98",
+      "statement": "Todas as seções exceto HeroSection são carregadas via React.lazy e envolvidas por LazyMount dentro de um Suspense boundary",
+      "evidence": [
+        {
+          "resource": "repo://src/App.tsx#L1-L42",
+          "version": "repo-lines-v1:sha256:7b06f58d258feecbcb0209e54a7d30f92d313f7028eaac9a2ba96a301db5f96b:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2OWExM2RkYmFkMTNhNWY0ODdiZDY5OTAxZmM2ZjI1ZTc3ZDBmOTE0NGRiZmNkN2I2OWZhODI0OTNiNzdlOTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ODA2YWZmZTJlMzQyZjYwYTg0ZDMwM2YyNjhlOWJmOTkyYjRkMzY4NmVlYTZiZDFiMDc5NzVhM2IwY2NiZTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgyMjQzY2ZiNTg2YWRmY2Y0NGI4ODljY2EwZmM2OTY2MTU4ZTcwOWMzNzg1YjJmNzVkY2E5NzliZmRiNmY5NzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_75f766c1edc64c379c700a33167cbe8a",
+      "statement": "Todas as seções usam SectionHeading com número sequencial, título e descrição, e aplicam animações de reveal via useReveal + classes CSS",
+      "evidence": [
+        {
+          "resource": "repo://src/components/AboutSection.tsx#L1-L40",
+          "version": "repo-lines-v1:sha256:d406681f4828c41ec2aa94c4907b134cf280f287da2f45e713bf8382eb070e77:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiMmZmMmRlNDEzMzI5NzJjYTMxYjFhYTIzNjlhMzA1ZjE4ODkwOGUwZGIyNjMyNTZiMjRkNjJiNDE1OTA4ZjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0OGJjZWQzYTFhMGQxOWM0ODE0ZWM4MTRhNTI1YzhlYWRjY2U0MGIzZTU1MWJlYjM4NTY2M2FhYmU1NjM5OGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQyOTg2NDU2MGEwNDRlY2VmZmRlOWE0NjUwYzE5NDMyYmQ1NWRkYTU1MTI4MDJhMDVhNDQ4ZDdmMTY1ZmJmZjYifQ"
+        },
+        {
+          "resource": "repo://src/components/SectionHeading.tsx#L1-L25",
+          "version": "repo-lines-v1:sha256:74002a3f0fdc37d160de775b75339bd29075f45db46d6e9d986655f36b7971f0:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3NDgyMmM4MjBhNDNkNzgzODI4NGZiYjBkMmY4MjE4NjdkM2IzN2RhNmYxMjBkOGY0NmRmM2JlYmU3NTc0ZDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxMGIzNmFhNzRhNTliY2Y0YTg4MTg1ODM3ZjY1OGFmYWYzNjQ2ZWZmMmJiMTZjMzkyOGQwZTkzMzVlOTQ1ZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5d8ee0e6674c4120bdf7dc9b52dae0fa",
+      "statement": "ImpactSection usa sparklines em SVG puro (Sparkline component) em vez de recharts, eliminando ~376kB do bundle",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ImpactSection.tsx#L4-L30",
+          "version": "repo-lines-v1:sha256:15aa91121ef85ee60e95e54ccc6dd3ee30ad9f013e14d9ac529054d3256fe0ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3MmE0MjkzODJiMmUxNDcxOGUwZTM3YjA1NzBhOGExNzAyOTkxZmNkODQ5OGNkODQwNjBhOGJmNGYwNTAxN2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJmODhiNDZkYzI3NzYxNWY5MjEzYTVmNmVjOTg1MGNkOTdjZDgyNWNlZTViMWEwMTZmMDU0ZDUzYmZjNDc0ZDEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQzZTBjNWIzYzJmYmZjNTY2ZDQ1MzU2ZjEwZDc3NGMyM2IwYmM5Yzg3ZDQ3NTNlZTI2ZTZkOGFiNzMwOGZhYTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjhiNjQ0MzEwM2U2MjhmMjlkNGE2MDkzNGQ4NTFjY2YxZjQyOTgxNmVhZmM4ZjliZmZlOWU3YWFkYzI3MmNlMTYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_95a33d90808f40338f2607ccbec248fb",
+      "statement": "ExperienceSection busca dados de portfolio_experience no Supabase quando configurado, com fallback para array local hardcoded; dados remotos fazem merge com o fallback via spread",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ExperienceSection.tsx#L60-L80",
+          "version": "repo-lines-v1:sha256:4cc887827f4cd8138e57937a33f8b8c43b24c429ea8ed3fe094ecf82d25f6532:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY2MTQzODMxMWVjYzJiNDJiNDAzN2MzODY1NzY1MzA5NmU5YjJmMWI4N2EyYTFlMWYwN2M3YWMxMzhhYTBhZTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxZjNjMGI0OTEyZjUyOWExOWJkNzEyMTk2YmY5YTM4MWJlYzlmYjlkNGJhN2Y1MjNkZWNkOGI5YmUwNWE4ZGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2OTE1N2E1Nzc3ZmY4MGYwMGI4YzBkMTZlNzEzMTRmNTc5MDhiYmM3NmFmYzBiMzNmY2FmNjdkNjc3YmJhOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkM2NhNjQyZDc0YTVlNDUyMzJiMzY3MWFhNzQwMjVhZGYzYzE3MWU3YjY5OTc3MDhiZDJjNTQ3NTA3NjNiZGUifQ"
+        },
+        {
+          "resource": "repo://src/lib/supabase.ts",
+          "version": "repo-file-v1:sha256:d3af6b6c36ddb7e29f014d8685f8c6dbb621de47520827dbef2bd711e3307d66"
+        }
+      ]
+    },
+    {
+      "id": "claim_fb031bcb59aa49ddbb8a09c335891a8b",
+      "statement": "ContactSection carrega o script reCAPTCHA v3 de forma lazy via IntersectionObserver quando a seção entra no viewport",
+      "evidence": [
+        {
+          "resource": "repo://src/components/ContactSection.tsx#L15-L35",
+          "version": "repo-lines-v1:sha256:ab5d45979cd9f23c33d2d24d5cd7ffad18a8eece834addbb25f53df115b0473f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmNmQyYWIyZGNjMDFlNDc4ZTU5MmE1ZTk2ZjlkMTE2YTQ2OGViMmQ3NjkzYzRhYmJiYmZkYzQ4MTU2Zjc2NzciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiYTU2NDhjMWM1MTZiM2IyNzgzYzM3NjI3MDFmOWYwY2YzYWNiYTRhNzRkYTEzYmExNGQ4OTFkZWM2ZjYwNjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgzNDMxNGQyNzU3NGRlN2M4YjNmNTYwZWE0ZjA3MThjNzFjMDg2MmEwYTExYWRlNDc1Mjg5NDBmNjA3MTU0ODIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI3NjBhNjEwYTU2MDNjZjY0MjI2NmU0OTg3MjkxOTcyMDBkMmRkMzAyYzZmMTVkZTkwZmQxY2I5YWM1OGYwMTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9d5ee1a0d04d47c1abff8753b0bb9aae",
+      "statement": "CaseStudySection apresenta um case study em 3 etapas (Problema, Solução, Resultado) com stack tecnológico em chips e CTA",
+      "evidence": [
+        {
+          "resource": "repo://src/components/CaseStudySection.tsx#L1-L88",
+          "version": "repo-lines-v1:sha256:e3cfcd6c25fe53039c656ae7fdbea7805c40a7d15f30cc6184427936644621f1:eyJzZWxlY3RlZExpbmVDb3VudCI6ODgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyMzg3YjgwMGZlMDBhZjZhYWI2YTBlMDNlNzczMTAwNTRhYTgyZDk4NGFmYTYyOTk1NjdmN2U3YjgwZTNiYWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1ZWYwMWJjMDhkYmMzYjYzZTRlNzVlYTNkMjZhNWI5NDE4OTE4NzdlMjdhZDg5MTMyOWM4NDExZDdkOGRjNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxMGIzNmFhNzRhNTliY2Y0YTg4MTg1ODM3ZjY1OGFmYWYzNjQ2ZWZmMmJiMTZjMzkyOGQwZTkzMzVlOTQ1ZDIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

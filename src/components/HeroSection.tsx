@@ -24,8 +24,7 @@ export function HeroSection() {
       <div className="max-w-2xl animate-fade-in-up">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary">
           <span className="relative flex h-1.5 w-1.5">
-            <span aria-hidden className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span aria-hidden className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span aria-hidden className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
           </span>
           <span>{t.hero.availability}</span>
         </div>

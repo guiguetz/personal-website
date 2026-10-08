@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:2de967a74919298570a34c9f7de97e041d54988af518e84b664e3299fff96aa6",
+  "claims": [
+    {
+      "id": "claim_529da64ad202419faeaee11360d13d80",
+      "statement": "O site é uma SPA de página única sem roteamento por cliente (react-router); a navegação usa âncoras (#id) entre seções",
+      "evidence": [
+        {
+          "resource": "repo://docs/ARQUITETURA.md#L3-L10",
+          "version": "repo-lines-v1:sha256:c7af79e688e9314f00187ab6ba7a1cbd4d292eb604592af283b10933662b8efd:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzRjNjg4NDZkZGNjZWIwMDMzNWY0YTc5Nzc0YTEyZGU2YjU5YWZjYWEwMTRiNTFiOGRlNGVjNzQ2YTViYjI0ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDhiNDVhMzQ3MjRhYzAyNGZmMmJmZWM3MmRlZjI1N2I1ZGFjM2Q4YzM1YTk0MzI5NDU0MGY0ZDkwZWI3NDg5NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjIsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTJiNDY4NTEwMzM4MzUzZDMzYjdjOTdiNWY0Nzk3NTFjOTQwMGViYmQ3YWU0MjA1YmE0MWUyNmE5NTRlOTc1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzcyNTc2MGYyZGNjYzg1ZTkwOTNmNzk2ZDZiODJhOTViM2I4ZWVkNjM5ZTEzZThmOWMzM2VlMjRiZDk0ODE3NCJ9"
+        },
+        {
+          "resource": "repo://src/App.tsx#L1-L42",
+          "version": "repo-lines-v1:sha256:7b06f58d258feecbcb0209e54a7d30f92d313f7028eaac9a2ba96a301db5f96b:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE2OWExM2RkYmFkMTNhNWY0ODdiZDY5OTAxZmM2ZjI1ZTc3ZDBmOTE0NGRiZmNkN2I2OWZhODI0OTNiNzdlOTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE5ODA2YWZmZTJlMzQyZjYwYTg0ZDMwM2YyNjhlOWJmOTkyYjRkMzY4NmVlYTZiZDFiMDc5NzVhM2IwY2NiZTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgyMjQzY2ZiNTg2YWRmY2Y0NGI4ODljY2EwZmM2OTY2MTU4ZTcwOWMzNzg1YjJmNzVkY2E5NzliZmRiNmY5NzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_611a9b5297e84e42be3bb2fe5cd5793f",
+      "statement": "A pipeline de build usa Vite 8 para gerar o bundle do cliente e o layer Nitro, seguido de um script de prerender (SSG) que renderiza a App no servidor e injeta o HTML no index.html",
+      "evidence": [
+        {
+          "resource": "repo://scripts/prerender.mjs#L1-L30",
+          "version": "repo-lines-v1:sha256:16c5ffb899721005b5361681cd077f56683c9cce28f7a65599c8e0dbab678f9e:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhZjIyY2YwNzMyNTkyYzI0NzE0MWNiZTYxZWZhMTEwMTI2MTJmNWEzMTIyYjlhZjliYmFmNTJmNTcyNGQxOTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFkZjZjYTEzMmM5MDBjMGVjMjNiZGJkYzRhNTRkMTY4NTE2NWRkMjI3NWMyYWZlNTIyMmQ4ODdhZTE5YzViMTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjZkM2U3NWVjNDk3ZTI0NmUzNjFiMWI2YjM1NjQzY2JmYTExZWFhMDc5OGQ3OWYzNTVhNWE4MDc2NDVjMTZmZDEifQ"
+        },
+        {
+          "resource": "repo://src/entry-server.tsx#L1-L9",
+          "version": "repo-lines-v1:sha256:3599f9887c874c36fc2d9b9bca3a51a835973f9d1c9faabae0d85a43033d8309:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMGQ3MWJhZjVkNTRkZDdmY2IyZDlhM2I1M2ZmYzQ2ZWRkZTZjMjY2NWYwMGZjM2UyYjIzYmRkZDUwNzg3OTE2ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTQ2ZmNkYjkzMTljNmFiNDUxOGY3MGQ5Mzc5NDg3NGJmMTAwYTczNWU3ZjA2MDdhMGI4YTFjNTViZDdmNjcwNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWRiZTgxZDk3NDRjNTczNWViMzhlNDUxZDdlNDIyMTkzNTAwM2VjZTM4NTA4ZTM3ZjRhZGVkNWQ2ZWM0MTNlNiJ9"
+        },
+        {
+          "resource": "repo://vite.config.ts#L1-L18",
+          "version": "repo-lines-v1:sha256:b76af64ec360df778f7d49bca665d8e83af95ad927c796c8502470e8f017577d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU0YmFlY2Y5MjdmYjI4NjA1MjMwZjE1ODQyYjAzN2Y3NjVmYTMwODJlZTg0Y2U3YzgwZWM5MTc1ODAzMTRlODAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg5MDE2NjczNmQzOTZhNmE5NTYxNjA2MGZmNDI0NmEyY2E2YTk4ZjRmZGIzNzQ4MDViM2MxNmJjYjZjNWZmZGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczYzc5ZGYzNjhmMTYzY2U5MDNlNDAxMTYwYzkwMmMzOWZmZTUxYzZhZDBkNWNiM2IzYjRjOTdhNDgyYWQ4ZGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_06bb613ec075480c91f724b492c6a299",
+      "statement": "O cliente usa createRoot (não hydrateRoot) para montar o React sobre o HTML pré-renderizado; o loader diferido injeta o bundle após o evento load (~150ms de atraso) para priorizar FCP/LCP",
+      "evidence": [
+        {
+          "resource": "repo://scripts/prerender.mjs#L42-L70",
+          "version": "repo-lines-v1:sha256:b95642cdb5f2b13a5b0f993250d22b7446032d8f388f999d932756ae741ce5f6:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY1NmI1N2EzYzA5MjhmZDk2NmVmN2ZjNTRmNzYwZDAzYjJiMTExNWJkN2ZhZmQzZDM2N2Y1NThkNWFkM2ZlMTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZjNDAxMGZhNDc2MzBiYjFkMWI5Yjk0MTIzY2Q2ZDhmODMwZDBlMDI1M2RiMmYxMWEyOTVkZGU2N2NjNjYxZDAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAyNGNhY2EzMGI2NmIxZTcwN2JjNDE1MDcxYzFiMmRjMGEzNjBkOTY0NjQ5Nzk4NzNhMjAwMDBjNDMxYzNhMGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg2MDlkNjdlYWQ5OTQxNTNkZGZlMTBiMzM0ZmI2MjM3YjUwYWEzYjQzNDQxMWYwNjUxZDA0N2JhMjcxZTEyNWEifQ"
+        },
+        {
+          "resource": "repo://src/main.tsx#L1-L7",
+          "version": "repo-lines-v1:sha256:c6aeb4888ef6d507751d85c00a4a0d3668bff8829c0fb887c43868bf416c8271:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTkxYmY5YTNmNmRiYjQ0NmM3ZjYwOTljNTNiNGVhMTNlOTViOGE4ZDhkN2ZmNDI3NTFhN2JiMmUzOGQwZmM2MSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2FkMTUzZjlmMGZhNjcwODBkMjZjNGQ2YWRhZWZmOTlmOTQ2ZGMwZmJmYTM2NDA5YTZiOTc4ZjIxMDdhZWVkNSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjAsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7ecbcbfc5d7241d08774d7cc80aa067f",
+      "statement": "Nitro fornece a camada de servidor; as rotas API ficam em server/routes/api/ e usam defineHandler + helpers de h3, com serverDir configurado via nitro.config.ts",
+      "evidence": [
+        {
+          "resource": "repo://nitro.config.ts#L1-L4",
+          "version": "repo-lines-v1:sha256:7afb1471a042d5db98b98489a957c9c67e56685ccdf5b08206111ed05ecf74dd:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjgxZmE5MGE4MzRiNDM4M2ViYjgyOTQ5NmQxMDcxOGVkYTQyYzFiMGU0ZjliNWFhM2Y1YTc2ZWFiMjhlZWRiNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTk0MGJkMGQ2OGI1ODQ2MGNkZDRhMDg1YjE5OWQ4NzFmZmU4ZjY4ZmQxZjAyZDAzM2E0YzY5NjgwYTUwYjQxMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjEsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjZmNWI0MGIxNTg0NTdkMTc4NjRmMjE3OTA3ODZkZDVhMmVjZGI2NGI2NmE2NTFmNzg4ZDRlMjVjZDMzMDNkMiJ9"
+        },
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L1-L8",
+          "version": "repo-lines-v1:sha256:918952d16948886130ce9ad7cbe0cdeb394c97073001e89b7f2a1730a7df8ced:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTBlZTI5YjJjNDMwOWQzMDI4MTY5OGU1YWQ2NTFjNWY5ZDE3ODRlZTU0MzBjYTRiYTc2MTZiOGNiY2Q4YzcyOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZTkwZjQzNjgxOTJlMDljNjQ5NTFkMjc0YzlmOTY5YTEzYTAxYmRhNDlhYjZlYjEzMzU5ZTdjNTE0MGVjNWNhNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjBmY2E2NjhmNmVkMzg1NjdhOWQzNTgwNzNjYzI2ZjQ1YmRjYTI4N2UzMjdkNjViZTljYWE2NDE3N2Y3ZGE1YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_43536c90c10f487ba84352e0816edc5c",
+      "statement": "Seções abaixo da dobra usam React.lazy + LazyMount (IntersectionObserver) para adiar download e montagem, enquanto HeroSection entra no bundle inicial",
+      "evidence": [
+        {
+          "resource": "repo://src/App.tsx#L8-L22",
+          "version": "repo-lines-v1:sha256:0617e4e006a6c763cd58401180afc75720e2fcf9be5f7f9c775620b23f4ecac0:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ5OTY3ZWMxZWQzODM2ZjhlYjE3YWZmMTcyYjViZmVmN2RlNjA0ODVhNDM5YzZjYTExYzU5MWUxNzU1NzM5YWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMyZTAwMjJhZmNhZTA0NGQyMGEyZGUyOGIyNDkyMjQ3YWFjZmFiZmJiODRhNWQ4YmEwNzJmZjRmNjVjNjRlYzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVkYWRiZDExMWFhMGI5OWY4MzZiNjlhNjM3NDcyNDAyYzRhMTg4MWQwYmVkZTk5MDMxNTk1YmNmNmU1MDJiNzkifQ"
+        },
+        {
+          "resource": "repo://src/components/LazyMount.tsx",
+          "version": "repo-file-v1:sha256:dbce16381d2d35ec3afe6ac8618660cf90b856eecab216a801b2ab5eb9c11f29"
+        }
+      ]
+    },
+    {
+      "id": "claim_802a3f1591654e5282a961bbaafc0dcd",
+      "statement": "O alias @/ aponta para src/ e é declarado em tsconfig.json, tsconfig.app.json e vite.config.ts simultaneamente",
+      "evidence": [
+        {
+          "resource": "repo://tsconfig.app.json",
+          "version": "repo-file-v1:sha256:3d44641a0151484d5adb5c764a4766a8e31076d2fd557dbe8c6e1c87863058f7"
+        },
+        {
+          "resource": "repo://tsconfig.json",
+          "version": "repo-file-v1:sha256:1914430cf76f7e28628f4a14b7b09e256f5ac5263e816c63691b08cf083994a8"
+        },
+        {
+          "resource": "repo://vite.config.ts#L15-L17",
+          "version": "repo-lines-v1:sha256:edb932ef01301603802897984207d51dd6e4327170806cc4df6365227cbec292:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTM2N2NmMGJjYTBiZDMxZjE1NWFlN2MxOTFjZGJlNGY4ZDMzZjlmYmQ2MmMyZmRjYTJhZDRlMGYyYmYzYjllZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODkyN2EzODFhOTMzOGI0MjA4OGRiNWJlYTAwNjk3YjUzNzc1M2FlMmM5YTYwY2QwNTg0N2RmY2M5NTAzNzk0OCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTg1OWZmNTMxYTM2MDE4NjgwNTNlYjM3ZWM3NmUyYjJiOGE3MTgyYzk3MjJlYTUxOTJmZTE4ODZjY2VkZWExNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjQzYTJiZjJlYzNjNzcwNzkxMDFiODhjNWExMDJhNjc4NjhmYzNkZTUxODhkM2EyYWMwMmY4YmY3OTZhZTExNiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1110277de1ff4474b272498812a44f2c",
+      "statement": "A API de contato verifica reCAPTCHA v3 e persiste a mensagem no Supabase usando a service role key (bypassa RLS); segredos nunca são prefixados com VITE_",
+      "evidence": [
+        {
+          "resource": "repo://.env.example",
+          "version": "repo-file-v1:sha256:0d1ac9774950d42f9bbcc9d1cde7507a28bcff99857a33dc07013c1b1d434c56"
+        },
+        {
+          "resource": "repo://server/routes/api/contact.post.ts#L1-L50",
+          "version": "repo-lines-v1:sha256:2035006851a705a598a28c2e54a6ac5e93626528e0dd5ba5be368bb118cc77b6:eyJzZWxlY3RlZExpbmVDb3VudCI6NTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkwZWUyOWIyYzQzMDlkMzAyODE2OThlNWFkNjUxYzVmOWQxNzg0ZWU1NDMwY2E0YmE3NjE2YjhjYmNkOGM3MjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2ZjViNDBiMTU4NDU3ZDE3ODY0ZjIxNzkwNzg2ZGQ1YTJlY2RiNjRiNjZhNjUxZjc4OGQ0ZTI1Y2QzMzAzZDIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

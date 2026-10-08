@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:ef784289e06422068102ecbc96413ba7af353427d9e4d5424999e486b4023537",
+  "claims": [
+    {
+      "id": "claim_ed9442236e1545a59f628845eb229405",
+      "statement": "O cliente Supabase usa as variáveis VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY; se ausentes, supabase é null e componentes fazem fallback para dados locais",
+      "evidence": [
+        {
+          "resource": "repo://src/lib/supabase.ts",
+          "version": "repo-file-v1:sha256:d3af6b6c36ddb7e29f014d8685f8c6dbb621de47520827dbef2bd711e3307d66"
+        }
+      ]
+    },
+    {
+      "id": "claim_0083c88e94624a16860b9319e8d205a7",
+      "statement": "A tabela contact_messages tem campos id (uuid), name, email, message, created_at; a tabela portfolio_experience tem locale (pt/en), company, year, current, position, period, location, description, tags (text[]), sort_order",
+      "evidence": [
+        {
+          "resource": "repo://supabase/schema.sql",
+          "version": "repo-file-v1:sha256:910fe7e59ebd2635f9b71058a280639bdc01bb6d3882c6a63bc2df004fdea61b"
+        }
+      ]
+    },
+    {
+      "id": "claim_152cef63b5424b99bbbe16c3fc62429f",
+      "statement": "RLS está habilitado em ambas as tabelas: contact_messages permite INSERT público (anon) mas não SELECT; portfolio_experience permite SELECT público (anon) mas não INSERT/UPDATE/DELETE",
+      "evidence": [
+        {
+          "resource": "repo://supabase/schema.sql",
+          "version": "repo-file-v1:sha256:910fe7e59ebd2635f9b71058a280639bdc01bb6d3882c6a63bc2df004fdea61b"
+        }
+      ]
+    },
+    {
+      "id": "claim_468855d3518a41c1943c2053ae612f05",
+      "statement": "O seed popula portfolio_experience com 6 empresas em 2 idiomas (12 linhas total), usando dollar-quoting para descrições e truncando antes do insert para idempotência",
+      "evidence": [
+        {
+          "resource": "repo://supabase/seed.sql",
+          "version": "repo-file-v1:sha256:053caca7cbb10729eba38724816a96675d531d245fe276a45d7ab7ee655f7d04"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.7.1",
+    "at": "2026-10-08T17:41:36.140Z"
+  }
+}

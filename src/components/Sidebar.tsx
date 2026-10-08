@@ -5,8 +5,7 @@ import { useTheme } from '@/hooks/useTheme';
 import { useI18n } from '@/i18n/I18nContext';
 import { FlagBR, FlagUS } from '@/components/FlagIcons';
 
-const AVATAR_URL =
-  'https://media.licdn.com/dms/image/v2/D4D03AQFgHKgSduxRNA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1667485617098?e=2147483647&v=beta&t=SBhM9G7pRNaBbgX3F64L3veMVa1w5sfcp8vQ_2MHO3U';
+const AVATAR_URL = '/profile.jpeg';
 
 const navItems = [
   { href: '#about', id: 'about' },
@@ -34,9 +33,9 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
       <div className="px-6 pb-6 pt-8">
         <div className="animate-fade-in-up pr-8 lg:pr-0">
           <div className="flex items-center gap-3">
-            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-indigo-500 to-fuchsia-500 text-lg font-bold text-white shadow-lg shadow-primary/25">
+            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary via-indigo-500 to-fuchsia-500 text-lg font-bold text-white shadow-lg shadow-primary/25">
               {AVATAR_URL ? (
-                <img src={AVATAR_URL} alt="Guilherme Aguiar" className="h-full w-full object-cover" />
+                <img src={AVATAR_URL} alt="Guilherme Aguiar" className="h-full w-full overflow-hidden rounded-2xl object-cover" />
               ) : (
                 'GA'
               )}
@@ -58,7 +57,7 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto px-3">
+      <nav className="flex-1 overflow-y-auto px-3 pt-2 pb-2">
         <ul className="space-y-0.5">
           {navItems.map((navItem) => {
             const isActive = activeId === navItem.id;
