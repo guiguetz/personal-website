@@ -50,7 +50,7 @@
     },
     {
       "id": "claim_7ecbcbfc5d7241d08774d7cc80aa067f",
-      "statement": "Nitro fornece a camada de servidor; as rotas API ficam em server/routes/api/ e usam defineHandler + helpers de nitro/h3, com serverDir configurado via nitro.config.ts",
+      "statement": "Nitro fornece a camada de servidor; as rotas API ficam em server/routes/api/ e usam defineHandler + helpers de h3, com serverDir configurado via nitro.config.ts",
       "evidence": [
         {
           "resource": "repo://nitro.config.ts#L1-L4",

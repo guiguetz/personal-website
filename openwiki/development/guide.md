@@ -53,13 +53,13 @@ Modelo em `.env.example`:
 | Script | Comando | Descrição |
 | --- | --- | --- |
 | `npm run dev` | `vite` | Servidor de desenvolvimento em http://localhost:8080 |
-| `npm run build` | `vite build && tsc` | Build de produção (rolldown + type-check) |
-| `npm run preview` | `vite preview --port 4173` | Preview local da build de produção |
+| `npm run build` | `vite build && node scripts/prerender.mjs` | Build de produção (rolldown + prerender SSG) |
+| `npm run preview` | `vite preview` | Preview local da build de produção |
 | `npm run lint` | `eslint .` | Linting TypeScript/TSX |
 | `npm run test:visual` | `build && preview && backstop test` | Teste de regressão visual (compara screenshots) |
 | `npm run test:visual:ref` | `build && preview && backstop reference` | Gera screenshots de referência |
 | `npm run test:visual:approve` | `backstop approve` | Aprova mudanças visuais (atualiza referências) |
-| `npm run size` | `size-limit --json` | Verifica peso dos bundles com limites definidos |
+| `npm run size` | `vite build && size-limit` | Verifica peso dos bundles com limites definidos |
 
 ## Configuração ESLint (`eslint.config.js`)
 
@@ -119,7 +119,7 @@ Usar `lucide-react` para ícones. O pacote já está instalado.
 | Pitfall | Explicação |
 | --- | --- |
 | **Ordem dos plugins em `vite.config.ts`** | `nitro()` **deve** ser o último na lista de plugins. Se posicionado antes, o SPA fallback do Nitro intercepta URLs internas do Vite. |
-| **Imports Nitro** | Helpers H3 vêm de `"nitro/h3"`, não de `"h3"` nem de `"nitro"` diretamente. |
+| **Imports Nitro** | Helpers H3 vêm de `"h3"` (padrão atual do projeto). A convenção oficial Nitro v3 sugere `"nitro/h3"`, mas ambas funcionam. |
 | **SSR x cliente** | O locale inicia em `pt` para casar com o SSR. Não troque o valor inicial do `useState` do `I18nProvider` sem ajustar o prerender. |
 | **`src/App.css` e `made-with-dyad.tsx`** | Legado do template Dyad. Não são usados no projeto. |
 | **`components.json`** | Aponta para `src/index.css` (inexistente). O CSS real é `src/globals.css`. |

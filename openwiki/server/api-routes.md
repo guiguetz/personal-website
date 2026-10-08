@@ -67,11 +67,11 @@ Sufixo do arquivo: `contact.post.ts` → aceita apenas `POST`. Arquivo sem sufix
 ### Imports
 
 ```ts
-import { defineHandler } from "nitro";           // Handler definition
-import { readBody, createError } from "nitro/h3"; // Helpers HTTP
+import { defineHandler } from "nitro";    // Handler definition
+import { readBody, createError } from "h3"; // Helpers HTTP
 ```
 
-**Nunca** importar de `"h3"` diretamente — usar sempre `"nitro/h3"`, que é a versão re-exportada pelo Nitro v3.
+> **Nota:** o projeto atual importa helpers de `"h3"` diretamente. Se preferir seguir a convenção oficial do Nitro v3, use `"nitro/h3"` — ambas funcionam.
 
 ### Helpers comuns (via `nitro/h3`)
 
@@ -177,8 +177,7 @@ catch (error: unknown) {
 
 | Erro | Causa | Correção |
 | --- | --- | --- |
-| `import { readBody } from "nitro"` | h3 helpers não estão em `"nitro"` | Importar de `"nitro/h3"` |
-| `import { readBody } from "h3"` | Versão errada do h3 | Usar `"nitro/h3"` (re-export do Nitro) |
+| `import { readBody } from "nitro"` | h3 helpers não estão em `"nitro"` | Importar de `"h3"` (ou `"nitro/h3"` se preferir a convenção Nitro v3) |
 | `/api/*` retorna `index.html` | Plugin `nitro()` ausente ou na posição errada | Deve ser o último em `plugins[]` |
 | Variáveis secretas expostas no client | Uso de `process.env.VITE_*` no server ou prefixo `VITE_` em segredos | Remover prefixo `VITE_` dos segredos |
 

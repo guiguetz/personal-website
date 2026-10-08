@@ -4,7 +4,7 @@
   "claims": [
     {
       "id": "claim_ba3d2899b4b44546b407177066035ad2",
-      "statement": "defineHandler e useRuntimeConfig vêm de nitro; todos os helpers HTTP vêm de nitro/h3, NUNCA de h3 diretamente",
+      "statement": "defineHandler e useRuntimeConfig vêm de nitro; todos os helpers HTTP vêm de h3 (convenção atual do projeto)",
       "evidence": [
         {
           "resource": "repo://AI_RULES.md#L35-L42",

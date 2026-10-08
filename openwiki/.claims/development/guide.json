@@ -54,7 +54,7 @@
     },
     {
       "id": "claim_b23282f03aac4b1897cd4fa9d9056733",
-      "statement": "Pitfalls: nitro() como último plugin em vite.config.ts, imports H3 de nitro/h3 não de h3, locale inicial em pt para SSR, src/App.css e made-with-dyad.tsx são legado, components.json aponta para index.css inexistente, framer-motion e recharts não usados",
+      "statement": "Pitfalls: nitro() como último plugin em vite.config.ts, imports H3 de h3 (convenção atual do projeto), locale inicial em pt para SSR, src/App.css e made-with-dyad.tsx são legado, components.json aponta para index.css inexistente, framer-motion e recharts não usados",
       "evidence": [
         {
           "resource": "repo://docs/DESENVOLVIMENTO.md#L55-L60",

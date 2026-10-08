@@ -58,7 +58,7 @@
     },
     {
       "id": "claim_8bd7d17f819a4d38bb156e2c069b03b2",
-      "statement": "LazyMont usa IntersectionObserver com rootMargin de 400px para montar filhos apenas quando a seção se aproxima do viewport; fallback para renderização imediata se IntersectionObserver não existir",
+      "statement": "LazyMount usa IntersectionObserver com rootMargin de 400px para montar filhos apenas quando a seção se aproxima do viewport; fallback para renderização imediata se IntersectionObserver não existir",
       "evidence": [
         {
           "resource": "repo://src/components/LazyMount.tsx#L1-L32",

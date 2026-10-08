@@ -151,7 +151,7 @@ O Nitro é integrado ao Vite via plugin (`nitro()` como último entry em `vite.c
 
 - Localização: `server/routes/api/`
 - Método por sufixo: `contact.post.ts` → `POST /api/contact`
-- Imports: `defineHandler` de `"nitro"`, helpers (`readBody`, `createError`) de `"nitro/h3"`
+- Imports: `defineHandler` de `"nitro"`, helpers (`readBody`, `createError`) de `"h3"`
 - Runtime config: `useRuntimeConfig()` (variáveis prefixadas com `NITRO_`)
 
 ## Ver também
