@@ -103,7 +103,7 @@ body.recaptcha-exiting .grecaptcha-badge {
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
   }
 
@@ -207,7 +207,7 @@ body.recaptcha-exiting .grecaptcha-badge {
   }
 
   .text-gradient {
-    @apply bg-gradient-to-br from-foreground via-foreground to-primary bg-clip-text text-transparent;
+    @apply text-primary font-semibold;
   }
 
   .glass {
