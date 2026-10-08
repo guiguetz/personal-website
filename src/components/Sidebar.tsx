@@ -214,6 +214,9 @@ export function Sidebar() {
       <>
         <div
           onClick={() => setMobileOpen(false)}
+          onKeyDown={(e) => e.key === 'Escape' && setMobileOpen(false)}
+          role="button"
+          tabIndex={-1}
           aria-hidden={!mobileOpen}
           inert={!mobileOpen}
           className={`fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${mobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
