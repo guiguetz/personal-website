@@ -13,6 +13,19 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { useI18n } from '@/i18n/I18nContext';
 import { useReveal } from '@/hooks/useReveal';
 
+interface GitHubRepo {
+  name: string;
+  full_name: string;
+  pushed_at: string;
+  default_branch: string;
+}
+
+interface GitHubCommit {
+  sha: string;
+  commit: { message: string };
+  html_url: string;
+}
+
 interface GitHubEvent {
   id: string;
   type: string;
@@ -34,6 +47,16 @@ interface DisplayEvent {
   Icon: LucideIcon;
   commitMessage?: string;
   branch?: string;
+}
+
+interface LatestCommit {
+  message: string;
+  branch: string;
+  repoName: string;
+  repoUrl: string;
+  sha: string;
+  url: string;
+  time: string;
 }
 
 const GITHUB_USER = 'guiguetz';
@@ -121,12 +144,37 @@ export function GitHubActivity() {
   const { t, locale } = useI18n();
   const { ref, shown } = useReveal<HTMLDivElement>();
   const [events, setEvents] = useState<DisplayEvent[]>([]);
+  const [latestCommit, setLatestCommit] = useState<LatestCommit | null>(null);
   const [status, setStatus] = useState<'loading' | 'error' | 'ready'>('loading');
 
   useEffect(() => {
     let cancelled = false;
     setStatus('loading');
 
+    // Fetch latest commit from most recently updated repo
+    fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=1`)
+      .then((res) => res.json() as Promise<GitHubRepo[]>)
+      .then((repos) => {
+        if (cancelled || !repos[0]) return;
+        const repo = repos[0];
+        return fetch(`https://api.github.com/repos/${repo.full_name}/commits?sha=${repo.default_branch}&per_page=1`)
+          .then((res) => res.json() as Promise<GitHubCommit[]>)
+          .then((commits) => {
+            if (cancelled || !commits[0]) return;
+            setLatestCommit({
+              message: commits[0].commit.message.split('\n')[0],
+              branch: repo.default_branch,
+              repoName: repo.name,
+              repoUrl: `https://github.com/${repo.full_name}`,
+              sha: commits[0].sha.slice(0, 7),
+              url: commits[0].html_url,
+              time: relativeTime(repo.pushed_at, locale),
+            });
+          });
+      })
+      .catch(() => {});
+
+    // Fetch recent activity events
     fetch(API_URL)
       .then((res) => {
         if (!res.ok) throw new Error(`GitHub API ${res.status}`);
@@ -184,6 +232,32 @@ export function GitHubActivity() {
           </p>
         )}
 
+        {latestCommit && status === 'ready' && (
+          <a
+            href={latestCommit.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-3 flex items-center gap-3 rounded-xl border border-border/50 bg-secondary/30 p-3 transition-colors hover:bg-secondary/60"
+          >
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <GitCommit className="h-4 w-4" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium">{latestCommit.message}</p>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+                  <GitBranch className="h-3 w-3" />
+                  {latestCommit.branch}
+                </span>
+                <span className="text-[11px] text-muted-foreground">·</span>
+                <span className="font-mono text-[11px] text-muted-foreground">{latestCommit.sha}</span>
+                <span className="text-[11px] text-muted-foreground">·</span>
+                <span className="text-[11px] text-muted-foreground">{latestCommit.time}</span>
+              </div>
+            </div>
+          </a>
+        )}
+
         {status === 'ready' && events.length === 0 && (
           <p className="py-6 text-center text-sm text-muted-foreground">
             {t.githubActivity.empty}
@@ -191,31 +265,25 @@ export function GitHubActivity() {
         )}
 
         {status === 'ready' && events.length > 0 && (
-          <ul className="space-y-1.5">
+          <ul className="space-y-1">
             {events.map((event) => (
               <li key={event.id}>
                 <a
                   href={event.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-xl p-2.5 transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
-                    <event.Icon className="h-4 w-4" />
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
+                    <event.Icon className="h-3.5 w-3.5" />
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium">
+                    <p className="truncate text-xs font-medium">
                       {event.label}
                     </p>
-                    {event.commitMessage ? (
-                      <p className="truncate text-xs text-muted-foreground">
-                        {event.commitMessage}
-                      </p>
-                    ) : (
-                      <p className="truncate text-xs text-muted-foreground">
-                        {event.repoName}
-                      </p>
-                    )}
+                    <p className="truncate text-[11px] text-muted-foreground">
+                      {event.repoName}
+                    </p>
                   </div>
                   <div className="flex shrink-0 flex-col items-end gap-0.5">
                     {event.branch && (
@@ -224,7 +292,7 @@ export function GitHubActivity() {
                         {event.branch}
                       </span>
                     )}
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-[11px] text-muted-foreground">
                       {event.time}
                     </span>
                   </div>
