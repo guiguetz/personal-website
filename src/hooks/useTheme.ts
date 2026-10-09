@@ -13,9 +13,7 @@ export function useTheme() {
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('light');
-    localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+    toggleThemeWithRipple(undefined, () => setIsDark((prev) => !prev));
   };
 
   const toggleThemeRipple = (e: MouseEvent) => {

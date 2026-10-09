@@ -1,17 +1,45 @@
-/* Theme transition — handled by themeRipple.ts (clip-path animation).
-   This file is kept for the import in main.tsx but the heavy CSS
-   transition has been removed in favor of the ripple effect. */
-
-/* While the ripple animation plays, suppress all CSS transitions so
-   theme color changes snap instantly under the expanding hole. */
-.theme-transition-disabled,
-.theme-transition-disabled *,
-.theme-transition-disabled *::before,
-.theme-transition-disabled *::after {
-  transition: none !important;
+/* The old and new page snapshots must sit on top of each other; otherwise
+   the expanding-circle reveal would uncover a third, unthemed snapshot. */
+::view-transition-group(root),
+::view-transition-image-pair(root) {
+  animation-duration: 650ms;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  height: 100%;
+  /* Keep both snapshots alive for the full WAAPI clip-path reveal. */
+  animation: theme-transition-hold 650ms linear both;
+}
+
+@keyframes theme-transition-hold {
+  from,
+  to {
+    opacity: 1;
+  }
+}
+
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
+/* Shrink the outgoing light snapshot over the new dark page on reverse toggles. */
+html.theme-transition-reverse::view-transition-old(root) {
+  z-index: 2;
+}
+
+html.theme-transition-reverse::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Reduced-motion preference disables the view-transition snapshots too. */
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(root),
+  ::view-transition-image-pair(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
   html,
   html *,
   html *::before,
