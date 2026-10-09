@@ -203,6 +203,12 @@ const pt = {
     success: 'Mensagem enviada com sucesso.',
     error: 'Não foi possível enviar a mensagem. Tente novamente ou entre em contato por e-mail.',
   },
+  githubActivity: {
+    title: 'Atividade no GitHub',
+    viewProfile: 'Ver perfil',
+    error: 'Não foi possível carregar a atividade do GitHub.',
+    empty: 'Nenhuma atividade recente encontrada.',
+  },
   footer: {
     builtWith:
       'Construído com React, TypeScript, Tailwind CSS e animações CSS.',
@@ -408,6 +414,12 @@ const en: Dictionary = {
     sending: 'Sending…',
     success: 'Message sent successfully.',
     error: 'Could not send the message. Please try again or contact me via email.',
+  },
+  githubActivity: {
+    title: 'GitHub Activity',
+    viewProfile: 'View profile',
+    error: 'Could not load GitHub activity.',
+    empty: 'No recent activity found.',
   },
   footer: {
     builtWith:
