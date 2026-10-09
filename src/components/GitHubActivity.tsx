@@ -305,7 +305,7 @@ export function GitHubActivity() {
                   </div>
                   <div className="flex shrink-0 flex-col items-end gap-0.5">
                     {event.baseBranch ? (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-medium text-muted-foreground">
+                      <span className="inline-flex items-center gap-1 rounded-md bg-secondary px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                         <GitBranch className="h-2.5 w-2.5" />
                         <span className="max-w-[80px] truncate">{event.branch}</span>
                         <span>→</span>
