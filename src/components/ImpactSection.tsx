@@ -1,4 +1,5 @@
 import { TrendingUp, Users, UserCog, Timer } from 'lucide-react';
+import { AnimatedCounter } from './AnimatedCounter';
 /**
  * Sparkline em SVG puro — substitui o recharts (−376 kB no bundle).
  */
@@ -35,7 +36,7 @@ const metricVisuals = [
 ];
 
 export function ImpactSection() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const { ref, shown } = useReveal<HTMLDivElement>();
 
   return (
@@ -50,6 +51,7 @@ export function ImpactSection() {
           const visual = metricVisuals[index] ?? metricVisuals[0];
           const Icon = visual.icon;
           const gradientId = `spark-${index}`;
+          const c = metric.counter;
           return (
             <div
               key={index}
@@ -60,7 +62,18 @@ export function ImpactSection() {
                 <span className="truncate">{metric.label}</span>
               </div>
               <p className="mt-2 text-2xl font-bold tracking-tight sm:text-[1.75rem]">
-                {metric.value}
+                {c ? (
+                  <AnimatedCounter
+                    value={c.target}
+                    prefix={c.prefix}
+                    suffix={c.suffix}
+                    decimals={c.decimals}
+                    start={shown}
+                    locale={locale === 'pt' ? 'pt-BR' : 'en-US'}
+                  />
+                ) : (
+                  metric.value
+                )}
               </p>
               <p className="mt-1 text-xs text-muted-foreground">{metric.note}</p>
 
