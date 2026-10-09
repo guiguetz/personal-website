@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Code2,
   Atom,
@@ -15,6 +16,7 @@ import {
   Crown,
 } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
+import { TechFilter } from './TechFilter';
 import { useReveal } from '@/hooks/useReveal';
 import { useI18n } from '@/i18n/I18nContext';
 
@@ -24,16 +26,41 @@ const mainIcons = [Atom, Braces, Wind, FlaskConical, Database, GitBranch, Crown]
 export function SkillsSection() {
   const { t } = useI18n();
   const { ref, shown } = useReveal<HTMLDivElement>();
+  const allTech = t.skills.categories.flatMap((c) => [c.main, ...c.items]);
+  const technologies = [...new Set(allTech)];
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  const toggleFilter = (tech: string) =>
+    setActiveFilters((prev) =>
+      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
+    );
+
+  const filteredCategories =
+    activeFilters.length === 0
+      ? t.skills.categories
+      : t.skills.categories
+          .map((cat) => ({
+            ...cat,
+            items: [cat.main, ...cat.items].filter((s) => activeFilters.includes(s)),
+          }))
+          .filter((cat) => cat.items.length > 0);
 
   return (
     <section id="skills" className="mb-20">
       <SectionHeading number="04" title={t.skills.title} description={t.skills.description} />
 
+      <TechFilter
+        technologies={technologies}
+        activeFilters={activeFilters}
+        onToggle={toggleFilter}
+        onClear={() => setActiveFilters([])}
+      />
+
       <div
         ref={ref}
         className={`reveal-children grid gap-3 sm:grid-cols-2 ${shown ? 'reveal-shown' : ''}`}
       >
-        {t.skills.categories.map((cat, index) => {
+        {filteredCategories.map((cat, index) => {
           const CategoryIcon = categoryIcons[index] ?? Code2;
           const MainIcon = mainIcons[index] ?? Code2;
           return (
