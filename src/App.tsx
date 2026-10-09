@@ -28,6 +28,9 @@ const ContactSection = lazy(() =>
   import("@/components/ContactSection").then((m) => ({ default: m.ContactSection })),
 );
 const Footer = lazy(() => import("@/components/Footer").then((m) => ({ default: m.Footer })));
+const GitHubActivity = lazy(() =>
+  import("@/components/GitHubActivity").then((m) => ({ default: m.GitHubActivity })),
+);
 
 const App = () => (
   <I18nProvider>
@@ -52,6 +55,9 @@ const App = () => (
           </LazyMount>
           <LazyMount>
             <ContactSection />
+          </LazyMount>
+          <LazyMount>
+            <GitHubActivity />
           </LazyMount>
           <LazyMount>
             <Footer />
