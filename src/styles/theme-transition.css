@@ -1,27 +1,14 @@
-/* Smooth theme transition animation.
-   Applied when toggling between dark and light modes via
-   `document.documentElement.classList.toggle('light')`.
-   Only transitions color-related properties so that
-   transform/opacity animations elsewhere are unaffected. */
-
-html,
-html *,
-html *::before,
-html *::after {
-  transition:
-    color 300ms ease-in-out,
-    background-color 300ms ease-in-out,
-    border-color 300ms ease-in-out,
-    box-shadow 300ms ease-in-out,
-    fill 300ms ease-in-out,
-    stroke 300ms ease-in-out;
-}
+/* Theme transition — handled by themeRipple.ts (clip-path animation).
+   This file is kept for the import in main.tsx but the heavy CSS
+   transition has been removed in favor of the ripple effect. */
 
 @media (prefers-reduced-motion: reduce) {
+  /* The JS utility already checks prefers-reduced-motion and skips
+     the animation, but this ensures no residual CSS transitions exist. */
   html,
   html *,
   html *::before,
   html *::after {
-    transition: none;
+    transition: none !important;
   }
 }

@@ -25,7 +25,7 @@ const socialLinks = [
 ];
 
 function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate?: () => void }) {
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark, toggleThemeRipple } = useTheme();
   const { t, locale, toggleLocale } = useI18n();
 
   return (
@@ -129,7 +129,7 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
             </button>
 
             <button
-              onClick={toggleTheme}
+              onClick={(e) => toggleThemeRipple(e.nativeEvent)}
               aria-label={t.a11y.toggleTheme}
               title={t.a11y.toggleTheme}
               className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
