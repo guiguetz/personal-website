@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { I18nProvider } from "@/i18n/I18nContext";
 import { Layout } from "@/components/Layout";
+import { CommandPalette } from "@/components/CommandPalette";
 import { LazyMount } from "@/components/LazyMount";
 import { HeroSection } from "@/components/HeroSection";
 import { Analytics } from "@vercel/analytics/react";
@@ -63,6 +64,7 @@ const App = () => (
           </LazyMount>
         </Suspense>
       </Layout>
+      <CommandPalette />
       <Analytics />
       <SpeedInsights />
     </>
