@@ -63,7 +63,7 @@ function playTextExit() {
     // layer; the hidden real text is enough for the covered page content.
     if (drawerIsOpen && !mobileDrawer.contains(el)) return;
     if (!isLeafTextElement(el)) return;
-    if ((el as HTMLElement).dataset.skipTextAnim === '') return;
+    if ((el as HTMLElement).dataset.skipTextAnim !== undefined) return;
     const htmlEl = el as HTMLElement;
     const rect = htmlEl.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
@@ -139,7 +139,7 @@ function animateTextEnter() {
 
   document.querySelectorAll(TEXT_TAGS).forEach((el) => {
     if (!isLeafTextElement(el)) return;
-    if ((el as HTMLElement).dataset.skipTextAnim === '') return;
+    if ((el as HTMLElement).dataset.skipTextAnim !== undefined) return;
     el.animate(
       [
         { opacity: 0, transform: 'translateY(16px)' },
