@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Print-friendly stylesheet
+
+   Import in main.tsx:
+     import "./styles/print.css";
+
+   Goals:
+   - Strip decorative / interactive chrome that wastes ink and paper.
+   - Expand main content to full page width.
+   - Force high-contrast black-on-white.
+   - Show URLs next to external links.
+   - Use page-break rules so cards, headings and sections stay intact.
+   ========================================================================== */
+
+@media print {
+  /* ------------------------------------------------------------------
+     1. Hide non-content decorative and interactive elements
+     ------------------------------------------------------------------ */
+
+  /* Sidebar (both desktop and mobile drawer) */
+  aside,
+  /* Mobile top-bar header */
+  header,
+  /* Ambient glow divs + grid background (Layout.tsx aria-hidden divs) */
+  .pointer-events-none.fixed,
+  /* Soft fade overlays at top/bottom of content */
+  .pointer-events-none.fixed.inset-x-0,
+  /* Skip-to-content link (only visible on focus, not useful on paper) */
+  a[data-skip-text-anim],
+  /* Footer */
+  footer,
+  /* Scroll progress bar */
+  [data-scroll-progress],
+  /* Back to top button */
+  [data-back-to-top],
+  /* Command palette triggers */
+  [data-command-palette],
+  /* Theme toggle button */
+  [aria-label*="ema"],
+  [aria-label*="theme"],
+  [aria-label*="Tema"],
+  [title*="ema"],
+  [title*="theme"],
+  [title*="Tema"],
+  /* Language toggle button */
+  [aria-label*="idioma"],
+  [aria-label*="anguage"],
+  [title*="idioma"],
+  [title*="anguage"],
+  /* Mobile menu button */
+  [aria-label*="menu"],
+  [aria-label*="Menu"],
+  /* reCAPTCHA badge */
+  .grecaptcha-badge,
+  /* Vercel analytics / speed-insights */
+  [data-vercel],
+  .vercel-badge {
+    display: none !important;
+  }
+
+  /* ------------------------------------------------------------------
+     2. Reset layout: full-width main content
+     ------------------------------------------------------------------ */
+
+  main {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  main > div {
+    max-width: none !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Remove the sidebar's fixed-width offset that sits on <body> or root div */
+  body,
+  #root > div {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  /* ------------------------------------------------------------------
+     3. Force high-contrast black-on-white
+     ------------------------------------------------------------------ */
+
+  *,
+  *::before,
+  *::after {
+    color: #000 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: #ccc !important;
+  }
+
+  /* Keep the avatar image visible */
+  img {
+    filter: none !important;
+  }
+
+  /* Override Tailwind dark-mode class if it lands on <html> */
+  html {
+    color-scheme: light !important;
+  }
+
+  /* ------------------------------------------------------------------
+     4. Typography: system sans-serif for print
+     ------------------------------------------------------------------ */
+
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+      sans-serif !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* ------------------------------------------------------------------
+     5. Link handling: show URLs for external links
+     ------------------------------------------------------------------ */
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666 !important;
+    word-break: break-all;
+  }
+
+  /* Don't print URLs for anchor-only links or the skip-link */
+  a[href^="#"]::after,
+  a[data-skip-text-anim]::after {
+    content: none !important;
+  }
+
+  /* Make links identifiable by underline (color is forced to black above) */
+  a {
+    text-decoration: underline;
+  }
+
+  /* ------------------------------------------------------------------
+     6. Page-break rules
+     ------------------------------------------------------------------ */
+
+  /* Keep cards and major blocks together when possible */
+  [class*="rounded-"][class*="border"],
+  [class*="card"],
+  .break-inside-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Headings should not be orphaned from the content below them */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Contact section: keep with the previous section */
+  #contact {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  /* Don't break inside images */
+  img,
+  svg {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ------------------------------------------------------------------
+     7. Remove decorative gradients / blurs / backdrop effects
+     ------------------------------------------------------------------ */
+
+  [class*="blur"],
+  [class*="gradient"],
+  [class*="backdrop"],
+  [class*="glow"] {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+  }
+
+  /* ------------------------------------------------------------------
+     8. Tables and lists: ensure readability
+     ------------------------------------------------------------------ */
+
+  ul, ol {
+    padding-left: 1.5em;
+  }
+
+  /* ------------------------------------------------------------------
+     9. Page margins (standard A4 / Letter)
+     ------------------------------------------------------------------ */
+
+  @page {
+    margin: 1.5cm;
+    size: auto;
+  }
+}

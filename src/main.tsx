@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./globals.css";
+import "./styles/print.css";
 
 // O HTML dentro de #root foi pré-renderizado (SSG) e pinta instantaneamente;
 // o React monta por cima em seguida (sem hidratação, evitando mismatches).
