@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   GitCommit,
   GitPullRequest,
+  GitBranch,
   Star,
   AlertCircle,
   Activity,
@@ -17,6 +18,10 @@ interface GitHubEvent {
   type: string;
   repo: { name: string; url: string };
   created_at: string;
+  payload?: {
+    ref?: string;
+    commits?: Array<{ message: string; sha: string }>;
+  };
 }
 
 interface DisplayEvent {
@@ -27,6 +32,8 @@ interface DisplayEvent {
   repoUrl: string;
   time: string;
   Icon: LucideIcon;
+  commitMessage?: string;
+  branch?: string;
 }
 
 const GITHUB_USER = 'guiguetz';
@@ -64,7 +71,7 @@ function relativeTime(dateStr: string, locale: 'pt' | 'en'): string {
 function mapEvent(event: GitHubEvent, locale: 'pt' | 'en'): DisplayEvent {
   const mapping = TYPE_MAP[event.type];
   if (mapping) {
-    return {
+    const result: DisplayEvent = {
       id: event.id,
       type: event.type as DisplayEvent['type'],
       label: mapping[locale],
@@ -73,6 +80,11 @@ function mapEvent(event: GitHubEvent, locale: 'pt' | 'en'): DisplayEvent {
       time: relativeTime(event.created_at, locale),
       Icon: mapping.Icon,
     };
+    if (event.type === 'PushEvent' && event.payload) {
+      result.branch = event.payload.ref?.replace('refs/heads/', '');
+      result.commitMessage = event.payload.commits?.[0]?.message?.split('\n')[0];
+    }
+    return result;
   }
   return {
     id: event.id,
@@ -195,13 +207,27 @@ export function GitHubActivity() {
                     <p className="truncate text-sm font-medium">
                       {event.label}
                     </p>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {event.repoName}
-                    </p>
+                    {event.commitMessage ? (
+                      <p className="truncate text-xs text-muted-foreground">
+                        {event.commitMessage}
+                      </p>
+                    ) : (
+                      <p className="truncate text-xs text-muted-foreground">
+                        {event.repoName}
+                      </p>
+                    )}
                   </div>
-                  <span className="shrink-0 text-xs text-muted-foreground">
-                    {event.time}
-                  </span>
+                  <div className="flex shrink-0 flex-col items-end gap-0.5">
+                    {event.branch && (
+                      <span className="inline-flex items-center gap-1 rounded-md bg-secondary px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                        <GitBranch className="h-2.5 w-2.5" />
+                        {event.branch}
+                      </span>
+                    )}
+                    <span className="text-xs text-muted-foreground">
+                      {event.time}
+                    </span>
+                  </div>
                 </a>
               </li>
             ))}
