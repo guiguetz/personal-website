@@ -34,6 +34,13 @@ interface GitHubEvent {
   payload?: {
     ref?: string;
     commits?: Array<{ message: string; sha: string }>;
+    action?: string;
+    pull_request?: {
+      title: string;
+      head: { ref: string };
+      base: { ref: string };
+      html_url: string;
+    };
   };
 }
 
@@ -47,6 +54,8 @@ interface DisplayEvent {
   Icon: LucideIcon;
   commitMessage?: string;
   branch?: string;
+  baseBranch?: string;
+  prUrl?: string;
 }
 
 interface LatestCommit {
@@ -106,6 +115,13 @@ function mapEvent(event: GitHubEvent, locale: 'pt' | 'en'): DisplayEvent {
     if (event.type === 'PushEvent' && event.payload) {
       result.branch = event.payload.ref?.replace('refs/heads/', '');
       result.commitMessage = event.payload.commits?.[0]?.message?.split('\n')[0];
+    }
+    if (event.type === 'PullRequestEvent' && event.payload?.pull_request) {
+      const pr = event.payload.pull_request;
+      result.branch = pr.head.ref;
+      result.baseBranch = pr.base.ref;
+      result.prUrl = pr.html_url;
+      result.commitMessage = pr.title;
     }
     return result;
   }
@@ -269,7 +285,7 @@ export function GitHubActivity() {
             {events.map((event) => (
               <li key={event.id}>
                 <a
-                  href={event.repoUrl}
+                  href={event.prUrl || event.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -278,20 +294,29 @@ export function GitHubActivity() {
                     <event.Icon className="h-3.5 w-3.5" />
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-xs font-medium">
-                      {event.label}
-                    </p>
+                    {event.commitMessage ? (
+                      <p className="truncate text-xs font-medium">{event.commitMessage}</p>
+                    ) : (
+                      <p className="truncate text-xs font-medium">{event.label}</p>
+                    )}
                     <p className="truncate text-[11px] text-muted-foreground">
                       {event.repoName}
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-col items-end gap-0.5">
-                    {event.branch && (
+                    {event.baseBranch ? (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-medium text-muted-foreground">
+                        <GitBranch className="h-2.5 w-2.5" />
+                        <span className="max-w-[80px] truncate">{event.branch}</span>
+                        <span>→</span>
+                        <span className="max-w-[80px] truncate">{event.baseBranch}</span>
+                      </span>
+                    ) : event.branch ? (
                       <span className="inline-flex items-center gap-1 rounded-md bg-secondary px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                         <GitBranch className="h-2.5 w-2.5" />
                         {event.branch}
                       </span>
-                    )}
+                    ) : null}
                     <span className="text-[11px] text-muted-foreground">
                       {event.time}
                     </span>
