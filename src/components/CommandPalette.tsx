@@ -19,6 +19,11 @@ import {
   Search,
 } from 'lucide-react';
 
+function isMac() {
+  if (typeof navigator === 'undefined') return false;
+  return /Mac|iPod|iPhone|iPad/.test(navigator.platform ?? navigator.userAgent);
+}
+
 // Bilingual strings — self-contained, not in translations.ts
 const strings = {
   pt: {
@@ -54,6 +59,8 @@ const strings = {
     shortcut: '⌘K',
   },
 } as const;
+
+const shortcutKey = isMac() ? '⌘K' : 'Ctrl+K';
 
 type CommandGroup = 'navigation' | 'actions';
 
@@ -185,7 +192,7 @@ export function CommandPalette() {
     <>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
-        className="bg-card border-border rounded-xl shadow-2xl max-w-md w-[calc(100%-2rem)] p-0 gap-0 overflow-hidden backdrop-blur-xl bg-card/95"
+        className="bg-card border-border rounded-xl shadow-2xl max-w-md w-[calc(100%-2rem)] p-0 gap-0 overflow-hidden backdrop-blur-xl bg-card/95 [&>button]:hidden"
         onKeyDown={handleKeyDown}
         aria-label={t.title}
         role="combobox"
@@ -298,10 +305,10 @@ export function CommandPalette() {
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-6 right-6 z-30 hidden items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-lg backdrop-blur-sm transition-all hover:border-primary/40 hover:text-foreground lg:flex"
-        aria-label={`${t.title} (${t.shortcut})`}
+        aria-label={`${t.title} (${shortcutKey})`}
       >
         <Search className="h-3 w-3" />
-        <kbd className="font-mono text-[11px]">{t.shortcut}</kbd>
+        <kbd className="font-mono text-[11px]">{shortcutKey}</kbd>
       </button>
     )}
     </>
