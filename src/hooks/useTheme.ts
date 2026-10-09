@@ -19,8 +19,7 @@ export function useTheme() {
   };
 
   const toggleThemeRipple = (e: MouseEvent) => {
-    toggleThemeWithRipple(e);
-    setIsDark((prev) => !prev);
+    toggleThemeWithRipple(e, () => setIsDark((prev) => !prev));
   };
 
   return { isDark, toggleTheme, toggleThemeRipple };
