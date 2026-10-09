@@ -2,9 +2,16 @@
    This file is kept for the import in main.tsx but the heavy CSS
    transition has been removed in favor of the ripple effect. */
 
+/* While the ripple animation plays, suppress all CSS transitions so
+   theme color changes snap instantly under the expanding hole. */
+.theme-transition-disabled,
+.theme-transition-disabled *,
+.theme-transition-disabled *::before,
+.theme-transition-disabled *::after {
+  transition: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  /* The JS utility already checks prefers-reduced-motion and skips
-     the animation, but this ensures no residual CSS transitions exist. */
   html,
   html *,
   html *::before,
