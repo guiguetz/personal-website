@@ -17,6 +17,7 @@ import {
   Moon,
   Languages,
   Search,
+  ArrowUpToLine,
 } from 'lucide-react';
 
 function isMac() {
@@ -39,8 +40,8 @@ const strings = {
     contact: 'Contato',
     toggleTheme: 'Alternar Tema',
     toggleLanguage: 'Alternar Idioma',
+    scrollToTop: 'Voltar ao Topo',
     noResults: 'Nenhum resultado encontrado.',
-    shortcut: '⌘K',
   },
   en: {
     title: 'Command Palette',
@@ -55,8 +56,8 @@ const strings = {
     contact: 'Contact',
     toggleTheme: 'Toggle Theme',
     toggleLanguage: 'Toggle Language',
+    scrollToTop: 'Scroll to Top',
     noResults: 'No results found.',
-    shortcut: '⌘K',
   },
 } as const;
 
@@ -70,7 +71,8 @@ interface CommandItem {
   group: CommandGroup;
   icon: React.ComponentType<{ className?: string }>;
   action: () => void;
-  sectionId?: string;
+  /** Keyboard shortcut displayed as a badge (e.g. "1", "T", "Home") */
+  shortcut?: string;
 }
 
 export function CommandPalette() {
@@ -92,18 +94,23 @@ export function CommandPalette() {
     el.focus({ preventScroll: true });
   }, []);
 
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const items: CommandItem[] = useMemo(
     () => [
-      { id: 'about', label: t.about, group: 'navigation', icon: User, sectionId: 'about', action: () => scrollToSection('about') },
-      { id: 'impact', label: t.impact, group: 'navigation', icon: BarChart3, sectionId: 'impact', action: () => scrollToSection('impact') },
-      { id: 'experience', label: t.experience, group: 'navigation', icon: Briefcase, sectionId: 'experience', action: () => scrollToSection('experience') },
-      { id: 'skills', label: t.skills, group: 'navigation', icon: Code2, sectionId: 'skills', action: () => scrollToSection('skills') },
-      { id: 'projects', label: t.projects, group: 'navigation', icon: FolderGit2, sectionId: 'case-study', action: () => scrollToSection('case-study') },
-      { id: 'contact', label: t.contact, group: 'navigation', icon: Mail, sectionId: 'contact', action: () => scrollToSection('contact') },
-      { id: 'toggle-theme', label: `${t.toggleTheme} (${isDark ? '🌙' : '☀️'})`, group: 'actions', icon: isDark ? Sun : Moon, action: toggleTheme },
-      { id: 'toggle-language', label: `${t.toggleLanguage} (${locale === 'pt' ? 'EN' : 'PT'})`, group: 'actions', icon: Languages, action: toggleLocale },
+      { id: 'about', label: t.about, group: 'navigation', icon: User, shortcut: '1', action: () => scrollToSection('about') },
+      { id: 'impact', label: t.impact, group: 'navigation', icon: BarChart3, shortcut: '2', action: () => scrollToSection('impact') },
+      { id: 'experience', label: t.experience, group: 'navigation', icon: Briefcase, shortcut: '3', action: () => scrollToSection('experience') },
+      { id: 'skills', label: t.skills, group: 'navigation', icon: Code2, shortcut: '4', action: () => scrollToSection('skills') },
+      { id: 'projects', label: t.projects, group: 'navigation', icon: FolderGit2, shortcut: '5', action: () => scrollToSection('case-study') },
+      { id: 'contact', label: t.contact, group: 'navigation', icon: Mail, shortcut: '6', action: () => scrollToSection('contact') },
+      { id: 'scroll-top', label: t.scrollToTop, group: 'actions', icon: ArrowUpToLine, shortcut: 'Home', action: scrollToTop },
+      { id: 'toggle-theme', label: `${t.toggleTheme} (${isDark ? '🌙' : '☀️'})`, group: 'actions', icon: isDark ? Sun : Moon, shortcut: 'T', action: toggleTheme },
+      { id: 'toggle-language', label: `${t.toggleLanguage} (${locale === 'pt' ? 'EN' : 'PT'})`, group: 'actions', icon: Languages, shortcut: 'L', action: toggleLocale },
     ],
-    [t, isDark, locale, toggleTheme, toggleLocale, scrollToSection],
+    [t, isDark, locale, toggleTheme, toggleLocale, scrollToSection, scrollToTop],
   );
 
   const filtered = useMemo(() => {
@@ -122,17 +129,54 @@ export function CommandPalette() {
     return map;
   }, [filtered]);
 
-  // Keyboard shortcut: Cmd+K / Ctrl+K
+  // Build a shortcut→item map for global single-key shortcuts
+  const shortcutMap = useMemo(() => {
+    const map = new Map<string, CommandItem>();
+    for (const item of items) {
+      if (item.shortcut) map.set(item.shortcut.toLowerCase(), item);
+    }
+    return map;
+  }, [items]);
+
+  // Global keyboard shortcuts (work without opening the palette)
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      // Cmd+K / Ctrl+K — toggle palette
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setOpen((prev) => !prev);
+        return;
+      }
+
+      // Skip if palette is open (let palette handle its own keys)
+      if (open) return;
+
+      // Skip if user is typing in an input
+      const tag = (e.target as HTMLElement).tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+      // Number keys 1-6 for section navigation
+      const num = parseInt(e.key, 10);
+      if (num >= 1 && num <= 6) {
+        e.preventDefault();
+        const item = shortcutMap.get(e.key);
+        if (item) item.action();
+        return;
+      }
+
+      // Single-key shortcuts: T, L, Home
+      const key = e.key.toLowerCase();
+      if (key === 't' || key === 'l' || key === 'home') {
+        const item = shortcutMap.get(key);
+        if (item) {
+          e.preventDefault();
+          item.action();
+        }
       }
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, []);
+  }, [open, shortcutMap]);
 
   // Reset state on open
   useEffect(() => {
@@ -264,9 +308,9 @@ export function CommandPalette() {
                   >
                     <Icon className="h-4 w-4 shrink-0 text-muted-foreground" />
                     <span className="flex-1 truncate">{item.label}</span>
-                    {item.sectionId && (
+                    {item.shortcut && (
                       <kbd className="hidden sm:inline-flex items-center rounded border border-border bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
-                        #{item.sectionId}
+                        {item.shortcut}
                       </kbd>
                     )}
                   </button>
