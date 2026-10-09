@@ -304,7 +304,7 @@ export function CommandPalette() {
     {!open && (
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-30 hidden items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-lg backdrop-blur-sm transition-all hover:border-primary/40 hover:text-foreground lg:flex"
+        className="fixed bottom-6 right-6 z-50 hidden items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-lg backdrop-blur-sm transition-all hover:border-primary/40 hover:text-foreground lg:flex"
         aria-label={`${t.title} (${shortcutKey})`}
       >
         <Search className="h-3 w-3" />
