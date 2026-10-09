@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toggleThemeWithRipple } from '@/utils/themeRipple';
 
 export function useTheme() {
   const [isDark, setIsDark] = useState(true);
@@ -12,10 +13,12 @@ export function useTheme() {
   }, []);
 
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('light');
-    localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+    toggleThemeWithRipple(undefined, () => setIsDark((prev) => !prev));
   };
 
-  return { isDark, toggleTheme };
+  const toggleThemeRipple = (e: MouseEvent) => {
+    toggleThemeWithRipple(e, () => setIsDark((prev) => !prev));
+  };
+
+  return { isDark, toggleTheme, toggleThemeRipple };
 }
