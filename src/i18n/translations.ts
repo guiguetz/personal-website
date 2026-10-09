@@ -10,7 +10,7 @@ const pt = {
     skipToContent: 'Pular para o conteúdo',
   },
   sidebar: {
-    role: 'Front-end / Mobile Sênior @ Trix Investimentos',
+    role: 'Front-end / Mobile Sênior',
     tagline: 'Construo produtos financeiros e logísticos usados por milhões de pessoas.',
     location: 'São Vicente, SP · Remoto',
     download: 'Baixar currículo',
@@ -24,18 +24,14 @@ const pt = {
     contact: 'Contato',
   },
   hero: {
-    availability: 'Na Trix Investimentos',
+    availability: 'Construindo na Trix Investimentos',
     titleLine1: 'Construo produtos digitais',
     titleLine2: 'usados por milhões',
     paragraph:
-      'Desenvolvedor Front-end / Mobile Sênior com mais de 10 anos de experiência. Combino React, React Native e IA generativa aplicada a UI para transformar rollout de dias em minutos.',
+      'Desenvolvedor Front-end / Mobile Sênior com mais de 10 anos de experiência. Combino React, React Native e IA generativa para transformar seu negócio.',
     download: 'Baixar currículo',
     contact: 'Fale comigo',
-    highlights: [
-      { value: 'R$ 1,57 bi+', label: 'originados' },
-      { value: '900 mil+', label: 'usuários' },
-      { value: '6 devs', label: 'liderados' },
-    ],
+    highlights: [],
   },
   about: {
     title: 'Sobre mim',
@@ -257,7 +253,7 @@ const en: Dictionary = {
     skipToContent: 'Skip to content',
   },
   sidebar: {
-    role: 'Senior Front-end / Mobile Engineer @ Trix Investimentos',
+    role: 'Senior Front-end / Mobile Engineer',
     tagline: 'I build financial and logistics products used by millions of people.',
     location: 'São Vicente, SP · Remote',
     download: 'Download résumé',
@@ -271,18 +267,14 @@ const en: Dictionary = {
     contact: 'Contact',
   },
   hero: {
-    availability: 'At Trix Investimentos',
+    availability: 'Building at Trix Investimentos',
     titleLine1: 'I build digital products',
     titleLine2: 'used by millions',
     paragraph:
-      'Senior Front-end / Mobile engineer with 10+ years of experience. I combine React, React Native and generative AI applied to UI to turn rollouts from days into minutes.',
+      'Senior Front-end / Mobile engineer with 10+ years of experience. I combine React, React Native and generative AI to transform your business.',
     download: 'Download résumé',
     contact: 'Get in touch',
-    highlights: [
-      { value: 'R$ 1.57bn+', label: 'originated' },
-      { value: '900k+', label: 'users' },
-      { value: '6 devs', label: 'led' },
-    ],
+    highlights: [],
   },
   about: {
     title: 'About me',
