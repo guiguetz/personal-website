@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ScrollProgress } from './ScrollProgress';
 import { Sidebar } from './Sidebar';
 
 interface LayoutProps {
@@ -8,6 +9,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      <ScrollProgress />
       {/* Skip to content link for keyboard users */}
       <a
         href="#main-content"
