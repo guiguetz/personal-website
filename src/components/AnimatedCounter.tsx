@@ -13,6 +13,8 @@ interface AnimatedCounterProps {
   start: boolean;
   /** Locale para Intl.NumberFormat (padrão "pt-BR") */
   locale?: string;
+  /** Casas decimais (padrão 0) */
+  decimals?: number;
 }
 
 /**
@@ -26,10 +28,16 @@ export function AnimatedCounter({
   duration = 1200,
   start,
   locale = 'pt-BR',
+  decimals = 0,
 }: AnimatedCounterProps) {
-  const count = useCountUp(value, duration, start);
+  const count = useCountUp(value, duration, start, decimals);
+  const divisor = Math.pow(10, decimals);
+  const displayValue = decimals > 0 ? count / divisor : count;
 
-  const formatted = new Intl.NumberFormat(locale).format(count);
+  const formatted = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(displayValue);
 
   return (
     <span>

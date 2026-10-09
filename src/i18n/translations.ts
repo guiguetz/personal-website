@@ -60,10 +60,10 @@ const pt = {
     title: 'Impacto em números',
     description: 'Resultados mensuráveis dos produtos que desenvolvi e liderei.',
     metrics: [
-      { label: 'Originação anual', value: 'R$ 1,57 bi+', note: 'Consignado Privado CLT' },
-      { label: 'Usuários impactados', value: '900 mil+', note: 'Setor financeiro' },
-      { label: 'Equipe liderada', value: '6 devs', note: 'Liderança técnica e mentoria' },
-      { label: 'Tempo de rollout', value: '6 dias → min', note: 'Plataforma MCP + IA generativa' },
+      { label: 'Originação anual', value: 'R$ 1,57 bi+', note: 'Consignado Privado CLT', counter: { target: 1.57, prefix: 'R$ ', suffix: ' bi+', decimals: 2 } },
+      { label: 'Usuários impactados', value: '900 mil+', note: 'Setor financeiro', counter: { target: 900, prefix: '', suffix: ' mil+', decimals: 0 } },
+      { label: 'Equipe liderada', value: '6 devs', note: 'Liderança técnica e mentoria', counter: { target: 6, prefix: '', suffix: ' devs', decimals: 0 } },
+      { label: 'Tempo de rollout', value: '6 dias → min', note: 'Plataforma MCP + IA generativa', counter: { target: 6, prefix: '', suffix: ' dias → min', decimals: 0 } },
     ],
   },
   experience: {
@@ -266,10 +266,10 @@ const en: Dictionary = {
     title: 'Impact in numbers',
     description: 'Measurable results from the products I built and led.',
     metrics: [
-      { label: 'Annual origination', value: 'R$ 1.57bn+', note: 'Private payroll loan (CLT)' },
-      { label: 'Users impacted', value: '900k+', note: 'Financial sector' },
-      { label: 'Team led', value: '6 devs', note: 'Technical leadership and mentoring' },
-      { label: 'Rollout time', value: '6 days → min', note: 'MCP + generative AI platform' },
+      { label: 'Annual origination', value: 'R$ 1.57bn+', note: 'Private payroll loan (CLT)', counter: { target: 1.57, prefix: 'R$ ', suffix: 'bn+', decimals: 2 } },
+      { label: 'Users impacted', value: '900k+', note: 'Financial sector', counter: { target: 900, prefix: '', suffix: 'k+', decimals: 0 } },
+      { label: 'Team led', value: '6 devs', note: 'Technical leadership and mentoring', counter: { target: 6, prefix: '', suffix: ' devs', decimals: 0 } },
+      { label: 'Rollout time', value: '6 days → min', note: 'MCP + generative AI platform', counter: { target: 6, prefix: '', suffix: ' days → min', decimals: 0 } },
     ],
   },
   experience: {
