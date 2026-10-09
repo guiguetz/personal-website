@@ -7,6 +7,7 @@ const pt = {
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
     backToTop: 'Voltar ao topo',
+    skipToContent: 'Pular para o conteúdo',
   },
   sidebar: {
     role: 'Front-end / Mobile Sênior @ Trix Investimentos',
@@ -253,6 +254,7 @@ const en: Dictionary = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     backToTop: 'Back to top',
+    skipToContent: 'Skip to content',
   },
   sidebar: {
     role: 'Senior Front-end / Mobile Engineer @ Trix Investimentos',

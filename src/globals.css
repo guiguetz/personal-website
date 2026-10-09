@@ -325,10 +325,19 @@ body.recaptcha-exiting .grecaptcha-badge {
 
 /* During a locale switch the real text is hidden (visibility keeps
    layout intact) so the swap happens invisibly between fade out and
-   fade in. Only leaf text elements are affected, never borders/panels. */
+   fade in. Only leaf text elements are affected, never borders/panels.
+   Excludes elements opted out via data-skip-text-anim (e.g. skip link). */
 .locale-hidden
-  :is(p, span, h1, h2, h3, h4, h5, h6, a, li, label, strong, em, small, figcaption, code, dt, dd, blockquote, td, th):not(:has(*)):not([aria-hidden="true"]) {
+  :is(p, span, h1, h2, h3, h4, h5, h6, a, li, label, strong, em, small, figcaption, code, dt, dd, blockquote, td, th):not(:has(*)):not([aria-hidden="true"]):not([data-skip-text-anim]) {
   visibility: hidden;
+}
+
+/* Defensive: keep skip-link pinned invisible during the entire locale
+   switch, even if WAAPI animateTextEnter accidentally animates it. */
+.locale-hidden [data-skip-text-anim] {
+  opacity: 0 !important;
+  transform: translateY(-5rem) !important;
+  visibility: visible !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
