@@ -27,6 +27,9 @@ const ContactSection = lazy(() =>
   import("@/components/ContactSection").then((m) => ({ default: m.ContactSection })),
 );
 const Footer = lazy(() => import("@/components/Footer").then((m) => ({ default: m.Footer })));
+const TestimonialsSection = lazy(() =>
+  import("@/components/TestimonialsSection").then((m) => ({ default: m.TestimonialsSection })),
+);
 
 const App = () => (
   <I18nProvider>
@@ -51,6 +54,9 @@ const App = () => (
           </LazyMount>
           <LazyMount>
             <ContactSection />
+          </LazyMount>
+          <LazyMount>
+            <TestimonialsSection />
           </LazyMount>
           <LazyMount>
             <Footer />
