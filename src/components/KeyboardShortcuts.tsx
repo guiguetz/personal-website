@@ -70,7 +70,7 @@ export function KeyboardShortcuts() {
 
   return (
     <div
-      className="fixed bottom-6 right-24 z-40 hidden lg:block"
+      className="fixed bottom-6 right-24 z-50 hidden lg:block"
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >
@@ -81,22 +81,22 @@ export function KeyboardShortcuts() {
       >
         <Keyboard className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
         {expanded ? (
-          <div className="flex flex-col gap-1 text-[11px] text-muted-foreground">
-            <div className="flex items-center gap-1.5">
+          <div className="flex flex-col gap-2 text-[11px] text-muted-foreground">
+            <div className="flex items-center gap-2">
               <kbd className="inline-flex h-4 min-w-[16px] items-center justify-center rounded border border-border bg-muted px-1 font-mono font-medium">1</kbd>
               <span>–</span>
               <kbd className="inline-flex h-4 min-w-[16px] items-center justify-center rounded border border-border bg-muted px-1 font-mono font-medium">6</kbd>
               <span>{labels.sections}</span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <kbd className="inline-flex h-4 min-w-[16px] items-center justify-center rounded border border-border bg-muted px-1 font-mono font-medium">T</kbd>
               <span>{labels.theme}</span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <kbd className="inline-flex h-4 min-w-[16px] items-center justify-center rounded border border-border bg-muted px-1 font-mono font-medium">L</kbd>
               <span>{labels.lang}</span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <kbd className="inline-flex h-4 min-w-[16px] items-center justify-center rounded border border-border bg-muted px-1 font-mono font-medium">⇧</kbd>
               <span>{labels.top}</span>
             </div>
