@@ -6,6 +6,7 @@ const pt = {
     switchLanguage: 'Mudar para inglês',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
+    backToTop: 'Voltar ao topo',
   },
   sidebar: {
     role: 'Front-end / Mobile Sênior @ Trix Investimentos',
@@ -218,6 +219,7 @@ const en: Dictionary = {
     switchLanguage: 'Switch to Portuguese',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
+    backToTop: 'Back to top',
   },
   sidebar: {
     role: 'Senior Front-end / Mobile Engineer @ Trix Investimentos',

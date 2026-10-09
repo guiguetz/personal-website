@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { BackToTop } from './BackToTop';
 import { Sidebar } from './Sidebar';
 
 interface LayoutProps {
@@ -41,6 +42,8 @@ export function Layout({ children }: LayoutProps) {
         aria-hidden
         className="pointer-events-none fixed inset-x-0 bottom-0 z-30 h-16 bg-gradient-to-t from-background via-background/80 to-transparent lg:left-72"
       />
+
+      <BackToTop />
     </div>
   );
 }
