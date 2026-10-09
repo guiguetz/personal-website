@@ -1,0 +1,27 @@
+/* Smooth theme transition animation.
+   Applied when toggling between dark and light modes via
+   `document.documentElement.classList.toggle('light')`.
+   Only transitions color-related properties so that
+   transform/opacity animations elsewhere are unaffected. */
+
+html,
+html *,
+html *::before,
+html *::after {
+  transition:
+    color 300ms ease-in-out,
+    background-color 300ms ease-in-out,
+    border-color 300ms ease-in-out,
+    box-shadow 300ms ease-in-out,
+    fill 300ms ease-in-out,
+    stroke 300ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html *,
+  html *::before,
+  html *::after {
+    transition: none;
+  }
+}
