@@ -182,8 +182,9 @@ export function CommandPalette() {
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent
+    <>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent
         className="bg-card border-border rounded-xl shadow-2xl max-w-md w-[calc(100%-2rem)] p-0 gap-0 overflow-hidden backdrop-blur-xl bg-card/95"
         onKeyDown={handleKeyDown}
         aria-label={t.title}
@@ -291,5 +292,18 @@ export function CommandPalette() {
         </div>
       </DialogContent>
     </Dialog>
+
+    {/* Desktop trigger hint — hidden on mobile */}
+    {!open && (
+      <button
+        onClick={() => setOpen(true)}
+        className="fixed bottom-6 right-6 z-30 hidden items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-lg backdrop-blur-sm transition-all hover:border-primary/40 hover:text-foreground lg:flex"
+        aria-label={`${t.title} (${t.shortcut})`}
+      >
+        <Search className="h-3 w-3" />
+        <kbd className="font-mono text-[11px]">{t.shortcut}</kbd>
+      </button>
+    )}
+    </>
   );
 }
