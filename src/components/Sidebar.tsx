@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useTheme } from '@/hooks/useTheme';
 import { useI18n } from '@/i18n/I18nContext';
 import { FlagBR, FlagUS } from '@/components/FlagIcons';
+import { smoothNavigate } from '@/utils/smoothNavigate';
 
 const AVATAR_URL = '/profile.jpeg';
 
@@ -65,7 +66,11 @@ function SidebarContent({ activeId, onNavigate }: { activeId: string; onNavigate
               <li key={navItem.id}>
                 <a
                   href={navItem.href}
-                  onClick={onNavigate}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    smoothNavigate(navItem.id);
+                    onNavigate?.();
+                  }}
                   className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
                     isActive
                       ? 'bg-primary/10 text-primary'

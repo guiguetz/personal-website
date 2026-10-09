@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { BackToTop } from './BackToTop';
+import { ScrollProgress } from './ScrollProgress';
 import { Sidebar } from './Sidebar';
 
 interface LayoutProps {
@@ -8,6 +10,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      <ScrollProgress />
       {/* Skip to content link for keyboard users */}
       <a
         href="#main-content"
@@ -41,6 +44,8 @@ export function Layout({ children }: LayoutProps) {
         aria-hidden
         className="pointer-events-none fixed inset-x-0 bottom-0 z-30 h-16 bg-gradient-to-t from-background via-background/80 to-transparent lg:left-72"
       />
+
+      <BackToTop />
     </div>
   );
 }

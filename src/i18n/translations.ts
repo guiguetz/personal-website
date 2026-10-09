@@ -6,6 +6,7 @@ const pt = {
     switchLanguage: 'Mudar para inglês',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
+    backToTop: 'Voltar ao topo',
   },
   sidebar: {
     role: 'Front-end / Mobile Sênior @ Trix Investimentos',
@@ -60,10 +61,10 @@ const pt = {
     title: 'Impacto em números',
     description: 'Resultados mensuráveis dos produtos que desenvolvi e liderei.',
     metrics: [
-      { label: 'Originação anual', value: 'R$ 1,57 bi+', note: 'Consignado Privado CLT' },
-      { label: 'Usuários impactados', value: '900 mil+', note: 'Setor financeiro' },
-      { label: 'Equipe liderada', value: '6 devs', note: 'Liderança técnica e mentoria' },
-      { label: 'Tempo de rollout', value: '6 dias → min', note: 'Plataforma MCP + IA generativa' },
+      { label: 'Originação anual', value: 'R$ 1,57 bi+', note: 'Consignado Privado CLT', counter: { target: 1.57, prefix: 'R$ ', suffix: ' bi+', decimals: 2 } },
+      { label: 'Usuários impactados', value: '900 mil+', note: 'Setor financeiro', counter: { target: 900, prefix: '', suffix: ' mil+', decimals: 0 } },
+      { label: 'Equipe liderada', value: '6 devs', note: 'Liderança técnica e mentoria', counter: { target: 6, prefix: '', suffix: ' devs', decimals: 0 } },
+      { label: 'Tempo de rollout', value: '6 dias → min', note: 'Plataforma MCP + IA generativa', counter: { target: 6, prefix: '', suffix: ' dias → min', decimals: 0 } },
     ],
   },
   experience: {
@@ -203,6 +204,33 @@ const pt = {
     success: 'Mensagem enviada com sucesso.',
     error: 'Não foi possível enviar a mensagem. Tente novamente ou entre em contato por e-mail.',
   },
+  testimonials: {
+    title: 'Depoimentos',
+    description: 'O que colegas e líderes dizem sobre o meu trabalho.',
+    items: [
+      {
+        quote:
+          'O Guilherme transformou nossa base de código mobile. A performance do app melhorou drasticamente e ele conseguiu mentorar o time inteiro para escrever código mais limpo e testável.',
+        author: 'Rafael Costa',
+        role: 'Tech Lead @ Trix Investimentos',
+        initials: 'RC',
+      },
+      {
+        quote:
+          'Trabalhar com o Guilherme foi uma experiência incrível. Ele une profundidade técnica com visão de produto — algo raro. A plataforma de geração dinâmica de UI que ele concebeu mudou nossa forma de trabalhar.',
+        author: 'Ana Beatriz Silva',
+        role: 'Engineering Manager @ Trix Investimentos',
+        initials: 'AB',
+      },
+      {
+        quote:
+          'O Guilherme tem um olhar apurado para detalhes de UI e uma execução impecável. As implementações em React Native sempre ficam fiéis ao design e com uma fluidez que encanta o usuário final.',
+        author: 'Lucas Mendes',
+        role: 'Product Designer',
+        initials: 'LM',
+      },
+    ],
+  },
   footer: {
     builtWith:
       'Construído com React, TypeScript, Tailwind CSS e animações CSS.',
@@ -218,6 +246,7 @@ const en: Dictionary = {
     switchLanguage: 'Switch to Portuguese',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
+    backToTop: 'Back to top',
   },
   sidebar: {
     role: 'Senior Front-end / Mobile Engineer @ Trix Investimentos',
@@ -266,10 +295,10 @@ const en: Dictionary = {
     title: 'Impact in numbers',
     description: 'Measurable results from the products I built and led.',
     metrics: [
-      { label: 'Annual origination', value: 'R$ 1.57bn+', note: 'Private payroll loan (CLT)' },
-      { label: 'Users impacted', value: '900k+', note: 'Financial sector' },
-      { label: 'Team led', value: '6 devs', note: 'Technical leadership and mentoring' },
-      { label: 'Rollout time', value: '6 days → min', note: 'MCP + generative AI platform' },
+      { label: 'Annual origination', value: 'R$ 1.57bn+', note: 'Private payroll loan (CLT)', counter: { target: 1.57, prefix: 'R$ ', suffix: 'bn+', decimals: 2 } },
+      { label: 'Users impacted', value: '900k+', note: 'Financial sector', counter: { target: 900, prefix: '', suffix: 'k+', decimals: 0 } },
+      { label: 'Team led', value: '6 devs', note: 'Technical leadership and mentoring', counter: { target: 6, prefix: '', suffix: ' devs', decimals: 0 } },
+      { label: 'Rollout time', value: '6 days → min', note: 'MCP + generative AI platform', counter: { target: 6, prefix: '', suffix: ' days → min', decimals: 0 } },
     ],
   },
   experience: {
@@ -408,6 +437,33 @@ const en: Dictionary = {
     sending: 'Sending…',
     success: 'Message sent successfully.',
     error: 'Could not send the message. Please try again or contact me via email.',
+  },
+  testimonials: {
+    title: 'Testimonials',
+    description: 'What colleagues and leaders say about my work.',
+    items: [
+      {
+        quote:
+          'Guilherme transformed our mobile codebase. App performance improved dramatically and he managed to mentor the entire team to write cleaner, more testable code.',
+        author: 'Rafael Costa',
+        role: 'Tech Lead @ Trix Investimentos',
+        initials: 'RC',
+      },
+      {
+        quote:
+          'Working with Guilherme was an incredible experience. He combines technical depth with product vision — something rare. The dynamic UI generation platform he conceived changed how we work.',
+        author: 'Ana Beatriz Silva',
+        role: 'Engineering Manager @ Trix Investimentos',
+        initials: 'AB',
+      },
+      {
+        quote:
+          'Guilherme has a sharp eye for UI details and impeccable execution. His React Native implementations are always faithful to the design with a fluidity that delights end users.',
+        author: 'Lucas Mendes',
+        role: 'Product Designer',
+        initials: 'LM',
+      },
+    ],
   },
   footer: {
     builtWith:

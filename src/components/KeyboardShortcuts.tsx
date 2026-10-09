@@ -70,7 +70,7 @@ export function KeyboardShortcuts() {
 
   return (
     <div
-      className="fixed bottom-6 left-6 z-40 hidden lg:block"
+      className="fixed bottom-6 right-24 z-40 hidden lg:block"
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >
