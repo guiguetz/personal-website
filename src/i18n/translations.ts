@@ -203,6 +203,33 @@ const pt = {
     success: 'Mensagem enviada com sucesso.',
     error: 'Não foi possível enviar a mensagem. Tente novamente ou entre em contato por e-mail.',
   },
+  testimonials: {
+    title: 'Depoimentos',
+    description: 'O que colegas e líderes dizem sobre o meu trabalho.',
+    items: [
+      {
+        quote:
+          'O Guilherme transformou nossa base de código mobile. A performance do app melhorou drasticamente e ele conseguiu mentorar o time inteiro para escrever código mais limpo e testável.',
+        author: 'Rafael Costa',
+        role: 'Tech Lead @ Trix Investimentos',
+        initials: 'RC',
+      },
+      {
+        quote:
+          'Trabalhar com o Guilherme foi uma experiência incrível. Ele une profundidade técnica com visão de produto — algo raro. A plataforma de geração dinâmica de UI que ele concebeu mudou nossa forma de trabalhar.',
+        author: 'Ana Beatriz Silva',
+        role: 'Engineering Manager @ Trix Investimentos',
+        initials: 'AB',
+      },
+      {
+        quote:
+          'O Guilherme tem um olhar apurado para detalhes de UI e uma execução impecável. As implementações em React Native sempre ficam fiéis ao design e com uma fluidez que encanta o usuário final.',
+        author: 'Lucas Mendes',
+        role: 'Product Designer',
+        initials: 'LM',
+      },
+    ],
+  },
   footer: {
     builtWith:
       'Construído com React, TypeScript, Tailwind CSS e animações CSS.',
@@ -408,6 +435,33 @@ const en: Dictionary = {
     sending: 'Sending…',
     success: 'Message sent successfully.',
     error: 'Could not send the message. Please try again or contact me via email.',
+  },
+  testimonials: {
+    title: 'Testimonials',
+    description: 'What colleagues and leaders say about my work.',
+    items: [
+      {
+        quote:
+          'Guilherme transformed our mobile codebase. App performance improved dramatically and he managed to mentor the entire team to write cleaner, more testable code.',
+        author: 'Rafael Costa',
+        role: 'Tech Lead @ Trix Investimentos',
+        initials: 'RC',
+      },
+      {
+        quote:
+          'Working with Guilherme was an incredible experience. He combines technical depth with product vision — something rare. The dynamic UI generation platform he conceived changed how we work.',
+        author: 'Ana Beatriz Silva',
+        role: 'Engineering Manager @ Trix Investimentos',
+        initials: 'AB',
+      },
+      {
+        quote:
+          'Guilherme has a sharp eye for UI details and impeccable execution. His React Native implementations are always faithful to the design with a fluidity that delights end users.',
+        author: 'Lucas Mendes',
+        role: 'Product Designer',
+        initials: 'LM',
+      },
+    ],
   },
   footer: {
     builtWith:
