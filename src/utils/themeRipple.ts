@@ -97,8 +97,8 @@ export function toggleThemeWithRipple(e: MouseEvent, onToggled?: () => void) {
       { clipPath: `circle(0% at ${x}px ${y}px)` },
     ],
     {
-      duration: 600,
-      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      duration: 700,
+      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
       fill: 'forwards',
     },
   );
