@@ -1,11 +1,7 @@
 /**
- * Theme ripple — animates a circular clip-path reveal when toggling themes.
- * Captures the click origin, creates an overlay with the current theme's
- * background, toggles the theme, then shrinks the overlay to the click point.
+ * Theme ripple — animates a circular clip-path expanding from the click point
+ * outward, revealing the new theme as it passes over each element.
  */
-
-const BG_LIGHT = '#ffffff';
-const BG_DARK = '#09090b';
 
 export function toggleThemeWithRipple(e: MouseEvent) {
   const x = e.clientX;
@@ -19,40 +15,41 @@ export function toggleThemeWithRipple(e: MouseEvent) {
     return;
   }
 
-  const isCurrentlyLight = document.documentElement.classList.contains('light');
-  const overlayBg = isCurrentlyLight ? BG_LIGHT : BG_DARK;
+  // Determine the NEW theme's background (after toggle)
+  const willBeLight = !document.documentElement.classList.contains('light');
+  const newBg = willBeLight ? '#ffffff' : '#09090b';
 
-  // Create full-screen overlay with current theme background
+  // Create overlay with NEW theme background, starting invisible at click point
   const overlay = document.createElement('div');
   overlay.setAttribute('aria-hidden', 'true');
   Object.assign(overlay.style, {
     position: 'fixed',
     inset: '0',
     zIndex: '9999',
-    backgroundColor: overlayBg,
-    clipPath: `circle(150% at ${x}px ${y}px)`,
+    background: newBg,
+    clipPath: `circle(0% at ${x}px ${y}px)`,
     pointerEvents: 'none',
   });
   document.body.appendChild(overlay);
 
-  // Toggle the real theme (page changes underneath the overlay)
-  document.documentElement.classList.toggle('light');
-  localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
-
-  // Animate the overlay shrinking to the click point
+  // Animate the new theme expanding outward from the click point,
+  // painting over each element as the circle grows
   const animation = overlay.animate(
     [
-      { clipPath: `circle(150% at ${x}px ${y}px)` },
       { clipPath: `circle(0% at ${x}px ${y}px)` },
+      { clipPath: `circle(150% at ${x}px ${y}px)` },
     ],
     {
-      duration: 500,
-      easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+      duration: 600,
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
       fill: 'forwards',
     },
   );
 
   animation.onfinish = () => {
+    // Toggle the real theme and remove overlay
+    document.documentElement.classList.toggle('light');
+    localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
     overlay.remove();
   };
 }
