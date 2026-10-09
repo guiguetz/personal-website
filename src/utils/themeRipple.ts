@@ -1,16 +1,45 @@
 /**
- * Theme transition — imabi.org style expanding circle inversion.
+ * Theme transition — expanding circle with real target colors.
  *
- * Creates a white overlay with `mix-blend-mode: difference` that
- * inverts all colors as a circle expands from the click point.
- * When the circle covers the viewport, the real theme is toggled
- * underneath and the overlay is removed — seamless inversion.
+ * 1. Read the CURRENT theme's CSS variables.
+ * 2. Create an overlay covering the viewport, with old theme colors baked in.
+ * 3. Toggle the class on <html> — page underneath gets the TARGET theme instantly.
+ * 4. Animate the overlay's clip-path shrinking from full → 0 at the click point.
+ *    The old theme "shrinks away", revealing the real new theme underneath.
+ * 5. Remove overlay.
+ *
+ * No mix-blend-mode inversion — colors are always correct.
  *
  * @see https://imabi.org/ for the original inspiration
  */
 
+/** CSS variables that define the theme palette. */
+const THEME_VARS = [
+  '--background', '--foreground',
+  '--card', '--card-foreground',
+  '--popover', '--popover-foreground',
+  '--primary', '--primary-foreground',
+  '--secondary', '--secondary-foreground',
+  '--muted', '--muted-foreground',
+  '--accent', '--accent-foreground',
+  '--destructive', '--destructive-foreground',
+  '--border', '--input', '--ring',
+];
+
+/** Read current computed CSS variables from <html>. */
+function readThemeVars(): Record<string, string> {
+  const cs = getComputedStyle(document.documentElement);
+  const vars: Record<string, string> = {};
+  for (const v of THEME_VARS) {
+    vars[v] = cs.getPropertyValue(v).trim();
+  }
+  return vars;
+}
+
 /**
- * Toggle theme with an expanding circle inversion effect.
+ * Toggle theme with an expanding circle transition.
+ * The circle reveals the real target colors — no blend-mode inversion.
+ *
  * @param e          Mouse event (for click coordinates)
  * @param onToggled  Called once when the theme class has been toggled
  */
@@ -27,36 +56,45 @@ export function toggleThemeWithRipple(e: MouseEvent, onToggled?: () => void) {
     return;
   }
 
-  // Disable CSS transitions during the animation so theme colors snap
   const root = document.documentElement;
-  root.classList.add('theme-transition-disabled');
 
-  // White overlay with mix-blend-mode: difference inverts all colors
+  // 1. Read the CURRENT theme variables (before toggle)
+  const oldVars = readThemeVars();
+
+  // 2. Create overlay covering the full viewport with old theme colors baked in.
+  //    Inline CSS variables override the toggled class on <html>.
   const overlay = document.createElement('div');
   overlay.setAttribute('aria-hidden', 'true');
   Object.assign(overlay.style, {
     position: 'fixed',
     inset: '0',
     zIndex: '9999',
-    background: '#fff',
-    mixBlendMode: 'difference',
     pointerEvents: 'none',
-    clipPath: `circle(0% at ${x}px ${y}px)`,
   });
+  for (const [prop, val] of Object.entries(oldVars)) {
+    overlay.style.setProperty(prop, val);
+  }
+  overlay.style.backgroundColor = 'hsl(var(--background))';
   document.body.appendChild(overlay);
 
-  // Radius large enough to cover the entire viewport from click point
+  // 3. Toggle class on <html> — page underneath gets the TARGET theme.
+  //    Overlay (covering everything) still shows old theme via its inline vars.
+  root.classList.add('theme-transition-disabled');
+  root.classList.toggle('light');
+  localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+
+  // 4. Shrink the overlay away from the click point → old theme disappears,
+  //    revealing the real new theme content underneath.
   const maxR = Math.hypot(
     Math.max(x, window.innerWidth - x),
     Math.max(y, window.innerHeight - y),
   ) * 1.1;
   const maxPct = (maxR / Math.min(window.innerWidth, window.innerHeight)) * 100;
 
-  // Animate the circle expanding from the click point
   const animation = overlay.animate(
     [
-      { clipPath: `circle(0% at ${x}px ${y}px)` },
       { clipPath: `circle(${maxPct}% at ${x}px ${y}px)` },
+      { clipPath: `circle(0% at ${x}px ${y}px)` },
     ],
     {
       duration: 600,
@@ -65,11 +103,8 @@ export function toggleThemeWithRipple(e: MouseEvent, onToggled?: () => void) {
     },
   );
 
-  // Toggle the real theme at the end so the overlay is still covering
-  // everything — the inversion hides the color swap. Then remove overlay.
+  // 5. Cleanup — remove overlay and re-enable transitions
   animation.onfinish = () => {
-    root.classList.toggle('light');
-    localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
     onToggled?.();
     requestAnimationFrame(() => {
       overlay.remove();
