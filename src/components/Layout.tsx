@@ -2,12 +2,15 @@ import { ReactNode } from 'react';
 import { BackToTop } from './BackToTop';
 import { ScrollProgress } from './ScrollProgress';
 import { Sidebar } from './Sidebar';
+import { useI18n } from '@/i18n/I18nContext';
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 export function Layout({ children }: LayoutProps) {
+  const { t } = useI18n();
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       <ScrollProgress />
@@ -17,7 +20,7 @@ export function Layout({ children }: LayoutProps) {
         data-skip-text-anim
         className="fixed left-4 top-2 z-[100] -translate-y-20 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground opacity-0 shadow-lg transition-all focus:translate-y-0 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
       >
-        Pular para o conteúdo
+        {t.a11y.skipToContent}
       </a>
       {/* Grid + ambient glow backdrop */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
