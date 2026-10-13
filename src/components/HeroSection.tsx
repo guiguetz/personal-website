@@ -22,7 +22,7 @@ export function HeroSection() {
   return (
     <section id="hero" className="relative flex flex-col justify-center py-6 lg:min-h-[calc(100vh-4rem)] lg:py-12">
       <div className="max-w-2xl animate-fade-in-up">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary">
+        <div className="relative z-30 mb-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary">
           <span className="relative flex h-1.5 w-1.5">
             <span aria-hidden className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
           </span>
