@@ -347,3 +347,13 @@ body.recaptcha-exiting .grecaptcha-badge {
     scroll-behavior: auto !important;
   }
 }
+/* Fix reCAPTCHA badge position when sidebar is visible on lg+ screens */
+/* Sidebar width is w-72 = 18rem, main content starts after that */
+@media (min-width: 1024px) {
+  .grecaptcha-badge {
+    left: calc(18rem + 0.25rem) !important; /* 18rem (sidebar) + 0.25rem (4px) */
+  }
+  body.recaptcha-visible .grecaptcha-badge {
+    left: calc(18rem + 0.25rem) !important;
+  }
+}
